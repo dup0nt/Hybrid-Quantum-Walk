@@ -46,7 +46,7 @@ def digit_string(variable, codification):
 for step in steps:
     for qubit in qubits:
         for thread in threads:
-            job_name = digit_string(qubit,"Q") + digit_string(step,"S")
+            job_name = digit_string(qubit,"Q") + digit_string(step,"S") + simulator[0]
 
             bash_execute = """#!/bin/bash
 # set the partition where the job will run (default = normal)
