@@ -3,7 +3,7 @@ import time
 
 threads = [10,20,40,80]
 qubits = [5,6,7,8]
-steps = [2**7,2**8,2**9]
+steps = [2**7] #,2**8,2**9]
 partitions = ['cpu2', 'hmem1']
 
 
@@ -32,7 +32,7 @@ shots=10000
 # 'qasm_simulator'
 # 'aer_simulator'
 # 'aer_statevector_simulator'
-simulator = 'qasm_simulator'
+simulator = 'aer_simulator'
 
 #Begin job:
 def digit_string(variable, codification):

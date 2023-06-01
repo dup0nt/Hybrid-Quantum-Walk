@@ -3,7 +3,7 @@ from quantum_walk import quantum_walk
 from data_w import *
 from common import sys
 
-print("output", sys.argv)
+
 
 # Retrieve number of qubits and steps from command line arguments
 num_qubits = 7
@@ -26,7 +26,7 @@ job_id = 0000000
 
 all_results = []
 
-pathe = './Output/Data/'
+pathe = './Dirac-Quantum-Walk/Output/Data/'
 file = file_name(num_qubits,num_steps,coin_type,theta,boundary,dist_boundary,shots,job_id,simulator)
 
 for i in range(num_steps):
