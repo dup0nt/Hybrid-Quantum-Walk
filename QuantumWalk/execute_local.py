@@ -20,7 +20,7 @@ dist_boundary = 1
 # Retrieve QASM inputs from command line arguments
 shots = 10000
 
-simulator = 'qasm_simulator'
+simulator = 'aer_simulator'
 
 job_id = 0000000
 
