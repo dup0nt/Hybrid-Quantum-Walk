@@ -7,10 +7,10 @@
 #SBATCH --nodes=1
 
 # set name of job
-#SBATCH --job-name=Q08S512
+#SBATCH --job-name=Q05S128
 
 # set the number of tasks (processes) per node.
-#SBATCH --cpus-per-task=80
+#SBATCH --cpus-per-task=10
 
 # set max wallclock time (in this case 200 minutes)
 #SBATCH --time=2800:00
@@ -36,7 +36,7 @@ echo
 
 
 # Use variables in a command
-command="python ./QuantumWalk/main.py 8 512 1 2 1 2 10000 ${SLURM_JOB_ID}" 
+command="python ./QuantumWalk/main.py 5 128 1 2 1 2 10000 qasm_simulator ${SLURM_JOB_ID}" 
 
 # Run the command
 eval "${command}"
