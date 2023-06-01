@@ -6,23 +6,23 @@ from common import sys
 print("output", sys.argv)
 
 # Retrieve number of qubits and steps from command line arguments
-num_qubits = int(sys.argv[1])
-num_steps = int(sys.argv[2])
+num_qubits = 7
+num_steps = 1
 
 # Retrieve coin parameters from command line arguments
-coin_type = int(sys.argv[3])
-theta = int(sys.argv[4])
+coin_type = 1
+theta = 2
 
 # Retrieve boundary conditions from command line arguments
-boundary = int(sys.argv[5])
-dist_boundary = int(sys.argv[6])
+boundary = 0
+dist_boundary = 1
 
 # Retrieve QASM inputs from command line arguments
-shots = int(sys.argv[7])
+shots = 10000
 
-simulator = int(sys.argv[8])
+simulator = 'qasm_simulator'
 
-job_id = int(sys.argv[9])
+job_id = 0000000
 
 all_results = []
 

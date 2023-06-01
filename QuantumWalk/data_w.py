@@ -15,7 +15,7 @@ def save_results_to_file(all_results, file_path, file_name):
             # Write each numpy array as a separate line in the file
         np.savetxt(f, all_results)
            
-def file_name(num_qubits,num_steps,coin_type,theta,boundry,dist_boundry,shots,job_id):
+def file_name(num_qubits,num_steps,coin_type,theta,boundry,dist_boundry,shots,job_id,simulator):
     
     if (coin_type==0):
         coin_name = 'H_'
@@ -29,4 +29,4 @@ def file_name(num_qubits,num_steps,coin_type,theta,boundry,dist_boundry,shots,jo
 
     
 
-    return str(job_id) + "_"  + str(formatted_now) + "__Q" + str(num_qubits) + "_"+ coin_name + "S" + str(num_steps) + "_" + boundry_value + str(shots)
+    return str(job_id) + "_"  + str(formatted_now) + "__Q" + str(num_qubits) + "_"+ coin_name + "S" + str(num_steps) + "_" + boundry_value + str(shots) + "_" + str(simulator)

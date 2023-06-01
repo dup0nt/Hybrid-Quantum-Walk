@@ -1,11 +1,11 @@
 from common import np,  execute, QuantumCircuit, QuantumRegister, ClassicalRegister, QFT
 from coin import build_coin,coin
-from simulator import backend
 from shift import shift
+from simulator import choose_backend
 
 
 
-def quantum_walk(num_steps,num_qubits,shots,boundry,dist_boundry,coin_type,theta):
+def quantum_walk(num_steps,num_qubits,shots,boundry,dist_boundry,coin_type,theta,simulator):
 
         position = QuantumRegister(num_qubits, "pos")
         coin_reg = QuantumRegister(1, "coin")
@@ -46,8 +46,10 @@ def quantum_walk(num_steps,num_qubits,shots,boundry,dist_boundry,coin_type,theta
             qw.append(iqft, range(num_qubits))
         qw.barrier()
 
-        qw.measure_all()
+        for n in range(num_qubits):
+            qw.measure(n,n)
 
+        backend = choose_backend(simulator)
         job = execute(qw, backend=backend, shots=shots)
         answer = job.result().get_counts()
         

@@ -1,5 +1,6 @@
 from common import Aer
 
-backend = Aer.get_backend('qasm_simulator')
+def choose_backend (simulator_variable):
+    return Aer.get_backend(simulator_variable)
 
 

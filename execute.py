@@ -28,6 +28,12 @@ dist_boundary=2
 #Qasm inputs:
 shots=10000
 
+#Backend
+# 'qasm_simulator'
+# 'aer_simulator'
+# 'aer_statevector_simulator'
+simulator = 'qasm_simulator'
+
 #Begin job:
 def digit_string(variable, codification):
     if (variable<10):
@@ -80,12 +86,12 @@ echo
 
 
 # Use variables in a command
-command="python ./QuantumWalk/main.py {} {} {} {} {} {} {} ${{SLURM_JOB_ID}}" 
+command="python ./QuantumWalk/main.py {} {} {} {} {} {} {} {} ${{SLURM_JOB_ID}}" 
 
 # Run the command
 eval "${{command}}"
 
-""".format(partition,job_name,thread,qubit,step,coin_type,theta,boundary,dist_boundary,shots)
+""".format(partition,job_name,thread,qubit,step,coin_type,theta,boundary,dist_boundary,shots,simulator)
 
 
 
