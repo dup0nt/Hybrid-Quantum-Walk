@@ -32,9 +32,7 @@ shots=10000
 # 'qasm_simulator'
 # 'aer_simulator'
 # 'aer_statevector_simulator'
-simulator = 'aer_simulator'
-
-
+simulator = 'aer_statevector_simulator'
 
 
 #Begin job:
@@ -89,7 +87,7 @@ echo
 
 
 # Use variables in a command
-command="python ./Dirac-Quantum-Walk/QuantumWalk/main.py {} {} {} {} {} {} {} {} ${{SLURM_JOB_ID}}" 
+command="python /veracruz/projects/c/cquant/Dirac-Quantum-Walk/QuantumWalk/main.py {} {} {} {} {} {} {} {} ${{SLURM_JOB_ID}}" 
 
 # Run the command
 eval "${{command}}"
@@ -103,7 +101,7 @@ eval "${{command}}"
                 file.write(bash_execute)
 
 
-"""
+
             # Execute the echo command
             result = subprocess.run(["sbatch", script_filename], capture_output=True, text=True)
 
@@ -114,5 +112,5 @@ eval "${{command}}"
 
             
             time.sleep(0.1)
-""" 
+
 

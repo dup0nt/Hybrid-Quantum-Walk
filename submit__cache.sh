@@ -36,7 +36,7 @@ echo
 
 
 # Use variables in a command
-command="python ./Dirac-Quantum-Walk/QuantumWalk/main.py 8 512 1 2 1 2 10000 aer_simulator ${SLURM_JOB_ID}" 
+command="python /veracruz/projects/c/cquant/Dirac-Quantum-Walk/QuantumWalk/main.py 8 512 1 2 1 2 10000 aer_statevector_simulator ${SLURM_JOB_ID}" 
 
 # Run the command
 eval "${command}"
