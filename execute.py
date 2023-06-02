@@ -3,7 +3,7 @@ import time
 
 threads = [10,20,40,80]
 qubits = [5,6,7,8]
-steps = [2**7] #,2**8,2**9]
+steps = [2**7,2**8,2**9]
 partitions = ['cpu2', 'hmem1']
 
 
@@ -86,7 +86,7 @@ echo
 
 
 # Use variables in a command
-command="python ./QuantumWalk/main.py {} {} {} {} {} {} {} {} ${{SLURM_JOB_ID}}" 
+command="python ./Dirac-Quantum-Walk/QuantumWalk/main.py {} {} {} {} {} {} {} {} ${{SLURM_JOB_ID}}" 
 
 # Run the command
 eval "${{command}}"
@@ -104,7 +104,10 @@ eval "${{command}}"
             # Execute the echo command
             result = subprocess.run(["sbatch", script_filename], capture_output=True, text=True)
 
-            print(result.stderr.strip())
+            if result.returncode == 0:
+                print("Success job input " + str(result.stdout))
+            else:
+                print("Job upload failed " + str(result.stderr))
 
             
             time.sleep(0.1)
