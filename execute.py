@@ -34,6 +34,9 @@ shots=10000
 # 'aer_statevector_simulator'
 simulator = 'aer_simulator'
 
+
+
+
 #Begin job:
 def digit_string(variable, codification):
     if (variable<10):
@@ -105,7 +108,7 @@ eval "${{command}}"
             result = subprocess.run(["sbatch", script_filename], capture_output=True, text=True)
 
             if result.returncode == 0:
-                print("Success job input " + str(result.stdout))
+                print("Success job input: " + str(result.stdout))
             else:
                 print("Job upload failed " + str(result.stderr))
 
