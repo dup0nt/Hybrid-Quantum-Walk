@@ -6,8 +6,8 @@ from common import sys
 
 
 # Retrieve number of qubits and steps from command line arguments
-num_qubits = 7
-num_steps = 1
+num_qubits = 10
+num_steps = 250
 
 # Retrieve coin parameters from command line arguments
 coin_type = 1
@@ -20,13 +20,13 @@ dist_boundary = 1
 # Retrieve QASM inputs from command line arguments
 shots = 10000
 
-simulator = 'aer_simulator'
+simulator = 'aer_simulator_statevector'
 
 job_id = 0000000
 
 all_results = []
 
-pathe = './Dirac-Quantum-Walk/Output/Data/'
+pathe = './Output/Data/'
 file = file_name(num_qubits,num_steps,coin_type,theta,boundary,dist_boundary,shots,job_id,simulator)
 
 for i in range(num_steps):
