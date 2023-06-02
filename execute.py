@@ -32,7 +32,10 @@ shots=10000
 # 'qasm_simulator'
 # 'aer_simulator'
 # 'aer_statevector_simulator'
-simulator = 'qasm_simulator'
+simulator = 'aer_simulator'
+
+
+
 
 #Begin job:
 def digit_string(variable, codification):
@@ -46,7 +49,7 @@ def digit_string(variable, codification):
 for step in steps:
     for qubit in qubits:
         for thread in threads:
-            job_name = digit_string(qubit,"Q") + digit_string(step,"S")
+            job_name = digit_string(qubit,"Q") + digit_string(step,"S") + simulator[0]
 
             bash_execute = """#!/bin/bash
 # set the partition where the job will run (default = normal)
@@ -86,7 +89,7 @@ echo
 
 
 # Use variables in a command
-command="python ./QuantumWalk/main.py {} {} {} {} {} {} {} {} ${{SLURM_JOB_ID}}" 
+command="python ./Dirac-Quantum-Walk/QuantumWalk/main.py {} {} {} {} {} {} {} {} ${{SLURM_JOB_ID}}" 
 
 # Run the command
 eval "${{command}}"
@@ -104,7 +107,10 @@ eval "${{command}}"
             # Execute the echo command
             result = subprocess.run(["sbatch", script_filename], capture_output=True, text=True)
 
-            print(result.stderr.strip())
+            if result.returncode == 0:
+                print("Success job input: " + str(result.stdout))
+            else:
+                print("Job upload failed " + str(result.stderr))
 
             
             time.sleep(0.1)
