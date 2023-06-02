@@ -62,7 +62,7 @@ echo
 
 
 # Use variables in a command
-command="python ./Dirac-Quantum-Walk/QuantumWalk/main.py ${num_qubits} ${num_steps} ${coin_type} ${theta} ${boundary} ${dist_boundary} ${shots}"
+command="python ./QuantumWalk/main.py ${num_qubits} ${num_steps} ${coin_type} ${theta} ${boundary} ${dist_boundary} ${shots}"
 
 # Run the command
 eval "${command}"

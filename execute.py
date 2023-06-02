@@ -98,12 +98,12 @@ eval "${{command}}"
 
 
 
-            script_filename = "submit__cache.sh"
+            script_filename = "/veracruz/projects/c/cquant/Dirac-Quantum-Walk/submit__cache.sh"
             with open(script_filename, "w") as file:
                 file.write(bash_execute)
 
 
-
+"""
             # Execute the echo command
             result = subprocess.run(["sbatch", script_filename], capture_output=True, text=True)
 
@@ -114,5 +114,5 @@ eval "${{command}}"
 
             
             time.sleep(0.1)
-            
+""" 
 
