@@ -1,4 +1,4 @@
-from common import np,  execute, QuantumCircuit, QuantumRegister, ClassicalRegister, QFT
+from common import np,  execute, QuantumCircuit, QuantumRegister, ClassicalRegister, QFT, plot_histogram, transpile
 from coin import build_coin,coin
 from shift import shift
 from simulator import choose_backend
@@ -44,16 +44,21 @@ def quantum_walk(num_steps,num_qubits,shots,boundry,dist_boundry,coin_type,theta
                     
         if (boundry==0):  
             qw.append(iqft, range(num_qubits))
-        qw.barrier()
+        
+        for n in range(num_qubits):
+                qw.measure(n,n)
 
         backend = choose_backend(simulator)
         
-        if (simulator!='aer_simulator_statevector'):
-            for n in range(num_qubits):
-                qw.measure(n,n)
-
-        job = execute(qw, backend=backend, shots=shots)
-        answer = job.result().get_counts()
+        if (simulator=='aer_simulator_statevector'):
+            sim_statevector = backend
+            qw = transpile(qw, sim_statevector)
+            job_statevector = sim_statevector.run(qw, shots=shots)
+            answer = job_statevector.result().get_counts()
+            
+        else:  
+            job = execute(qw, backend=backend, shots=shots)
+            answer = job.result().get_counts()
         
         data_dict = answer
 
