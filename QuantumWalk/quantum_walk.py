@@ -33,7 +33,7 @@ def quantum_walk(num_steps,num_qubits,shots,boundry,dist_boundry,coin_type,theta
 
         my_coins = build_coin(num_qubits,coin_type, theta, boundry)
 
-        #qw.append(qft, range(num_qubits))
+
         for step in range(num_steps):
                 coin(qw, num_qubits,boundry,dist_boundry,my_coins[0], my_coins[1], my_coins[2])
                 if (boundry==1):
@@ -46,14 +46,15 @@ def quantum_walk(num_steps,num_qubits,shots,boundry,dist_boundry,coin_type,theta
             qw.append(iqft, range(num_qubits))
         qw.barrier()
 
-        for n in range(num_qubits):
-            qw.measure(n,n)
-
         backend = choose_backend(simulator)
+        
+        if (simulator!='aer_simulator_statevector'):
+            for n in range(num_qubits):
+                qw.measure(n,n)
+
         job = execute(qw, backend=backend, shots=shots)
         answer = job.result().get_counts()
         
-
         data_dict = answer
 
         # Convert binary keys to decimal and store in a new list

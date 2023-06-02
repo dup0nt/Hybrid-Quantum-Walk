@@ -7,7 +7,7 @@ print("output", sys.argv)
 
 # Retrieve number of qubits and steps from command line arguments
 num_qubits = 7
-num_steps = 1
+num_steps = 4
 
 # Retrieve coin parameters from command line arguments
 coin_type = 1
