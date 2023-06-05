@@ -31,8 +31,8 @@ shots=10000
 #Backend
 # 'qasm_simulator'
 # 'aer_simulator'
-# 'aer_statevector_simulator'
-simulator = 'aer_statevector_simulator'
+# 'aer_simulator_statevector''
+simulator = 'aer_simulator_statevector'
 
 
 #Begin job:
