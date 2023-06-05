@@ -1,0 +1,98 @@
+       JobID    JobName      User  Partition      State  AllocCPUS    Elapsed     MaxRSS   TotalCPU 
+------------ ---------- --------- ---------- ---------- ---------- ---------- ---------- ---------- 
+380014         Q05S128a dgoncalv+       cpu2  COMPLETED         10   00:57:16             57:00.577 
+380014.batch      batch                       COMPLETED         10   00:57:16    806.22M  57:00.575 
+380015         Q05S128a dgoncalv+       cpu2  COMPLETED         20   00:37:43             37:36.027 
+380015.batch      batch                       COMPLETED         20   00:37:43    966.46M  37:36.026 
+380016         Q05S128a dgoncalv+       cpu2  COMPLETED         40   00:36:38             36:31.455 
+380016.batch      batch                       COMPLETED         40   00:36:38    789.66M  36:31.453 
+380017         Q05S128a dgoncalv+       cpu2  COMPLETED         80   00:37:13             36:41.117 
+380017.batch      batch                       COMPLETED         80   00:37:13    592.53M  36:41.116 
+380018         Q06S128a dgoncalv+       cpu2  COMPLETED         10   02:15:43              02:15:35 
+380018.batch      batch                       COMPLETED         10   02:15:43   1604.07M   02:15:35 
+380019         Q06S128a dgoncalv+       cpu2  COMPLETED         20   02:09:51              02:09:44 
+380019.batch      batch                       COMPLETED         20   02:09:51   1761.05M   02:09:44 
+380020         Q06S128a dgoncalv+       cpu2  COMPLETED         40   02:15:08              02:15:00 
+380020.batch      batch                       COMPLETED         40   02:15:08   2784.52M   02:15:00 
+380021         Q06S128a dgoncalv+       cpu2  COMPLETED         80   02:08:07              02:07:57 
+380021.batch      batch                       COMPLETED         80   02:08:07   2865.39M   02:07:57 
+380022         Q07S128a dgoncalv+       cpu2 OUT_OF_ME+         10   04:32:27              04:32:14 
+380022.batch      batch                      OUT_OF_ME+         10   04:32:27   5508.64M   04:32:14 
+380023         Q07S128a dgoncalv+       cpu2  COMPLETED         20   05:36:24              05:36:15 
+380023.batch      batch                       COMPLETED         20   05:36:24   7655.27M   05:36:15 
+380024         Q07S128a dgoncalv+       cpu2  COMPLETED         40   05:40:42              05:40:33 
+380024.batch      batch                       COMPLETED         40   05:40:42   7721.20M   05:40:33 
+380025         Q07S128a dgoncalv+       cpu2  COMPLETED         80   05:40:34              05:40:25 
+380025.batch      batch                       COMPLETED         80   05:40:34   7617.16M   05:40:25 
+380026         Q08S128a dgoncalv+       cpu2 OUT_OF_ME+         10   01:30:21              01:30:12 
+380026.batch      batch                      OUT_OF_ME+         10   01:30:21   4578.59M   01:30:12 
+380027         Q08S128a dgoncalv+       cpu2 OUT_OF_ME+         20   04:45:11              04:45:04 
+380027.batch      batch                      OUT_OF_ME+         20   04:45:11  11768.34M   04:45:04 
+380028         Q08S128a dgoncalv+       cpu2    RUNNING         40   13:28:23              00:00:00 
+380028.batch      batch                         RUNNING         40   13:28:23              00:00:00 
+380029         Q08S128a dgoncalv+       cpu2  COMPLETED         80   14:07:20              14:07:05 
+380029.batch      batch                       COMPLETED         80   14:07:20  20022.04M   14:07:05 
+380030         Q05S256a dgoncalv+       cpu2  COMPLETED         10   02:54:37              02:54:26 
+380030.batch      batch                       COMPLETED         10   02:54:37    925.32M   02:54:26 
+380031         Q05S256a dgoncalv+       cpu2  COMPLETED         20   02:31:50              02:31:43 
+380031.batch      batch                       COMPLETED         20   02:31:50   1007.15M   02:31:43 
+380032         Q05S256a dgoncalv+       cpu2  COMPLETED         40   02:43:35              02:43:26 
+380032.batch      batch                       COMPLETED         40   02:43:35   1609.42M   02:43:26 
+380033         Q05S256a dgoncalv+       cpu2  COMPLETED         80   02:27:38              02:27:29 
+380033.batch      batch                       COMPLETED         80   02:27:38   1575.02M   02:27:29 
+380034         Q06S256a dgoncalv+       cpu2    RUNNING         10   05:20:36              00:00:00 
+380034.batch      batch                         RUNNING         10   05:20:36              00:00:00 
+380035         Q06S256a dgoncalv+       cpu2    RUNNING         20   05:27:02              00:00:00 
+380035.batch      batch                         RUNNING         20   05:27:02              00:00:00 
+380036         Q06S256a dgoncalv+       cpu2  COMPLETED         40   09:32:17              09:32:05 
+380036.batch      batch                       COMPLETED         40   09:32:17   5431.53M   09:32:05 
+380037         Q06S256a dgoncalv+       cpu2  COMPLETED         80   08:30:59              08:30:47 
+380037.batch      batch                       COMPLETED         80   08:30:59   5439.35M   08:30:47 
+380038         Q07S256a dgoncalv+       cpu2 OUT_OF_ME+         10   03:41:53              03:41:42 
+380038.batch      batch                      OUT_OF_ME+         10   03:41:53   5756.49M   03:41:42 
+380039         Q07S256a dgoncalv+       cpu2    RUNNING         20   05:22:55              00:00:00 
+380039.batch      batch                         RUNNING         20   05:22:55              00:00:00 
+380040         Q07S256a dgoncalv+       cpu2    RUNNING         40   10:39:11              00:00:00 
+380040.batch      batch                         RUNNING         40   10:39:11              00:00:00 
+380041         Q07S256a dgoncalv+       cpu2  COMPLETED         80   22:49:06              22:48:49 
+380041.batch      batch                       COMPLETED         80   22:49:06  15259.48M   22:48:49 
+380042         Q08S256a dgoncalv+       cpu2 OUT_OF_ME+         10   01:20:04              01:19:54 
+380042.batch      batch                      OUT_OF_ME+         10   01:20:04   5742.23M   01:19:54 
+380043         Q08S256a dgoncalv+       cpu2 OUT_OF_ME+         20   05:05:58              05:05:53 
+380043.batch      batch                      OUT_OF_ME+         20   05:05:58  11424.10M   05:05:53 
+380044         Q08S256a dgoncalv+       cpu2    RUNNING         40   10:39:11              00:00:00 
+380044.batch      batch                         RUNNING         40   10:39:11              00:00:00 
+380045         Q08S256a dgoncalv+       cpu2    TIMEOUT         80 1-22:40:25            1-22:39:49 
+380045.batch      batch                       CANCELLED         80 1-22:40:26  36717.13M 1-22:39:49 
+380046         Q05S512a dgoncalv+       cpu2    RUNNING         10   05:20:36              00:00:00 
+380046.batch      batch                         RUNNING         10   05:20:36              00:00:00 
+380047         Q05S512a dgoncalv+       cpu2    RUNNING         20   05:22:28              00:00:00 
+380047.batch      batch                         RUNNING         20   05:22:28              00:00:00 
+380048         Q05S512a dgoncalv+       cpu2    RUNNING         40   10:08:31              00:00:00 
+380048.batch      batch                         RUNNING         40   10:08:31              00:00:00 
+380049         Q05S512a dgoncalv+       cpu2  COMPLETED         80   09:57:45              09:57:36 
+380049.batch      batch                       COMPLETED         80   09:57:45   3146.45M   09:57:36 
+380050         Q06S512a dgoncalv+       cpu2    RUNNING         10   05:20:36              00:00:00 
+380050.batch      batch                         RUNNING         10   05:20:36              00:00:00 
+380051         Q06S512a dgoncalv+       cpu2    RUNNING         20   05:21:34              00:00:00 
+380051.batch      batch                         RUNNING         20   05:21:34              00:00:00 
+380052         Q06S512a dgoncalv+       cpu2    RUNNING         40   08:51:08              00:00:00 
+380052.batch      batch                         RUNNING         40   08:51:08              00:00:00 
+380053         Q06S512a dgoncalv+       cpu2  COMPLETED         80 1-10:23:11            1-10:22:53 
+380053.batch      batch                       COMPLETED         80 1-10:23:11  11633.21M 1-10:22:53 
+380054         Q07S512a dgoncalv+       cpu2 OUT_OF_ME+         10   03:27:42              03:27:34 
+380054.batch      batch                      OUT_OF_ME+         10   03:27:42   5254.96M   03:27:34 
+380055         Q07S512a dgoncalv+       cpu2    RUNNING         20   05:21:34              00:00:00 
+380055.batch      batch                         RUNNING         20   05:21:34              00:00:00 
+380056         Q07S512a dgoncalv+       cpu2    RUNNING         40   08:51:08              00:00:00 
+380056.batch      batch                         RUNNING         40   08:51:08              00:00:00 
+380057         Q07S512a dgoncalv+       cpu2    TIMEOUT         80 1-22:40:01            1-22:39:42 
+380057.batch      batch                       CANCELLED         80 1-22:40:06  22755.38M 1-22:39:42 
+380058         Q08S512a dgoncalv+       cpu2 OUT_OF_ME+         10   01:13:36              01:13:29 
+380058.batch      batch                      OUT_OF_ME+         10   01:13:36   5710.65M   01:13:29 
+380059         Q08S512a dgoncalv+       cpu2    RUNNING         20   05:21:31              00:00:00 
+380059.batch      batch                         RUNNING         20   05:21:31              00:00:00 
+380060         Q08S512a dgoncalv+       cpu2    RUNNING         40   07:47:39              00:00:00 
+380060.batch      batch                         RUNNING         40   07:47:39              00:00:00 
+380061         Q08S512a dgoncalv+       cpu2    TIMEOUT         80 1-22:40:24            1-22:39:58 
+380061.batch      batch                       CANCELLED         80 1-22:40:27  36467.71M 1-22:39:58 
