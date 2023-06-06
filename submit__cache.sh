@@ -7,7 +7,7 @@
 #SBATCH --nodes=1
 
 # set name of job
-#SBATCH --job-name=Q08S512a
+#SBATCH --job-name=Q08S512s
 
 # set the number of tasks (processes) per node.
 #SBATCH --cpus-per-task=80
