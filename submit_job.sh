@@ -38,7 +38,7 @@ dist_boundary=3
 shots=10000
 
 # set name of job
-#SBATCH --job-name="HQW_qubits${num_qubits}_steps${num_steps}_coin${coin_type}_theta${theta}_boundary${boundary}_distboundary${dist_boundary}_shots${shots}"
+#SBATCH --job-name=HQW
 
 # mail alert at start, end and abortion of execution
 #SBATCH --mail-type=ALL
