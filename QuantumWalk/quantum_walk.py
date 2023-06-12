@@ -60,6 +60,7 @@ def quantum_walk(num_steps,num_qubits,shots,boundry,dist_boundry,coin_type,theta
             job = execute(qw, backend=backend, shots=shots)
             answer = job.result().get_counts()
         
+    
         data_dict = answer
 
         # Convert binary keys to decimal and store in a new list
