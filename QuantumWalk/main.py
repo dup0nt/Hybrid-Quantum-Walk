@@ -1,5 +1,6 @@
 #imports
 from quantum_walk import quantum_walk
+from execute_circuits import execute_circuits
 from data_w import *
 from common import sys
 
@@ -30,7 +31,10 @@ pathe = '/veracruz/projects/c/cquant/Dirac-Quantum-Walk/Output/Data/'
 file = file_name(num_qubits,num_steps,coin_type,theta,boundary,dist_boundary,shots,job_id,simulator)
 
 for i in range(num_steps):
-    all_results.append(quantum_walk(i,num_qubits,shots,boundary,dist_boundary,coin_type,theta,simulator))
-    save_results_to_file(all_results, pathe, file + ".txt")
+    all_results.append(quantum_walk(i,num_qubits,boundary,dist_boundary,coin_type,theta))
+
+exec_answers = execute_circuits(all_results,shots,simulator)
+proc_answer = convert_dicts_to_array(exec_answers,shots)
+save_results_to_file(proc_answer, pathe, file + ".txt")
     
 

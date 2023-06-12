@@ -7,16 +7,17 @@ pathe = './Output/Data/'
 #file_name = "2023-05-09 @ 11_46_43__Q6_Ry(1)_S128_B15_5000.txt"
 #file_path = pathe
 
-quantas = 49
+quantas = 2
 
 files = sorted(os.listdir(pathe))#, key=os.path.getmtime)
 # Choose the bottom 5 files
-bottom_files = files[-quantas:]
+#bottom_files = files[-quantas:]
+bottom_files = files[:quantas]
 
 
 def build_graph(data,file_name):
     plt.figure()
-    ax = sns.heatmap(data)
+    ax = sns.heatmap((data))
     ax.set_xlabel('Position')
     ax.set_ylabel('Steps')
 
@@ -42,4 +43,3 @@ for file_name in bottom_files:
 
     build_graph(data,file_name)
 # Reshape the data to the correct shape
-
