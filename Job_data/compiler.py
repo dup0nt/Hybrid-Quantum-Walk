@@ -32,30 +32,31 @@ def time_to_seconds(time_str):
     minutes = 0
     seconds = 0
 
-    time_cache = time_str
     if '-' in time_str:
         days, time_str = time_str.split('-')
         days = int(days)
 
-
-    time_str = time_str.split('.')[0][:-3] 
+    #time_str = time_str.split('.')[0][:-3] 
     time_parts = time_str.split(':')
-
+    
     if len(time_parts) == 1:
         seconds = int(time_parts[0])
 
-    #elif len(time_parts)== 2:
-    #    minutes = int(time_parts[0])
-    #    seconds = int(time_parts[1])
+
+    elif len(time_parts)== 2:
+
+        seconds = int((time_parts[0]))
 
     else:
-        print(time_parts)
-        #hours = int(time_parts[0])
-        #minutes = int(time_parts[1])
-        #seconds = int(time_parts[2])
+        hours = int(time_parts[0])
+        minutes = int(time_parts[1])
+        seconds = int(float(time_parts[2]))
+
+    
+    print(time_parts, 'to', [hours, minutes, seconds])
 
     total_seconds = (days * 86400) + (hours * 3600) + (minutes * 60) + seconds
-    print(time_cache, 'to', total_seconds)
+    
     return int(total_seconds)
 
 df['TotalCPU_seconds'] = df['TotalCPU'].apply(time_to_seconds)
@@ -65,7 +66,7 @@ def variable_in(variable, possible_values):
         raise ValueError("Cannot meet conditions for "+ str(variable))
 
 
-def ploter(xaxis, yaxis,hue, dataframe=df, ifqubits=[7], ifsteps=[2**7,2**8]):
+def ploter(xaxis, yaxis,hue, dataframe=df, ifqubits=[7,8], ifsteps=[2**7]):
 
     variable_in(xaxis, ['qubits', 'steps', 'AllocCPUS'])
     variable_in(yaxis, ['steps', 'TotalCPU', 'MaxRSS','TotalCPU_seconds'])
@@ -80,22 +81,38 @@ def ploter(xaxis, yaxis,hue, dataframe=df, ifqubits=[7], ifsteps=[2**7,2**8]):
         step_value = (ifsteps[0])
         dataframe = dataframe[dataframe['steps'] == (step_value)]
 
-    else:
+    elif(hue=='steps'):
         qubit_value = (ifqubits[0])
         dataframe = dataframe[dataframe['qubits'] == (qubit_value)]
+
+    else:
+        dataframe = dataframe[dataframe['steps'] == (ifsteps[0])]
+        dataframe = dataframe[dataframe['qubits'] == (ifqubits[0])]
     
     dataframe = dataframe[dataframe['qubits'].isin(ifqubits)]
     dataframe = dataframe[dataframe['steps'].isin(ifsteps)]
-    #dataframe['TotalCPU_seconds'] = dataframe['TotalCPU_seconds'].apply()
 
     sns.set_style("whitegrid", {"grid.color": "0.9", "grid.linewidth": 0.5, "grid.alpha": 0.5})
     ax = sns.barplot(x=xaxis, y=yaxis, hue=hue, width=0.3, data=dataframe, errorbar=None)
-
+    
     ax.minorticks_on()
     ax.grid(which='both', axis='y', linestyle=':', linewidth='0.5', color='gray', alpha=0.2)
+
+    # Set the x-axis label
+    #ax.set_xlabel(xaxis, fontsize=12)
+
+    # Set the y-axis label
+    #ax.set_ylabel(yaxis, fontsize=12)
+
+    # Set the legend title
+    #ax.legend(title="This is a legend to test", fontsize=10)
+
+    # Set the caption
+    ax.text(0.5, -0.15, "Data Source: Tips dataset", ha='center', fontsize=10, transform=ax.transAxes)
+    
     print(dataframe)
     plt.show()
 
-ploter('AllocCPUS', 'TotalCPU','simulator')
+ploter('AllocCPUS', 'TotalCPU', 'simulator')
 
     
