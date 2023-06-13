@@ -26,4 +26,4 @@ source activate cquant_env
 echo "number of tasks = $SLURM_NTASKS"
 
 # Run the Python command with the specified variables in parallel with srun
-srun -c $SLURM_CPUS_PER_TASK python /veracruz/projects/c/cquant/Dirac-Quantum-Walk/QuantumWalk/main.py 16 20 1 2 1 2 10000 aer_simulator_statevector $SLURM_JOB_ID
+srun -c $SLURM_CPUS_PER_TASK python /veracruz/projects/c/cquant/Dirac-Quantum-Walk/QuantumWalk/main.py 16 5 1 2 1 2 10000 aer_simulator_statevector $SLURM_JOB_ID
