@@ -9,8 +9,8 @@ def execute_circuits(circuits_list,shots,simulator):
         circuits_list = transpile(circuits_list, sim_statevector)
         job_statevector = sim_statevector.run(circuits_list, shots=shots)
         answer = job_statevector.result().get_counts()
-        
-    else:  
+    
+    else:
         job = execute(circuits_list, backend=backend, shots=shots)
         answer = job.result().get_counts()
     

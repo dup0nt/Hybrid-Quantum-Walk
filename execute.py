@@ -5,6 +5,7 @@ threads = [10,20,40,80]
 qubits = [5,6,7,8]
 steps = [2**7,2**8,2**9]
 partitions = ['cpu2', 'hmem1']
+hardware = ['cpu', 'gpu']
 
 
 partition = partitions[0]
