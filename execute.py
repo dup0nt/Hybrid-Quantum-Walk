@@ -1,14 +1,14 @@
 import subprocess
 import time
 
-threads = [10,20,40,80]
-qubits = [5,6,7,8]
-steps = [2**7,2**8,2**9]
+threads = [80]
+qubits = [7]
+steps = [500]
 partitions = ['cpu2', 'hmem1']
 hardware = ['cpu', 'gpu']
 
 
-partition = partitions[0]
+partition = partitions[1]
 
 #tipo de coin:
 # 0 -> Hadamard
@@ -66,7 +66,7 @@ for step in steps:
 
 # set the number of tasks (processes) per node.
 #SBATCH --cpus-per-task={}
-
+#SBATCH --mem=370G
 # set max wallclock time (in this case 200 minutes)
 #SBATCH --time=2800:00
 
@@ -91,12 +91,12 @@ echo
 
 
 # Use variables in a command
-command="python /veracruz/projects/c/cquant/Dirac-Quantum-Walk/QuantumWalk/main.py {} {} {} {} {} {} {} {} ${{SLURM_JOB_ID}}" 
+command="python /veracruz/projects/c/cquant/Dirac-Quantum-Walk/QuantumWalk/main.py {} {} {} {} {} {} {} {} ${{SLURM_JOB_ID}} {}" 
 
 # Run the command
 eval "${{command}}"
 
-""".format(partition,job_name,thread,qubit,step,coin_type,theta,boundary,dist_boundary,shots,simulator)
+""".format(partition,job_name,thread,qubit,step,coin_type,theta,boundary,dist_boundary,shots,simulator,thread)
 
 
 
