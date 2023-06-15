@@ -36,24 +36,19 @@ def time_to_seconds(time_str):
         days, time_str = time_str.split('-')
         days = int(days)
 
-    #time_str = time_str.split('.')[0][:-3] 
     time_parts = time_str.split(':')
     
     if len(time_parts) == 1:
-        seconds = int(time_parts[0])
-
+        seconds = (float(time_parts[0]))
 
     elif len(time_parts)== 2:
-
-        seconds = int((time_parts[0]))
+        minutes = int((time_parts[0]))
+        seconds = round(float(time_parts[1]))
 
     else:
         hours = int(time_parts[0])
         minutes = int(time_parts[1])
-        seconds = int(float(time_parts[2]))
-
-    
-    print(time_parts, 'to', [hours, minutes, seconds])
+        seconds = round(float(time_parts[2]))
 
     total_seconds = (days * 86400) + (hours * 3600) + (minutes * 60) + seconds
     
@@ -65,6 +60,9 @@ def variable_in(variable, possible_values):
     if (variable not in (possible_values)):
         raise ValueError("Cannot meet conditions for "+ str(variable))
 
+print(df.to_string())
+
+#PLOTTER
 
 def ploter(xaxis, yaxis,hue, dataframe=df, ifqubits=[7,8], ifsteps=[2**7]):
 
@@ -110,9 +108,7 @@ def ploter(xaxis, yaxis,hue, dataframe=df, ifqubits=[7,8], ifsteps=[2**7]):
     # Set the caption
     ax.text(0.5, -0.15, "Data Source: Tips dataset", ha='center', fontsize=10, transform=ax.transAxes)
     
-    print(dataframe)
+    #print(dataframe)
     plt.show()
 
 ploter('AllocCPUS', 'TotalCPU', 'simulator')
-
-    
