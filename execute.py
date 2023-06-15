@@ -3,8 +3,8 @@ import time
 
 threads = [80]
 qubits = [7]
-steps = [500]
-partitions = ['cpu2', 'hmem1']
+steps = [200]
+partitions = ['cpu2', 'hmem2']
 
 
 partition = partitions[1]
@@ -65,7 +65,7 @@ for step in steps:
 
 # set the number of tasks (processes) per node.
 #SBATCH --cpus-per-task={}
-#SBATCH --mem=370G
+#SBATCH --mem=2900G
 # set max wallclock time (in this case 200 minutes)
 #SBATCH --time=2800:00
 
