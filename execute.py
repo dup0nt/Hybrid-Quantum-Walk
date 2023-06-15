@@ -1,11 +1,10 @@
 import subprocess
 import time
 
-threads = [80]
+threads = [2,4,10]
 qubits = [7]
-steps = [500]
-partitions = ['cpu2', 'hmem1']
-hardware = ['cpu', 'gpu']
+steps = [200]
+partitions = ['cpu2', 'hmem1','hmem2','gpu']
 
 
 partition = partitions[1]
@@ -35,6 +34,16 @@ shots=10000
 # 'aer_simulator_statevector'
 simulator = 'aer_simulator_statevector'
 
+partitions_mem = {
+    'int': '96GB',
+    'barca': '96GB',
+    'vis': '1TB',
+    'cpu1': '96GB',
+    'cpu2': '96GB',
+    'hmem1': '384GB',
+    'hmem2': '3TB',
+    'gpu': '96GB'
+}
 
 #Begin job:
 def digit_string(variable, codification):
@@ -53,6 +62,13 @@ for step in steps:
 
             else:
                 job_name = digit_string(qubit,"Q") + digit_string(step,"S") + simulator[0]
+
+            if partition=='gpu':
+                hardware = 'GPU'
+                job_name = job_name + "G"
+            else:
+                hardware = 'cpu'
+            
             bash_execute = """#!/bin/bash
 # set the partition where the job will run (default = normal)
 #SBATCH --partition={}
@@ -66,8 +82,8 @@ for step in steps:
 
 # set the number of tasks (processes) per node.
 #SBATCH --cpus-per-task={}
-#SBATCH --mem=370G
-# set max wallclock time (in this case 200 minutes)
+#SBATCH --mem={}
+# set max wallclock time (in this case 2800 minutes)
 #SBATCH --time=2800:00
 
 # err and out job files
@@ -78,33 +94,29 @@ for step in steps:
 # Get the Slurm Job ID
 JOB_ID=$SLURM_JOB_ID
 
-
+# Use OpenMP and set environment variables
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 export SLURM_JOB_ID=$SLURM_JOB_ID
+export OMPI_MCA_btl="^openib"
+export OMPI_MCA_mtl="ofi"
 
 module load Anaconda
 source activate cquant_env
 
-echo
-echo "number of tasks = " $SLURM_NTASKS
-echo
+# Print the number of tasks per node
+echo "number of tasks = $SLURM_NTASKS"
 
-
-# Use variables in a command
 command="python /veracruz/projects/c/cquant/Dirac-Quantum-Walk/QuantumWalk/main.py {} {} {} {} {} {} {} {} ${{SLURM_JOB_ID}} {}" 
 
 # Run the command
-eval "${{command}}"
+srun -c $SLURM_CPUS_PER_TASK "${{command}}"
 
-""".format(partition,job_name,thread,qubit,step,coin_type,theta,boundary,dist_boundary,shots,simulator,thread)
-
+""".format(partition,job_name,thread,partitions_mem[partition],qubit,step,coin_type,theta,boundary,dist_boundary,shots,simulator,thread)
 
 
             script_filename = "/veracruz/projects/c/cquant/Dirac-Quantum-Walk/submit__cache.sh"
             with open(script_filename, "w") as file:
                 file.write(bash_execute)
-
-
 
             # Execute the echo command
             result = subprocess.run(["sbatch", script_filename], capture_output=True, text=True)
@@ -116,5 +128,3 @@ eval "${{command}}"
 
             
             time.sleep(0.1)
-
-
