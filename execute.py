@@ -1,7 +1,7 @@
 import subprocess
 import time
 
-threads = [2,4,10]
+threads = [2,4,8]
 qubits = [7]
 steps = [50]
 partitions = ['cpu2', 'hmem1','hmem2','gpu']
