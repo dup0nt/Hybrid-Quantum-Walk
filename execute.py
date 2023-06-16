@@ -3,7 +3,7 @@ import time
 
 threads = [2,4,10]
 qubits = [7]
-steps = [200]
+steps = [50]
 partitions = ['cpu2', 'hmem1','hmem2','gpu']
 
 
@@ -57,15 +57,16 @@ def digit_string(variable, codification):
 for step in steps:
     for qubit in qubits:
         for thread in threads:
+            job_name = digit_string(qubit,"Q") + digit_string(step,"S") + digit_string(thread,"T")
             if simulator == 'aer_simulator_statevector':
-                job_name = digit_string(qubit,"Q") + digit_string(step,"S") + simulator[4]
+                job_name += simulator[4]
 
             else:
-                job_name = digit_string(qubit,"Q") + digit_string(step,"S") + simulator[0]
+                job_name += simulator[0]
 
             if partition=='gpu':
                 hardware = 'GPU'
-                job_name = job_name + "G"
+                job_name += "G"
             else:
                 hardware = 'cpu'
             
@@ -83,6 +84,7 @@ for step in steps:
 # set the number of tasks (processes) per node.
 #SBATCH --cpus-per-task={}
 #SBATCH --mem={}
+
 # set max wallclock time (in this case 2800 minutes)
 #SBATCH --time=2800:00
 
