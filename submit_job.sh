@@ -1,22 +1,22 @@
 #!/bin/bash
 
 # set the partition where the job will run (default = normal)
-#SBATCH --partition=cpu2
+#SBATCH --partition=hmem1
 #SBATCH -A cquant
 
 # set the number of nodes and processes per node
 #SBATCH --nodes=1
 
 # set the number of tasks (processes) per node.
-#SBATCH --cpus-per-task=80
+#SBATCH --cpus-per-task=2
 
 # set max wallclock time (in this case 200 minutes)
 #SBATCH --time=2440:00
 
 # Define variables
 # number of qubits highly influences the performance of the simulator
-num_qubits=10
-num_steps=$((2**12))
+num_qubits=7
+num_steps=$((200))
 
 #tipo de coin:
 # 0 -> Hadamard
