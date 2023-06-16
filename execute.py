@@ -35,14 +35,14 @@ shots=10000
 simulator = 'aer_simulator_statevector'
 
 partitions_mem = {
-    'int': '96GB',
-    'barca': '96GB',
-    'vis': '1TB',
-    'cpu1': '96GB',
-    'cpu2': '96GB',
-    'hmem1': '384GB',
-    'hmem2': '3TB',
-    'gpu': '96GB'
+    'int': '96G',
+    'barca': '96G',
+    'vis': '1T',
+    'cpu1': '90G',
+    'cpu2': '90G',
+    'hmem1': '375G',
+    'hmem2': '3T',
+    'gpu': '96G'
 }
 
 #Begin job:
@@ -83,6 +83,7 @@ for step in steps:
 
 # set the number of tasks (processes) per node.
 #SBATCH --cpus-per-task={}
+
 #SBATCH --mem={}
 
 # set max wallclock time (in this case 2800 minutes)
@@ -120,6 +121,8 @@ srun -c $SLURM_CPUS_PER_TASK "${{command}}"
             with open(script_filename, "w") as file:
                 file.write(bash_execute)
 
+
+            """
             # Execute the echo command
             result = subprocess.run(["sbatch", script_filename], capture_output=True, text=True)
 
@@ -130,3 +133,4 @@ srun -c $SLURM_CPUS_PER_TASK "${{command}}"
 
             
             time.sleep(0.1)
+            """

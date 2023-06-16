@@ -3,8 +3,8 @@
 #SBATCH --partition=hmem1
 #SBATCH -A cquant
 #SBATCH --nodes=1
-#SBATCH --job-name=_Q07S500s
-#SBATCH --cpus-per-task=80
+#SBATCH --job-name=_Q07S100s
+#SBATCH --cpus-per-task=60
 #SBATCH --mem=370G
 #SBATCH --time=2800:00
 #SBATCH --error=HQW.err
@@ -27,4 +27,4 @@ source activate cquant_env
 echo "number of tasks = $SLURM_NTASKS"
 
 # Run the Python command with the specified variables in parallel with srun
-srun -c $SLURM_CPUS_PER_TASK python /veracruz/projects/c/cquant/Dirac-Quantum-Walk/QuantumWalk/main.py 8 500 1 2 1 2 10000 aer_simulator_statevector $SLURM_JOB_ID 80
+srun -c $SLURM_CPUS_PER_TASK python /veracruz/projects/c/cquant/Dirac-Quantum-Walk/QuantumWalk/main.py 7 100 1 2 1 2 10000 aer_simulator_statevector $SLURM_JOB_ID 10
