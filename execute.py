@@ -1,13 +1,20 @@
 import subprocess
 import time
+import math
 
-threads = [2,4,8]
-qubits = [7]
-steps = [50]
-partitions = ['cpu2', 'hmem1','hmem2','gpu']
+threads = [4,10,20,30,40,80]
+qubits = [6]
+steps = [2**7]
+partitions = ['cpu1','cpu2', 'hmem1','hmem2','gpu']
+precisions = ['double', 'single']  
+simulators = ['aer_simulator_statevector','aer_simulator']
 
 
 partition = partitions[1]
+precision = precisions[1]
+simulator = simulators[0]
+
+Teste = "T"
 
 #tipo de coin:
 # 0 -> Hadamard
@@ -28,22 +35,37 @@ dist_boundary=2
 #Qasm inputs:
 shots=10000
 
-#Backend
-# 'qasm_simulator'
-# 'aer_simulator'
-# 'aer_simulator_statevector'
-simulator = 'aer_simulator_statevector'
-
-partitions_mem = {
-    'int': '96G',
-    'barca': '96G',
-    'vis': '1T',
-    'cpu1': '90G',
-    'cpu2': '90G',
-    'hmem1': '375G',
-    'hmem2': '3T',
-    'gpu': '96G'
+partitions_details = {
+    'int': {
+        'memory': '1984M',
+        '#CPUS': 48
+    },
+    'vis': {
+        'memory': '15976M',
+        '#CPUS': 64
+    },
+    'cpu1': {
+        'memory': '1984M',
+        '#CPUS': 48
+    },
+    'cpu2': {
+        'memory': '1190M',
+        '#CPUS': 80
+    },
+    'hmem1': {
+        'memory': '4800M',
+        '#CPUS': 80
+    },
+    'hmem2': {
+        'memory': '21300M',
+        '#CPUS': 144
+    },
+    'gpu': {
+        'memory': '1190M',
+        '#CPUS': 80
+    }
 }
+
 
 #Begin job:
 def digit_string(variable, codification):
@@ -57,7 +79,7 @@ def digit_string(variable, codification):
 for step in steps:
     for qubit in qubits:
         for thread in threads:
-            job_name = digit_string(qubit,"Q") + digit_string(step,"S") + digit_string(thread,"T")
+            job_name = Teste +  digit_string(qubit,"Q") + digit_string(step,"S")
             if simulator == 'aer_simulator_statevector':
                 job_name += simulator[4]
 
@@ -68,7 +90,7 @@ for step in steps:
                 hardware = 'GPU'
                 job_name += "G"
             else:
-                hardware = 'cpu'
+                hardware = 'CPU'
             
             bash_execute = """#!/bin/bash
 # set the partition where the job will run (default = normal)
@@ -78,21 +100,22 @@ for step in steps:
 # set the number of nodes and processes per node
 #SBATCH --nodes=1
 
+#SBATCH --ntasks=1
+
 # set name of job
 #SBATCH --job-name={}
+
+# set the mem for the whole job
+#SBATCH --mem={}
 
 # set the number of tasks (processes) per node.
 #SBATCH --cpus-per-task={}
 
-#SBATCH --mem={}
 
 # set max wallclock time (in this case 2800 minutes)
 #SBATCH --time=2800:00
 
 # err and out job files
-
-#SBATCH --error=HQW.err
-#SBATCH --output=HQW.out
 
 # Get the Slurm Job ID
 JOB_ID=$SLURM_JOB_ID
@@ -108,13 +131,12 @@ source activate cquant_env
 
 # Print the number of tasks per node
 echo "number of tasks = $SLURM_NTASKS"
-
-command="python /veracruz/projects/c/cquant/Dirac-Quantum-Walk/QuantumWalk/main.py {} {} {} {} {} {} {} {} ${{SLURM_JOB_ID}} {}" 
+echo "number of cpus_per_task = $SLURM_CPUS_PER_TASK"
 
 # Run the command
-srun -c $SLURM_CPUS_PER_TASK "${{command}}"
+srun -c $SLURM_CPUS_PER_TASK python /veracruz/projects/c/cquant/Dirac-Quantum-Walk/QuantumWalk/main.py {} {} {} {} {} {} {} {} ${{SLURM_JOB_ID}} {} {} {}
 
-""".format(partition,job_name,thread,partitions_mem[partition],qubit,step,coin_type,theta,boundary,dist_boundary,shots,simulator,thread)
+""".format(partition,job_name, partitions_details[partition]['memory'],thread,qubit,step,coin_type,theta,boundary,dist_boundary,shots,simulator,thread,hardware,precision)
 
 
             script_filename = "/veracruz/projects/c/cquant/Dirac-Quantum-Walk/submit__cache.sh"
@@ -122,7 +144,6 @@ srun -c $SLURM_CPUS_PER_TASK "${{command}}"
                 file.write(bash_execute)
 
 
-            """
             # Execute the echo command
             result = subprocess.run(["sbatch", script_filename], capture_output=True, text=True)
 
@@ -133,4 +154,4 @@ srun -c $SLURM_CPUS_PER_TASK "${{command}}"
 
             
             time.sleep(0.1)
-            """
+            

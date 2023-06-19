@@ -27,6 +27,10 @@ job_id = int(sys.argv[9])
 
 num_threads =int(sys.argv[10])
 
+hardware = str(sys.argv[11])
+
+precision = str(sys.argv[12])
+
 all_results = []
 
 pathe = '/veracruz/projects/c/cquant/Dirac-Quantum-Walk/Output/Data/'
@@ -35,7 +39,13 @@ file = file_name(num_qubits,num_steps,coin_type,theta,boundary,dist_boundary,sho
 for i in range(num_steps):
     all_results.append(quantum_walk(i,num_qubits,boundary,dist_boundary,coin_type,theta))
 
-exec_answers = execute_circuits(all_results,shots,simulator,num_threads)
+exec_answers = execute_circuits(all_results,
+                                shots,
+                                simulator,
+                                num_threads,
+                                hardware,
+                                precision)
+
 proc_answer = convert_dicts_to_array(exec_answers,shots)
 save_results_to_file(proc_answer, pathe, file + ".txt")
     
