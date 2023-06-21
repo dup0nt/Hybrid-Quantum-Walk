@@ -1,6 +1,6 @@
 #imports
 from quantum_walk import quantum_walk
-from execute_circuits import execute_circuits
+from execute_circuits import execute_circuits, batch_execute
 from data_w import *
 from common import sys
 
@@ -33,6 +33,8 @@ precision = str(sys.argv[12])
 
 parallel_exp = int(sys.argv[13])
 
+batching = int(sys.argv[14])
+
 all_results = []
 
 pathe = '/veracruz/projects/c/cquant/Dirac-Quantum-Walk/Output/Data/'
@@ -41,11 +43,20 @@ file = file_name(num_qubits,num_steps,coin_type,theta,boundary,dist_boundary,sho
 for i in range(num_steps):
     all_results.append(quantum_walk(i,num_qubits,boundary,dist_boundary,coin_type,theta))
 
-exec_answers = execute_circuits(all_results,
+if(batching==0):
+
+    exec_answers = execute_circuits(all_results,
+                                    shots,
+                                    simulator,
+                                    num_threads,
+                                    parallel_exp,
+                                    hardware,
+                                    precision)
+else:
+    exec_answers = batch_execute(all_results,
                                 shots,
                                 simulator,
                                 num_threads,
-                                parallel_exp,
                                 hardware,
                                 precision)
 
