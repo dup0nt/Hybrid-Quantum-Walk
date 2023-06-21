@@ -13,9 +13,9 @@ simulators = ['aer_simulator_statevector','aer_simulator']
 partition = partitions[0]
 precision = precisions[0]
 simulator = simulators[0]
-parallel_exp = 1
+parallel_exp = 48/4
 
-Teste = "T"
+Teste = ""
 
 #tipo de coin:
 # 0 -> Hadamard

@@ -1,7 +1,8 @@
-from common import np,  execute, QuantumCircuit, QuantumRegister, ClassicalRegister, QFT, plot_histogram, transpile
+from common import np,  execute, QuantumCircuit, QuantumRegister, ClassicalRegister, QFT, plot_histogram, transpile, plt
 from coin import build_coin,coin
 from shift import shift
 from simulator import choose_backend
+from IPython.display import display
 
 
 
@@ -47,5 +48,8 @@ def quantum_walk(num_steps,num_qubits,boundry,dist_boundry,coin_type,theta):
     
     for n in range(num_qubits):
             qw.measure(n,n)
+
+    circuit_plot = qw.draw(output='mpl')
+
 
     return qw
