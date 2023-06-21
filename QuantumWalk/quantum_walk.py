@@ -49,7 +49,4 @@ def quantum_walk(num_steps,num_qubits,boundry,dist_boundry,coin_type,theta):
     for n in range(num_qubits):
             qw.measure(n,n)
 
-    circuit_plot = qw.draw(output='mpl')
-
-
     return qw
