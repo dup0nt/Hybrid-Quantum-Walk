@@ -28,14 +28,13 @@ def batching(circuits_list):
 
 def batch_execute(circuits_list,shots,simulator,num_threads,hardware,precision):
     batch_list = batching(circuits_list)
-    print(f"My batch list: {batch_list}")
+    #print(f"My batch list: {batch_list}")
     counter = 0
     for batch in batch_list:
-        print(f"My batch: {batch}")
-        print(f"My number of parallel operations: {len(batch)}")
+        #print(f"My batch: {batch}")
+        #print(f"My number of parallel operations: {len(batch)}")
         counter+=len(batch)
-        #answer = execute_circuits(batch,shots,simulator,num_threads,len(batch),hardware,precision)
-        answer = 0
+        answer = execute_circuits(batch,shots,simulator,num_threads,len(batch),hardware,precision)
     return answer
 
 

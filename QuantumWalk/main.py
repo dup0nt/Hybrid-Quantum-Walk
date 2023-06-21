@@ -5,7 +5,7 @@ from data_w import *
 from common import sys
 
 print("output", sys.argv)
-
+#print(f"Qubits: {sys.argv[1]}, Steps: {sys.argv[2]}, coin_type: {sys.argv[3]}, theta: {sys.argv[1]}, boundary: {sys.argv[1]}, simulator: {sys.argv[1]}, shots: {sys.argv[1]}, theta: {sys.argv[1]}")
 # Retrieve number of qubits and steps from command line arguments
 num_qubits = int(sys.argv[1])
 num_steps = int(sys.argv[2])

@@ -2,7 +2,7 @@ import subprocess
 import time
 import math
 
-threads = [48]
+threads = [80]
 qubits = [6]
 steps = [2**7]
 partitions = ['cpu1','cpu2', 'hmem1','hmem2','gpu']
@@ -13,7 +13,7 @@ simulators = ['aer_simulator_statevector','aer_simulator']
 partition = partitions[0]
 precision = precisions[0]
 simulator = simulators[0]
-parallel_exp = 48/4
+parallel_exp = 0
 batching = 1
 
 Teste = ""
@@ -145,7 +145,7 @@ srun -c $SLURM_CPUS_PER_TASK python3 /veracruz/projects/c/cquant/Dirac-Quantum-W
             with open(script_filename, "w") as file:
                 file.write(bash_execute)
 
-
+"""
             # Execute the echo command
             result = subprocess.run(["sbatch", script_filename], capture_output=True, text=True)
 
@@ -156,4 +156,4 @@ srun -c $SLURM_CPUS_PER_TASK python3 /veracruz/projects/c/cquant/Dirac-Quantum-W
 
             
             time.sleep(0.1)
-            
+"""            
