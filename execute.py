@@ -10,7 +10,7 @@ precisions = ['double', 'single']
 simulators = ['aer_simulator_statevector','aer_simulator']
 
 
-partition = partitions[0]
+partition = partitions[2]
 precision = precisions[0]
 simulator = simulators[0]
 parallel_exp = 0
@@ -92,8 +92,15 @@ for step in steps:
                 hardware = 'GPU'
                 job_name += "G"
             else:
+                job_name += "C"
                 hardware = 'CPU'
+
+            if batching== 1:
+                job_name+='B' #Batched
             
+            else:
+                job_name+='U' #Unbatched
+
             bash_execute = """#!/bin/bash
 # set the partition where the job will run (default = normal)
 #SBATCH --partition={}
@@ -145,7 +152,7 @@ srun -c $SLURM_CPUS_PER_TASK python3 /veracruz/projects/c/cquant/Dirac-Quantum-W
             with open(script_filename, "w") as file:
                 file.write(bash_execute)
 
-"""
+
             # Execute the echo command
             result = subprocess.run(["sbatch", script_filename], capture_output=True, text=True)
 
@@ -156,4 +163,4 @@ srun -c $SLURM_CPUS_PER_TASK python3 /veracruz/projects/c/cquant/Dirac-Quantum-W
 
             
             time.sleep(0.1)
-"""            
+           

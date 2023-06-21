@@ -1,6 +1,6 @@
 #!/bin/bash
 # set the partition where the job will run (default = normal)
-#SBATCH --partition=cpu1
+#SBATCH --partition=hmem1
 #SBATCH -A cquant
 
 # set the number of nodes and processes per node
@@ -9,13 +9,13 @@
 #SBATCH --ntasks=1
 
 # set name of job
-#SBATCH --job-name=Q06S128P12.0Ds
+#SBATCH --job-name=Q06S128P00Ds
 
 # set the mem for the whole job
-#SBATCH --mem-per-cpu=1984M
+#SBATCH --mem-per-cpu=4800M
 
 # set the number of tasks (processes) per node.
-#SBATCH --cpus-per-task=48
+#SBATCH --cpus-per-task=80
 
 
 # set max wallclock time (in this case 2800 minutes)
@@ -40,5 +40,5 @@ echo "number of tasks = $SLURM_NTASKS"
 echo "number of cpus_per_task = $SLURM_CPUS_PER_TASK"
 
 # Run the command
-srun -c $SLURM_CPUS_PER_TASK python3 /veracruz/projects/c/cquant/Dirac-Quantum-Walk/QuantumWalk/main.py 6 12 1 2 1 2 10000 aer_simulator_statevector ${SLURM_JOB_ID} 48 CPU double 12.0 1
+srun -c $SLURM_CPUS_PER_TASK python3 /veracruz/projects/c/cquant/Dirac-Quantum-Walk/QuantumWalk/main.py 6 128 1 2 1 2 10000 aer_simulator_statevector ${SLURM_JOB_ID} 80 CPU double 0 1
 
