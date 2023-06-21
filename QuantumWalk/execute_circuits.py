@@ -1,8 +1,8 @@
 from simulator import choose_backend
 from common import np, transpile,execute,QuantumCircuit, plot_histogram,plt
 
-def execute_circuits(circuits_list,shots,simulator,num_threads,hardware,precision):
-    backend = choose_backend(simulator,num_threads,hardware,precision)
+def execute_circuits(circuits_list,shots,simulator,num_threads,parallel_exp,hardware,precision):
+    backend = choose_backend(simulator,num_threads,parallel_exp,hardware,precision)
     
     if (simulator=='aer_simulator_statevector'):
         sim_statevector = backend

@@ -2,7 +2,7 @@ import subprocess
 import time
 import math
 
-threads = [10,20,30,40,48]
+threads = [48]
 qubits = [6]
 steps = [2**7]
 partitions = ['cpu1','cpu2', 'hmem1','hmem2','gpu']
@@ -11,10 +11,11 @@ simulators = ['aer_simulator_statevector','aer_simulator']
 
 
 partition = partitions[0]
-precision = precisions[1]
+precision = precisions[0]
 simulator = simulators[0]
+parallel_exp = 1
 
-Teste = ""
+Teste = "T"
 
 #tipo de coin:
 # 0 -> Hadamard
@@ -79,7 +80,7 @@ def digit_string(variable, codification):
 for step in steps:
     for qubit in qubits:
         for thread in threads:
-            job_name = Teste +  digit_string(qubit,"Q") + digit_string(step,"S") + str(precision[0])
+            job_name = Teste +  digit_string(qubit,"Q") + digit_string(step,"S") + digit_string(parallel_exp,"P") + str(precision[0]).upper()
             if simulator == 'aer_simulator_statevector':
                 job_name += simulator[4]
 
@@ -134,9 +135,9 @@ echo "number of tasks = $SLURM_NTASKS"
 echo "number of cpus_per_task = $SLURM_CPUS_PER_TASK"
 
 # Run the command
-srun -c $SLURM_CPUS_PER_TASK python3 /veracruz/projects/c/cquant/Dirac-Quantum-Walk/QuantumWalk/main.py {} {} {} {} {} {} {} {} ${{SLURM_JOB_ID}} {} {} {}
+srun -c $SLURM_CPUS_PER_TASK python3 /veracruz/projects/c/cquant/Dirac-Quantum-Walk/QuantumWalk/main.py {} {} {} {} {} {} {} {} ${{SLURM_JOB_ID}} {} {} {} {}
 
-""".format(partition,job_name, partitions_details[partition]['memory'],thread,qubit,step,coin_type,theta,boundary,dist_boundary,shots,simulator,thread,hardware,precision)
+""".format(partition,job_name, partitions_details[partition]['memory'],thread,qubit,step,coin_type,theta,boundary,dist_boundary,shots,simulator,thread,hardware,precision,parallel_exp)
 
 
             script_filename = "/veracruz/projects/c/cquant/Dirac-Quantum-Walk/submit__cache.sh"

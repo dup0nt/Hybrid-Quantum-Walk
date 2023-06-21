@@ -32,8 +32,6 @@ def file_name(num_qubits,num_steps,coin_type,theta,boundry,dist_boundry,shots,jo
     return str(job_id) + "  "  + str(formatted_now) + "__Q" + str(num_qubits) + "_"+ coin_name + "S" + str(num_steps) + "_" + boundry_value + str(shots) + "_" + str(simulator)
 
 
-import numpy as np
-
 def convert_dicts_to_array(answer, shots):
     # Determine the length of the largest binary key
     max_key_len = max(map(len, answer[0].keys()))

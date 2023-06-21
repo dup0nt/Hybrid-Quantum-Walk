@@ -31,6 +31,8 @@ hardware = str(sys.argv[11])
 
 precision = str(sys.argv[12])
 
+parallel_exp = int(sys.argv[13])
+
 all_results = []
 
 pathe = '/veracruz/projects/c/cquant/Dirac-Quantum-Walk/Output/Data/'
@@ -43,10 +45,9 @@ exec_answers = execute_circuits(all_results,
                                 shots,
                                 simulator,
                                 num_threads,
+                                parallel_exp,
                                 hardware,
                                 precision)
 
 proc_answer = convert_dicts_to_array(exec_answers,shots)
 save_results_to_file(proc_answer, pathe, file + ".txt")
-    
-
