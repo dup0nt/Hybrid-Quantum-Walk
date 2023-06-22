@@ -2,7 +2,7 @@ import subprocess
 import time
 import math
 
-threads = [80]
+threads = [48]
 qubits = [6]
 steps = [2**7]
 partitions = ['cpu1','cpu2', 'hmem1','hmem2','gpu']
@@ -10,11 +10,11 @@ precisions = ['double', 'single']
 simulators = ['aer_simulator_statevector','aer_simulator']
 
 
-partition = partitions[2]
+partition = partitions[0]
 precision = precisions[0]
 simulator = simulators[0]
-parallel_exp = 0
-batching = 1
+parallel_exp = 48/8
+batching = 0
 
 Teste = ""
 
