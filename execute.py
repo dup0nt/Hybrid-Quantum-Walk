@@ -13,7 +13,7 @@ simulators = ['aer_simulator_statevector','aer_simulator']
 partition = partitions[0]
 precision = precisions[0]
 simulator = simulators[0]
-parallel_exp = 48/8
+parallel_exp = round(1)
 batching = 0
 
 Teste = ""
