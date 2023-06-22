@@ -20,27 +20,24 @@ dist_boundary = int(sys.argv[6])
 
 # Retrieve QASM inputs from command line arguments
 shots = int(sys.argv[7])
-
 simulator = str(sys.argv[8])
-
 job_id = int(sys.argv[9])
-
 num_threads =int(sys.argv[10])
-
 hardware = str(sys.argv[11])
-
 precision = str(sys.argv[12])
-
 parallel_exp = int(sys.argv[13])
-
 batching = int(sys.argv[14])
+multiple_circuit = str(sys.argv[15])
+
 
 all_results = []
 
 pathe = '/veracruz/projects/c/cquant/Dirac-Quantum-Walk/Output/Data/'
 file = file_name(num_qubits,num_steps,coin_type,theta,boundary,dist_boundary,shots,job_id,simulator)
 
-for i in range(num_steps):
+steps = steps_list(num_steps,multiple_circuit)
+
+for i in steps:
     all_results.append(quantum_walk(i,num_qubits,boundary,dist_boundary,coin_type,theta))
 
 if(batching==0):

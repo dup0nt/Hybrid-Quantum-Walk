@@ -3,6 +3,16 @@ from common import os, datetime, np
 now = datetime.now()
 formatted_now = now.strftime('%Y-%m-%d @ %H_%M_%S')
 
+def steps_list(num_steps,indicative):
+    list_steps = []
+    if indicative==0:
+        list_steps.append(num_steps)
+    else:
+        list_steps = range(num_steps)
+
+    return list_steps
+
+
 # Define a function to save all_results to a file
 def save_results_to_file(all_results, file_path, file_name):
     directory = os.path.dirname(file_path)
