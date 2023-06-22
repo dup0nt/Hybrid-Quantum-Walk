@@ -1,0 +1,29 @@
+number of tasks = 1
+number of cpus_per_task = 80
+output ['/veracruz/projects/c/cquant/Dirac-Quantum-Walk/QuantumWalk/main.py', '6', '128', '1', '2', '1', '2', '10000', 'aer_simulator_statevector', '394676', '80', 'CPU', 'double', '0', '1']
+OMP: Info #274: omp_set_nested routine deprecated, please use omp_set_max_active_levels instead.
+OMP: Info #274: omp_set_nested routine deprecated, please use omp_set_max_active_levels instead.
+OMP: Info #274: omp_set_nested routine deprecated, please use omp_set_max_active_levels instead.
+OMP: Info #274: omp_set_nested routine deprecated, please use omp_set_max_active_levels instead.
+OMP: Info #274: omp_set_nested routine deprecated, please use omp_set_max_active_levels instead.
+OMP: Info #274: omp_set_nested routine deprecated, please use omp_set_max_active_levels instead.
+OMP: Info #274: omp_set_nested routine deprecated, please use omp_set_max_active_levels instead.
+OMP: Info #274: omp_set_nested routine deprecated, please use omp_set_max_active_levels instead.
+OMP: Info #274: omp_set_nested routine deprecated, please use omp_set_max_active_levels instead.
+OMP: Info #274: omp_set_nested routine deprecated, please use omp_set_max_active_levels instead.
+OMP: Info #274: omp_set_nested routine deprecated, please use omp_set_max_active_levels instead.
+OMP: Info #274: omp_set_nested routine deprecated, please use omp_set_max_active_levels instead.
+OMP: Info #274: omp_set_nested routine deprecated, please use omp_set_max_active_levels instead.
+OMP: Info #274: omp_set_nested routine deprecated, please use omp_set_max_active_levels instead.
+OMP: Info #274: omp_set_nested routine deprecated, please use omp_set_max_active_levels instead.
+OMP: Info #274: omp_set_nested routine deprecated, please use omp_set_max_active_levels instead.
+OMP: Info #274: omp_set_nested routine deprecated, please use omp_set_max_active_levels instead.
+OMP: Info #274: omp_set_nested routine deprecated, please use omp_set_max_active_levels instead.
+OMP: Info #274: omp_set_nested routine deprecated, please use omp_set_max_active_levels instead.
+Traceback (most recent call last):
+  File "/veracruz/projects/c/cquant/Dirac-Quantum-Walk/QuantumWalk/main.py", line 63, in <module>
+    proc_answer = convert_dicts_to_array(exec_answers,shots)
+  File "/veracruz/projects/c/cquant/Dirac-Quantum-Walk/QuantumWalk/data_w.py", line 37, in convert_dicts_to_array
+    max_key_len = max(map(len, answer[0].keys()))
+KeyError: 0
+srun: error: nau005: task 0: Exited with exit code 1
