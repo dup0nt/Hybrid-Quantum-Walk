@@ -42,18 +42,25 @@ def file_name(num_qubits,num_steps,coin_type,theta,boundry,dist_boundry,shots,jo
     return str(job_id) + "  "  + str(formatted_now) + "__Q" + str(num_qubits) + "_"+ coin_name + "S" + str(num_steps) + "_" + boundry_value + str(shots) + "_" + str(simulator)
 
 
-def convert_dicts_to_array(answer, shots):
-    # Determine the length of the largest binary key
-    max_key_len = max(map(len, answer[0].keys()))
-
-    # Generate an array with the proper size
-    num_circuits = len(answer)
-    results = np.zeros((num_circuits, 2**max_key_len))
-
-    # Populate the array with the results
-    for i in range(num_circuits):
-        for key, value in answer[i].items():
+    
+def convert_dicts_to_array(answer, shots, multiple_circuit):
+    
+    if multiple_circuit == 0:
+        num_circuits = 1
+        max_key_len = max(map(len, answer.keys()))
+        results = np.zeros((num_circuits, 2**max_key_len))
+        for key, value in answer.items():
             decimal_key = int(key, 2)
-            results[i, decimal_key] = value / shots
+            results[0, decimal_key] = value / shots
+
+    else:        
+        max_key_len = max(map(len, answer[0].keys())) 
+        num_circuits = len(answer)
+        results = np.zeros((num_circuits, 2**max_key_len))
+
+        for i in range(num_circuits):
+            for key, value in answer[i].items():
+                decimal_key = int(key, 2)
+                results[i, decimal_key] = value / shots
 
     return results

@@ -27,7 +27,7 @@ hardware = str(sys.argv[11])
 precision = str(sys.argv[12])
 parallel_exp = int(sys.argv[13])
 batching = int(sys.argv[14])
-multiple_circuit = str(sys.argv[15])
+multiple_circuit = int(sys.argv[15])
 
 
 all_results = []
@@ -57,5 +57,5 @@ else:
                                 hardware,
                                 precision)
 
-proc_answer = convert_dicts_to_array(exec_answers,shots)
+proc_answer = convert_dicts_to_array(exec_answers,shots,multiple_circuit)
 save_results_to_file(proc_answer, pathe, file + ".txt")

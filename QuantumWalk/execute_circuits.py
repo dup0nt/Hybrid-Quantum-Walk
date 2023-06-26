@@ -54,7 +54,6 @@ def execute_circuits(circuits_list,shots,simulator,num_threads,parallel_exp,hard
         job = execute(circuits_list, backend=backend, shots=shots)
         answer = job.result().get_counts()
     
-    print(answer)
     return answer
 
 

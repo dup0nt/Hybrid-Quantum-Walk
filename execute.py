@@ -2,7 +2,7 @@ import subprocess
 import time
 import math
 
-threads = [48]
+threads = [80]
 qubits = [6]
 steps = [2**7]
 partitions = ['cpu1','cpu2', 'hmem1','hmem2','gpu']
@@ -10,12 +10,12 @@ precisions = ['double', 'single']
 simulators = ['aer_simulator_statevector','aer_simulator']
 
 
-partition = partitions[0]
+partition = partitions[1]
 precision = precisions[0]
 simulator = simulators[0]
-parallel_exp = round(1)
+parallel_exp = round(80/8)
 batching = 0
-multiple_circuits = 0 #0 if no, 1 if yes
+multiple_circuits = 1 #0 if no, 1 if yes
 
 Teste = ""
 
@@ -48,15 +48,15 @@ partitions_details = {
         '#CPUS': 64
     },
     'cpu1': {
-        'memory': '1984M',
+        'memory': '1970M',
         '#CPUS': 48
     },
     'cpu2': {
-        'memory': '1190M',
+        'memory': '1100M',
         '#CPUS': 80
     },
     'hmem1': {
-        'memory': '4800M',
+        'memory': '4700M',
         '#CPUS': 80
     },
     'hmem2': {
@@ -102,6 +102,12 @@ for step in steps:
             else:
                 job_name+='U' #Unbatched
 
+            if multiple_circuits==0:
+                job_name+='S'
+
+            else:
+                job_name+='M'
+
             bash_execute = """#!/bin/bash
 # set the partition where the job will run (default = normal)
 #SBATCH --partition={}
@@ -121,6 +127,7 @@ for step in steps:
 # set the number of tasks (processes) per node.
 #SBATCH --cpus-per-task={}
 
+#SBATCH --exclusive
 
 # set max wallclock time (in this case 2800 minutes)
 #SBATCH --time=2800:00
