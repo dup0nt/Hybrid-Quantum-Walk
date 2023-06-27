@@ -4,19 +4,19 @@ import math
 
 threads = [80]
 qubits = [6]
-steps = [2**7]
+steps = [5]
 partitions = ['cpu1','cpu2', 'hmem1','hmem2','gpu']
 precisions = ['double', 'single']  
 simulators = ['aer_simulator_statevector','aer_simulator']
 
 
-partition = partitions[1]
-precision = precisions[0]
-simulator = simulators[1]
+partition = partitions[2]
+precision = precisions[1]
+simulator = simulators[0]
 parallel_exp = round(1)
 batching = 0
-multiple_circuits = 1 #0 if no, 1 if yes
-job_size=1 #divisão em batches iguais ou subexeucuts
+multiple_circuits = 0 #0 if no, 1 if yes
+job_size=None #divisão em batches iguais ou subexeucuts
 
 Teste = ""
 
@@ -109,7 +109,12 @@ for step in steps:
             else:
                 job_name+='M'
 
-            job_name+=digit_string(job_size,'JS')   
+            if (job_size==None and multiple_circuits==0):
+                job_name+=digit_string(1,'JS')  
+            elif (job_size==None and multiple_circuits==1):
+                job_name+=digit_string(steps,'JS') 
+            else:
+                job_name+=digit_string(job_size,'JS')   
 
             bash_execute = """#!/bin/bash
 # set the partition where the job will run (default = normal)
