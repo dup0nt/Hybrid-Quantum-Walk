@@ -13,16 +13,29 @@ df = pd.read_csv(file_name)
 #Filtra uma série de jobs que não nos interessam
 df = df[(~df['State'].str.contains('CANCELLED|FAILED|OUT_OF_MEMORY|TIMEOUT|RUNNING')) & (~df['JobID'].str.contains('.extern'))]
 
+
+# Pass the value from python_lines to the rows above it
+python_rows = df[df['JobName'] == 'python3']
+
+# Shift the value of 'MaxRSS' in python_rows to two lines above
+df.loc[python_rows.index - 3, 'MaxRSS'] = python_rows['MaxRSS'].values
+
+
+"""
 df['ShiftedMaxRSS'] = df['MaxRSS'].shift(-1)
 df.loc[~df['JobName'].str.contains('.batch'), 'MaxRSS'] = df.loc[~df['JobName'].str.contains('.batch'), 'ShiftedMaxRSS']
 
 df.loc[df['JobName'].str.contains('.batch'), 'MaxRSS'] = None
 df = df.drop(columns=['ShiftedMaxRSS'])
+"""
+#Drop .batch
 df = df[(~df['JobID'].str.contains('.batch'))]
 
 #Drop python3
 df = df.loc[~df['JobName'].str.contains('python3')]
 df = df.loc[df['JobName'].str.startswith('Q')]
+
+print(df.to_string())
 
 df['qubits'] = df['JobName'].str.extract(r'Q(\d+)S')
 df['steps'] = df['JobName'].str.extract(r'S(\d+)[a-zA-Z]')
@@ -43,7 +56,7 @@ df["hardware"].fillna("C", inplace=True)
 df["simulator"].fillna("s", inplace=True)
 
 
-print(df)
+
 
 def time_to_seconds(time_str):
     days = 0
@@ -75,7 +88,7 @@ def time_to_seconds(time_str):
 
 df['TotalCPU_seconds'] = df['TotalCPU'].apply(time_to_seconds)
 
-print(df)
+
 
 def variable_in(variable, possible_values):
     if (variable not in (possible_values)):
@@ -144,7 +157,7 @@ def single_plotter(xaxis, yaxis,dataframe=df):
     sns.set_palette('pastel')
 
     sns.set_style("whitegrid", {"grid.color": "0.9", "grid.linewidth": 0.5, "grid.alpha": 0.5})
-    ax = sns.barplot(x=xaxis, y=yaxis, hue='simulator', width=0.3, data=dataframe, errorbar=None)
+    ax = sns.barplot(x=xaxis, y=yaxis, width=0.3, data=dataframe, errorbar=None)
     #ax.set_ylim([4.25, 4.5])
 
     ax.set_xticklabels(ax.get_xticklabels(), rotation=-60)
