@@ -12,8 +12,8 @@ simulators = ['aer_simulator_statevector','aer_simulator']
 
 partition = partitions[1]
 precision = precisions[0]
-simulator = simulators[0]
-parallel_exp = round(80/8)
+simulator = simulators[1]
+parallel_exp = round(2)
 batching = 0
 multiple_circuits = 1 #0 if no, 1 if yes
 
