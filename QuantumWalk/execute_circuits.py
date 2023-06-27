@@ -41,8 +41,8 @@ def batch_execute(circuits_list,shots,simulator,num_threads,hardware,precision):
     return answers_list
 
 
-def execute_circuits(circuits_list,shots,simulator,num_threads,parallel_exp,hardware,precision):
-    backend = choose_backend(simulator,num_threads,parallel_exp,hardware,precision)
+def execute_circuits(circuits_list,shots,simulator,num_threads,parallel_exp,hardware,precision,job_size):
+    backend = choose_backend(simulator,num_threads,parallel_exp,hardware,precision,job_size)
     
     if (simulator=='aer_simulator_statevector'):
         sim_statevector = backend
