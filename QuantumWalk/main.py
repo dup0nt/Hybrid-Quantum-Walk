@@ -28,8 +28,18 @@ precision = str(sys.argv[12])
 parallel_exp = int(sys.argv[13])
 batching = int(sys.argv[14])
 multiple_circuit = int(sys.argv[15])
-job_size = int(sys.argv[16])
+job_size = (sys.argv[16])
 
+# Check if the input value is an integer or None
+if job_size is not None and job_size.isdigit():
+    # Convert the input value to an integer
+    job_size = int(job_size)
+else:
+    # Handle the case when the input value is None or not a valid integer
+    if job_size is None:
+        job_size = None  # Keep the value as None
+    else:
+        job_size = 0  # Set a default value or handle the situation accordingly
 
 all_results = []
 
