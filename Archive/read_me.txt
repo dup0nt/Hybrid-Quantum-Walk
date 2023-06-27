@@ -18,3 +18,8 @@
 - Obtain info from job:
     seff
     sreport
+
+
+- Create CSV File (não esquecer de definir o path!):
+
+    sacct --starttime="2023-06-20" --endtime="2023-06-27" --user=dgoncalves --format=JobID,JobName,User,Partition,State,AllocCPUs,Elapsed,MaxRSS,TotalCPU --units=M -P --delimiter=',' > sacctoutput.csv
