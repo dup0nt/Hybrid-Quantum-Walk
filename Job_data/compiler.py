@@ -138,13 +138,13 @@ def single_plotter(xaxis, yaxis,dataframe=df):
 
     dataframe = dataframe[dataframe['qubits'] == (6)]
     dataframe = dataframe[dataframe['multiple_circuits'] == ('S')]
-    dataframe = dataframe[dataframe['simulator'] == ('s')]
+    #dataframe = dataframe[dataframe['simulator'] == ('a')]
     
     
     sns.set_palette('pastel')
 
     sns.set_style("whitegrid", {"grid.color": "0.9", "grid.linewidth": 0.5, "grid.alpha": 0.5})
-    ax = sns.barplot(x=xaxis, y=yaxis, width=0.3, data=dataframe, errorbar=None)
+    ax = sns.barplot(x=xaxis, y=yaxis, hue='simulator', width=0.3, data=dataframe, errorbar=None)
     #ax.set_ylim([4.25, 4.5])
 
     ax.set_xticklabels(ax.get_xticklabels(), rotation=-60)
@@ -154,4 +154,4 @@ def single_plotter(xaxis, yaxis,dataframe=df):
     print(dataframe.to_string())
     plt.show()
 
-single_plotter('steps','TotalCPU_seconds')
+single_plotter('steps','MaxRSS')
