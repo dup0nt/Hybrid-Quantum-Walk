@@ -13,9 +13,10 @@ simulators = ['aer_simulator_statevector','aer_simulator']
 partition = partitions[1]
 precision = precisions[0]
 simulator = simulators[1]
-parallel_exp = round(2)
+parallel_exp = round(1)
 batching = 0
 multiple_circuits = 1 #0 if no, 1 if yes
+job_size=1 #divisão em batches iguais ou subexeucuts
 
 Teste = ""
 
@@ -108,6 +109,8 @@ for step in steps:
             else:
                 job_name+='M'
 
+            job_name+=digit_string(job_size,'JS')   
+
             bash_execute = """#!/bin/bash
 # set the partition where the job will run (default = normal)
 #SBATCH --partition={}
@@ -151,15 +154,14 @@ echo "number of tasks = $SLURM_NTASKS"
 echo "number of cpus_per_task = $SLURM_CPUS_PER_TASK"
 
 # Run the command
-srun -c $SLURM_CPUS_PER_TASK python3 /veracruz/projects/c/cquant/Dirac-Quantum-Walk/QuantumWalk/main.py {} {} {} {} {} {} {} {} ${{SLURM_JOB_ID}} {} {} {} {} {} {}
+srun -c $SLURM_CPUS_PER_TASK python3 /veracruz/projects/c/cquant/Dirac-Quantum-Walk/QuantumWalk/main.py {} {} {} {} {} {} {} {} ${{SLURM_JOB_ID}} {} {} {} {} {} {} {}
 
-""".format(partition,job_name, partitions_details[partition]['memory'],thread,qubit,step,coin_type,theta,boundary,dist_boundary,shots,simulator,thread,hardware,precision,parallel_exp,batching,multiple_circuits)
+""".format(partition,job_name, partitions_details[partition]['memory'],thread,qubit,step,coin_type,theta,boundary,dist_boundary,shots,simulator,thread,hardware,precision,parallel_exp,batching,multiple_circuits, job_size)
 
 
             script_filename = "/veracruz/projects/c/cquant/Dirac-Quantum-Walk/submit__cache.sh"
             with open(script_filename, "w") as file:
                 file.write(bash_execute)
-
 
             # Execute the echo command
             result = subprocess.run(["sbatch", script_filename], capture_output=True, text=True)
@@ -171,4 +173,4 @@ srun -c $SLURM_CPUS_PER_TASK python3 /veracruz/projects/c/cquant/Dirac-Quantum-W
 
             
             time.sleep(0.1)
-           
+        

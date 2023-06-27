@@ -28,6 +28,7 @@ precision = str(sys.argv[12])
 parallel_exp = int(sys.argv[13])
 batching = int(sys.argv[14])
 multiple_circuit = int(sys.argv[15])
+job_size = int(sys.argv[16])
 
 
 all_results = []
@@ -48,7 +49,8 @@ if(batching==0):
                                     num_threads,
                                     parallel_exp,
                                     hardware,
-                                    precision)
+                                    precision,
+                                    job_size)
 else:
     exec_answers = batch_execute(all_results,
                                 shots,
