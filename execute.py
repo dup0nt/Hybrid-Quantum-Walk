@@ -164,7 +164,7 @@ srun -c $SLURM_CPUS_PER_TASK python3 /veracruz/projects/c/cquant/Dirac-Quantum-W
 """.format(partition,job_name, partitions_details[partition]['memory'],thread,qubit,step,coin_type,theta,boundary,dist_boundary,shots,simulator,thread,hardware,precision,parallel_exp,batching,multiple_circuits, job_size)
 
             # "/veracruz/projects/c/cquant/Dirac-Quantum-Walk/submit__cache.sh"
-            script_filename = "./submit__cache.sh"
+            script_filename = "/veracruz/projects/c/cquant/Dirac-Quantum-Walk/submit__cache.sh"
             with open(script_filename, "w") as file:
                 file.write(bash_execute)
 """
