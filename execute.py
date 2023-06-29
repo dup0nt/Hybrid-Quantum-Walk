@@ -4,18 +4,18 @@ import math
 
 threads = [80]
 qubits = [6]
-steps = [5]
+steps = [2**7]
 partitions = ['cpu1','cpu2', 'hmem1','hmem2','gpu']
 precisions = ['double', 'single']  
 simulators = ['aer_simulator_statevector','aer_simulator']
 
 
-partition = partitions[2]
-precision = precisions[1]
+partition = partitions[1]
+precision = precisions[0]
 simulator = simulators[0]
 parallel_exp = round(1)
 batching = 0
-multiple_circuits = 0 #0 if no, 1 if yes
+multiple_circuits = 1 #0 if no, 1 if yes
 job_size=None #divisão em batches iguais ou subexeucuts
 
 Teste = ""

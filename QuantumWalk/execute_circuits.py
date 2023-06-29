@@ -23,13 +23,15 @@ def batching(circuits_list):
             #    batch_list.append(batch)
 
     if batch:
-            batch_list.append(batch)
+            batch_list.append(list(batch))
     return batch_list
 
 def batch_execute(circuits_list,shots,simulator,num_threads,hardware,precision):
     batch_list = batching(circuits_list)
     #print(f"My batch list: {batch_list}")
     
+    print(batch_list)
+
     answers_list = []
     for batch in batch_list:
         #print(f"My batch: {batch}")
