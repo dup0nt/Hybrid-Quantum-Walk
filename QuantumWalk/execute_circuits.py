@@ -30,7 +30,6 @@ def batch_execute(circuits_list,shots,simulator,num_threads,hardware,precision):
     batch_list = batching(circuits_list)
     #print(f"My batch list: {batch_list}")
     
-    print(batch_list)
 
     answers_list = []
     for batch in batch_list:
@@ -38,12 +37,16 @@ def batch_execute(circuits_list,shots,simulator,num_threads,hardware,precision):
         #print(f"My number of parallel operations: {len(batch)}")
         
         answer = execute_circuits(batch,shots,simulator,num_threads,len(batch),hardware,precision)
-        answers_list.append(answer)
+        if not isinstance(answer, list):
+            answer = [answer]
+        print(f"Type(answer): {type(answer)}")
+        #answers_list.append(answer)
+        answers_list += answer
 
     return answers_list
 
 
-def execute_circuits(circuits_list,shots,simulator,num_threads,parallel_exp,hardware,precision,job_size):
+def execute_circuits(circuits_list,shots,simulator,num_threads,parallel_exp,hardware,precision,job_size=None):
     backend = choose_backend(simulator,num_threads,parallel_exp,hardware,precision,job_size)
     
     if (simulator=='aer_simulator_statevector'):
