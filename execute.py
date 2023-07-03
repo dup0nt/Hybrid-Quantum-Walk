@@ -4,7 +4,7 @@ import math
 
 threads = [80]
 qubits = [6]
-steps = list(range(5,300,5))
+steps = [100]#list(range(5,300,5))
 partitions = ['cpu1','cpu2', 'hmem1','hmem2','gpu']
 precisions = ['double', 'single']  
 simulators = ['aer_simulator_statevector','aer_simulator']
@@ -14,9 +14,19 @@ partition = partitions[2]
 precision = precisions[1]
 simulator = simulators[0]
 parallel_exp = round(1)
-batching = 0
-multiple_circuits = 0 #0 if no (i.e. for individual circuits), 1 if yes
-job_size=None #divisão em batches iguais ou subexeucuts
+batching = 1
+multiple_circuits = 1 #0 if no (i.e. for individual circuits), 1 if yes
+
+"""
+For job_size:
+if batching = 0, then job_size updates directly on the execute() 
+
+if batching = 1
+    job_size = None : batch size is "dynamic"
+    job_size = int  : batch size is given by the var job_size
+"""
+
+job_size=5 #divisão em batches iguais ou subexeucuts
 
 Teste = ""
 
@@ -97,10 +107,12 @@ for step in steps:
                 job_name += "C"
                 hardware = 'CPU'
 
-            if batching== 1:
-                job_name+='B' #Batched
+            if (batching== 1 and (isinstance(job_size,int))):
+                job_name+=digit_string(job_size,"B") #Batched
+            elif(batching== 1 and (not isinstance(job_size,int))):
+                job_name+=digit_string(0,"B")
             else:
-                job_name+='U' #Unbatched
+                job_name+=digit_string(0,"U") #Unbatched
 
             if multiple_circuits==0:
                 job_name+='S'
@@ -162,7 +174,7 @@ srun -c $SLURM_CPUS_PER_TASK python3 /veracruz/projects/c/cquant/Dirac-Quantum-W
 """.format(partition,job_name, partitions_details[partition]['memory'],thread,qubit,step,coin_type,theta,boundary,dist_boundary,shots,simulator,thread,hardware,precision,parallel_exp,batching,multiple_circuits, job_size)
 
             # "/veracruz/projects/c/cquant/Dirac-Quantum-Walk/submit__cache.sh"
-            script_filename = "/veracruz/projects/c/cquant/Dirac-Quantum-Walk/submit__cache.sh"
+            script_filename = "./submit__cache.sh"
             with open(script_filename, "w") as file:
                 file.write(bash_execute)
 
@@ -176,4 +188,4 @@ srun -c $SLURM_CPUS_PER_TASK python3 /veracruz/projects/c/cquant/Dirac-Quantum-W
 
             
             time.sleep(0.1)
-        
+    

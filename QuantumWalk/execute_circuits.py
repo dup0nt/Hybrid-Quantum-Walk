@@ -1,33 +1,42 @@
 from simulator import choose_backend
 from common import np, transpile,execute,QuantumCircuit, plot_histogram,plt
 
-def batching(circuits_list):
-    max_depth = circuits_list[-1].depth()
+def subdivide_list(original_list, N):
+    return [original_list[i:i+N] for i in range(0, len(original_list), N)]
 
+def batching(circuits_list,job_size=None):
     batch = []
     batch_list = []
     counter = 0
 
-    for circ in circuits_list:
-        counter+=circ.depth()
-        if counter<=max_depth+50: #adiciono o +50 para ter alguma margem
-            batch.append(circ)
 
-        else:
-            batch_list.append(batch)
-            counter = circ.depth()
-            batch = []
-            batch.append(circ)
+    max_depth = circuits_list[-1].depth()
 
-           # if circ==circuits_list[-1]:
-            #    batch_list.append(batch)
+    if isinstance(job_size,int):
+        batch_list = subdivide_list(circuits_list,job_size)
+    else:
+        for circ in circuits_list:
+            counter+=circ.depth()
+            if counter<=max_depth+50: #adiciono o +50 para ter alguma margem
+                batch.append(circ)
 
-    if batch:
-            batch_list.append(list(batch))
+            else:
+                batch_list.append(batch)
+                counter = circ.depth()
+                batch = []
+                batch.append(circ)
+
+            # if circ==circuits_list[-1]:
+                #    batch_list.append(batch)
+
+        if batch:
+                batch_list.append(list(batch))
+
+    print(batch_list)
     return batch_list
 
-def batch_execute(circuits_list,shots,simulator,num_threads,hardware,precision):
-    batch_list = batching(circuits_list)
+def batch_execute(circuits_list,shots,simulator,num_threads,hardware,precision,job_size):
+    batch_list = batching(circuits_list,job_size)
     #print(f"My batch list: {batch_list}")
     
 

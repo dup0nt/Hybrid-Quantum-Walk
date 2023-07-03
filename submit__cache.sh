@@ -9,7 +9,7 @@
 #SBATCH --ntasks=1
 
 # set name of job
-#SBATCH --job-name=Q06S295P01SsCUSJS01
+#SBATCH --job-name=Q06S100P01SsCB05MJS05
 
 # set the mem for the whole job
 #SBATCH --mem-per-cpu=4700M
@@ -41,5 +41,5 @@ echo "number of tasks = $SLURM_NTASKS"
 echo "number of cpus_per_task = $SLURM_CPUS_PER_TASK"
 
 # Run the command
-srun -c $SLURM_CPUS_PER_TASK python3 /veracruz/projects/c/cquant/Dirac-Quantum-Walk/QuantumWalk/main.py 6 295 1 2 1 2 10000 aer_simulator_statevector ${SLURM_JOB_ID} 80 CPU single 1 0 0 None
+srun -c $SLURM_CPUS_PER_TASK python3 ./QuantumWalk/main.py 6 15 1 2 1 2 10000 aer_simulator_statevector 0 80 CPU single 1 1 1 5
 
