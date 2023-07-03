@@ -99,13 +99,11 @@ for step in steps:
 
             if batching== 1:
                 job_name+='B' #Batched
-            
             else:
                 job_name+='U' #Unbatched
 
             if multiple_circuits==0:
                 job_name+='S'
-
             else:
                 job_name+='M'
 
