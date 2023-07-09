@@ -14,8 +14,8 @@ partition = partitions[2]
 precision = precisions[1]
 simulator = simulators[0]
 parallel_exp = round(1)
-batching = 1
-multiple_circuits = 1 #0 if no (i.e. for individual circuits), 1 if yes
+batching = 0
+multiple_circuits = 0 #0 if no (i.e. for individual circuits), 1 if yes
 
 """
 For job_size:
@@ -26,7 +26,7 @@ if batching = 1
     job_size = int  : batch size is given by the var job_size
 """
 
-job_size=5 #divisão em batches iguais ou subexeucuts
+job_size=None #divisão em batches iguais ou subexeucuts
 
 Teste = ""
 

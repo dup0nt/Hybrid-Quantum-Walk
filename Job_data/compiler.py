@@ -167,4 +167,4 @@ def single_plotter(xaxis, yaxis,dataframe=df):
     print(dataframe.to_string())
     plt.show()
 
-single_plotter('steps','MaxRSS')
+single_plotter('steps','TotalCPU_seconds')
