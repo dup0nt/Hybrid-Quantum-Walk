@@ -4,17 +4,17 @@ import math
 
 threads = [80]
 qubits = [6]
-steps = [100]#list(range(5,300,5))
+steps = [80]#list(range(5,300,5))
 partitions = ['cpu1','cpu2', 'hmem1','hmem2','gpu']
 precisions = ['double', 'single']  
 simulators = ['aer_simulator_statevector','aer_simulator']
 
 
 partition = partitions[2]
-precision = precisions[1]
+precision = precisions[0]
 simulator = simulators[0]
-parallel_exp = round(1)
-batching = 1
+parallel_exps = [40]
+batchings = [0]
 multiple_circuits = 1 #0 if no (i.e. for individual circuits), 1 if yes
 
 """
@@ -26,7 +26,7 @@ if batching = 1
     job_size = int  : batch size is given by the var job_size
 """
 
-job_size=5 #divisão em batches iguais ou subexeucuts
+job_sizes= [None] #divisão em batches iguais ou subexeucuts
 
 Teste = ""
 
@@ -90,43 +90,46 @@ def digit_string(variable, codification):
 
     return my_string
 
-for step in steps:
-    for qubit in qubits:
-        for thread in threads:
-            job_name = Teste +  digit_string(qubit,"Q") + digit_string(step,"S") + digit_string(parallel_exp,"P") + str(precision[0]).upper()
-            if simulator == 'aer_simulator_statevector':
-                job_name += simulator[4]
+for parallel_exp in parallel_exps:
+    for batching in batchings:
+        for job_size in job_sizes:
+            for step in steps:
+                for qubit in qubits:
+                    for thread in threads:
+                        job_name = Teste +  digit_string(qubit,"Q") + digit_string(step,"S") + digit_string(parallel_exp,"P") + str(precision[0]).upper()
+                        if simulator == 'aer_simulator_statevector':
+                            job_name += simulator[4]
 
-            else:
-                job_name += simulator[0]
+                        else:
+                            job_name += simulator[0]
 
-            if partition=='gpu':
-                hardware = 'GPU'
-                job_name += "G"
-            else:
-                job_name += "C"
-                hardware = 'CPU'
+                        if partition=='gpu':
+                            hardware = 'GPU'
+                            job_name += "G"
+                        else:
+                            job_name += "C"
+                            hardware = 'CPU'
 
-            if (batching== 1 and (isinstance(job_size,int))):
-                job_name+=digit_string(job_size,"B") #Batched
-            elif(batching== 1 and (not isinstance(job_size,int))):
-                job_name+=digit_string(0,"B")
-            else:
-                job_name+=digit_string(0,"U") #Unbatched
+                        if (batching== 1 and (isinstance(job_size,int))):
+                            job_name+=digit_string(job_size,"B") #Batched
+                        elif(batching== 1 and (not isinstance(job_size,int))):
+                            job_name+=digit_string(0,"B")
+                        else:
+                            job_name+=digit_string(0,"U") #Unbatched
 
-            if multiple_circuits==0:
-                job_name+='S'
-            else:
-                job_name+='M'
+                        if multiple_circuits==0:
+                            job_name+='S'
+                        else:
+                            job_name+='M'
 
-            if (job_size==None and multiple_circuits==0):
-                job_name+=digit_string(1,'JS')  
-            elif (job_size==None and multiple_circuits==1):
-                job_name+=digit_string(int(steps[0]),'JS') 
-            else:
-                job_name+=digit_string(job_size,'JS')   
-
-            bash_execute = """#!/bin/bash
+                        if (job_size==None and multiple_circuits==0):
+                            job_name+=digit_string(1,'JS')  
+                        elif (job_size==None and multiple_circuits==1):
+                            job_name+=digit_string(int(steps[0]),'JS') 
+                        else:
+                            job_name+=digit_string(job_size,'JS')   
+#SBATCH --exclusive
+                        bash_execute = """#!/bin/bash
 # set the partition where the job will run (default = normal)
 #SBATCH --partition={}
 #SBATCH -A cquant
@@ -145,12 +148,13 @@ for step in steps:
 # set the number of tasks (processes) per node.
 #SBATCH --cpus-per-task={}
 
-#SBATCH --exclusive
+
 
 # set max wallclock time (in this case 2800 minutes)
 #SBATCH --time=2800:00
 
 # err and out job files
+#SBATCH --error=%j.err
 
 # Get the Slurm Job ID
 JOB_ID=$SLURM_JOB_ID
@@ -173,19 +177,40 @@ srun -c $SLURM_CPUS_PER_TASK python3 /veracruz/projects/c/cquant/Dirac-Quantum-W
 
 """.format(partition,job_name, partitions_details[partition]['memory'],thread,qubit,step,coin_type,theta,boundary,dist_boundary,shots,simulator,thread,hardware,precision,parallel_exp,batching,multiple_circuits, job_size)
 
-            # "/veracruz/projects/c/cquant/Dirac-Quantum-Walk/submit__cache.sh"
-            script_filename = "./submit__cache.sh"
-            with open(script_filename, "w") as file:
-                file.write(bash_execute)
+                        # "/veracruz/projects/c/cquant/Dirac-Quantum-Walk/submit__cache.sh"
+                        script_filename = "/veracruz/projects/c/cquant/Dirac-Quantum-Walk/submit__cache.sh"
+                        with open(script_filename, "w") as file:
+                            file.write(bash_execute)
 
-            # Execute the echo command
-            result = subprocess.run(["sbatch", script_filename], capture_output=True, text=True)
+                        # Execute the echo command
+                        result = subprocess.run(["sbatch", script_filename], capture_output=True, text=True)
 
-            if result.returncode == 0:
-                print("Success job input: " + str(result.stdout))
-            else:
-                print("Job upload failed " + str(result.stderr))
+                        if result.returncode == 0:
 
-            
-            time.sleep(0.1)
-    
+                            print("\n=*=*=*=*=*=*=*=*=*=*=*=")
+                            print("Success job input: " + str(result.stdout))
+                            print("== Simulation Data ==")
+                            print("Partition: {}".format(partition))
+                            print("Job Name: {}".format(job_name))
+                            print("Thread: {}".format(thread))
+                            print("Qubit: {}".format(qubit))
+                            print("Step: {}".format(step))
+                            #print("Coin Type: {}".format(coin_type))
+                            #print("Theta: {}".format(theta))
+                            #print("Boundary: {}".format(boundary))
+                            #print("Dist Boundary: {}".format(dist_boundary))
+                            #print("Shots: {}".format(shots))
+                            print("Simulator: {}".format(simulator))
+                            #print("Hardware: {}".format(hardware))
+                            print("Precision: {}".format(precision))
+                            print("Multiple Circuits: {}".format(multiple_circuits))
+                            print("Batching: {}".format(batching))
+                            print("max_parallel_experiments: {}".format(parallel_exp))
+                            print("max_job_size: {}".format(job_size))
+                            print("=*=*=*=*=*=*=*=*=*=*=*=\n\n")
+                        else:
+                            print("Job upload failed " + str(result.stderr))
+
+                        
+                        time.sleep(0.1)
+                

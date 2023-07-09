@@ -22,4 +22,4 @@
 
 - Create CSV File (não esquecer de definir o path!):
 
-    sacct --starttime="2023-06-20" --endtime="2023-06-27" --user=dgoncalves --format=JobID,JobName,User,Partition,State,AllocCPUs,Elapsed,MaxRSS,TotalCPU,ReqMem --units=M -P --delimiter=',' > sacctoutput_singlecircuit_analysis.csv
+    sacct --starttime="2023-06-20" --endtime="2024-06-27" --user=dgoncalves --format=JobID,JobName,User,Partition,State,AllocCPUs,Elapsed,MaxRSS,TotalCPU,ReqMem --units=M -P --delimiter=',' > sacctoutput_singlecircuit_analysis.csv

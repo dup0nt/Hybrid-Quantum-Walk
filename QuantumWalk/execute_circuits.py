@@ -35,17 +35,18 @@ def batching(circuits_list,job_size=None):
     print(batch_list)
     return batch_list
 
-def batch_execute(circuits_list,shots,simulator,num_threads,hardware,precision,job_size):
+def batch_execute(circuits_list,shots,simulator,num_threads,parallel_exp,hardware,precision,job_size):
     batch_list = batching(circuits_list,job_size)
     #print(f"My batch list: {batch_list}")
     
 
     answers_list = []
+   
     for batch in batch_list:
         #print(f"My batch: {batch}")
         #print(f"My number of parallel operations: {len(batch)}")
-        
-        answer = execute_circuits(batch,shots,simulator,num_threads,len(batch),hardware,precision)
+                                                                    #len(batch)
+        answer = execute_circuits(batch,shots,simulator,num_threads,parallel_exp,hardware,precision)
         if not isinstance(answer, list):
             answer = [answer]
         print(f"Type(answer): {type(answer)}")
@@ -58,6 +59,16 @@ def batch_execute(circuits_list,shots,simulator,num_threads,hardware,precision,j
 def execute_circuits(circuits_list,shots,simulator,num_threads,parallel_exp,hardware,precision,job_size=None):
     backend = choose_backend(simulator,num_threads,parallel_exp,hardware,precision,job_size)
     
+    print("== Simulation Data ==")
+    print("Len Circuit_list: {}".format(len(circuits_list)))
+    print("Simulator: {}".format(simulator))
+    print("Shots: {}".format(shots))
+    print("Num Threads: {}".format(num_threads))
+    print("Parallel Exp: {}".format(parallel_exp))
+    print("Hardware: {}".format(hardware))
+    print("Precision: {}".format(precision))
+    print("Job Size: {}".format(job_size))
+
     if (simulator=='aer_simulator_statevector'):
         sim_statevector = backend
         circuits_list = transpile(circuits_list, sim_statevector)
