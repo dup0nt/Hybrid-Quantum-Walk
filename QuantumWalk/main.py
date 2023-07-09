@@ -36,10 +36,7 @@ if job_size is not None and job_size.isdigit():
     job_size = int(job_size)
 else:
     # Handle the case when the input value is None or not a valid integer
-    if job_size is None:
-        job_size = None  # Keep the value as None
-    else:
-        job_size = 0  # Set a default value or handle the situation accordingly
+    job_size = None
 
 all_results = []
 
@@ -66,6 +63,7 @@ else:
                                 shots,
                                 simulator,
                                 num_threads,
+                                parallel_exp,
                                 hardware,
                                 precision,
                                 job_size)

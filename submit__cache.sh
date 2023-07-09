@@ -17,12 +17,13 @@
 # set the number of tasks (processes) per node.
 #SBATCH --cpus-per-task=80
 
-#SBATCH --exclusive
+
 
 # set max wallclock time (in this case 2800 minutes)
 #SBATCH --time=2800:00
 
 # err and out job files
+#SBATCH --error=%j.err
 
 # Get the Slurm Job ID
 JOB_ID=$SLURM_JOB_ID
