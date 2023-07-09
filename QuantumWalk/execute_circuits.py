@@ -70,9 +70,8 @@ def execute_circuits(circuits_list,shots,simulator,num_threads,parallel_exp,hard
     print("Job Size: {}".format(job_size))
 
     if (simulator=='aer_simulator_statevector'):
-        sim_statevector = backend
-        circuits_list = transpile(circuits_list, sim_statevector)
-        job_statevector = sim_statevector.run(circuits_list, shots=shots)
+        circuits_list = transpile(circuits_list, backend)
+        job_statevector = backend.run(circuits_list, shots=shots)
         answer = job_statevector.result().get_counts()
     
     else:

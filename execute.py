@@ -11,7 +11,7 @@ simulators = ['aer_simulator_statevector','aer_simulator']
 
 
 partition = partitions[2]
-precision = precisions[0]
+precision = precisions[1]
 simulator = simulators[0]
 parallel_exps = [40]
 batchings = [0]
