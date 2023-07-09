@@ -68,5 +68,5 @@ else:
                                 precision,
                                 job_size)
 
-#proc_answer = convert_dicts_to_array(exec_answers,shots,multiple_circuit)
-#save_results_to_file(proc_answer, pathe, file + ".txt")
+proc_answer = convert_dicts_to_array(exec_answers,shots,multiple_circuit)
+save_results_to_file(proc_answer, pathe, file + ".txt")
