@@ -4,14 +4,14 @@ import math
 
 threads = [80]
 qubits = [6]
-steps = [80]#list(range(5,300,5))
+steps = [40]#list(range(5,300,5))
 partitions = ['cpu1','cpu2', 'hmem1','hmem2','gpu']
 precisions = ['double', 'single']  
 simulators = ['aer_simulator_statevector','aer_simulator']
 
 
-partition = partitions[2]
-precision = precisions[1]
+partition = partitions[1]
+precision = precisions[0]
 simulator = simulators[0]
 parallel_exps = [40]
 batchings = [0]
