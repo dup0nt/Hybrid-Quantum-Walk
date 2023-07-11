@@ -2,20 +2,20 @@ import subprocess
 import time
 import math
 
-threads = [64]
+threads = [80]
 qubits = [6]
-steps = [40]#list(range(5,300,5))
+steps = [80]#list(range(1,80,2))#[range(1,80,2)]#(range(5,300,5))
 partitions = ['cpu1','cpu2', 'hmem1','hmem2','gpu']
 precisions = ['double', 'single']  
 simulators = ['aer_simulator_statevector','aer_simulator']
 
 
 partition = partitions[1]
-precision = precisions[0]
+precision = precisions[1]
 simulator = simulators[0]
-parallel_exps = [40]
+parallel_exps = [1]
 batchings = [0]
-multiple_circuits = 0 #0 if no (i.e. for individual circuits), 1 if yes
+multiple_circuits = 1 #0 if no (i.e. for individual circuits), 1 if yes
 
 """
 For job_size:

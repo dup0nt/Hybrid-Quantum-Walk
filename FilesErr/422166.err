@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/veracruz/projects/c/cquant/Dirac-Quantum-Walk/QuantumWalk/main.py", line 9, in <module>
+    from memory_profiler import profile
+ModuleNotFoundError: No module named 'memory_profiler'

@@ -1,0 +1,4 @@
+number of tasks = 1
+number of cpus_per_task = 64
+mprof: Sampling memory every 0.1s
+running new process
