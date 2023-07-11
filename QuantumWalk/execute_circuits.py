@@ -1,5 +1,5 @@
 from simulator import choose_backend
-from common import np, transpile,execute,QuantumCircuit, plot_histogram,plt
+from common import np, transpile,execute,QuantumCircuit, plot_histogram,plt,time
 
 def subdivide_list(original_list, N):
     return [original_list[i:i+N] for i in range(0, len(original_list), N)]
@@ -32,7 +32,7 @@ def batching(circuits_list,job_size=None):
         if batch:
                 batch_list.append(list(batch))
 
-    print(batch_list)
+    #print(batch_list)
     return batch_list
 
 def batch_execute(circuits_list,shots,simulator,num_threads,parallel_exp,hardware,precision,job_size):
@@ -49,7 +49,7 @@ def batch_execute(circuits_list,shots,simulator,num_threads,parallel_exp,hardwar
         answer = execute_circuits(batch,shots,simulator,num_threads,parallel_exp,hardware,precision)
         if not isinstance(answer, list):
             answer = [answer]
-        print(f"Type(answer): {type(answer)}")
+        #print(f"Type(answer): {type(answer)}")
         #answers_list.append(answer)
         answers_list += answer
 
@@ -59,7 +59,7 @@ def batch_execute(circuits_list,shots,simulator,num_threads,parallel_exp,hardwar
 def execute_circuits(circuits_list,shots,simulator,num_threads,parallel_exp,hardware,precision,job_size=None):
     backend = choose_backend(simulator,num_threads,parallel_exp,hardware,precision,job_size)
 
-    
+    """
     print("== Simulation Data ==")
     print("Len Circuit_list: {}".format(len(circuits_list)))
     print("Simulator: {}".format(simulator))
@@ -69,17 +69,20 @@ def execute_circuits(circuits_list,shots,simulator,num_threads,parallel_exp,hard
     print("Hardware: {}".format(hardware))
     print("Precision: {}".format(precision))
     print("Job Size: {}".format(job_size))
-
-    if (simulator=='aer_simulator_statevector'):
-        circuits_list = transpile(circuits_list, backend)
-        job_statevector = backend.run(circuits_list, shots=shots,backend=backend)
-        answer = job_statevector.result().get_counts()
+    """
+    #print(f"Run Circuit: {time.time()}")
+    #if (simulator=='aer_simulator_statevector'):
     
-    else:
-        job = execute(circuits_list, backend=backend, shots=shots)
-        answer = job.result().get_counts()
+    circuits_list = transpile(circuits_list, backend)
+    job_statevector = backend.run(circuits_list)
+    print(f"Backend options: {backend.options}")
+    answer = job_statevector.result().get_counts()
     
-    print(answer)
+    #else:
+    #    job = execute(circuits_list, backend=backend, shots=shots)
+    #    answer = job.result().get_counts()
+    
+    #print(answer)
     return answer
 
 

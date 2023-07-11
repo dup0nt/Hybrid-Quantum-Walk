@@ -2,7 +2,11 @@
 from quantum_walk import quantum_walk
 from execute_circuits import execute_circuits, batch_execute
 from data_w import *
-from common import sys
+from common import sys, time
+start_time = time.time()
+
+#NEW PROFILER:
+from memory_profiler import profile
 
 print("output", sys.argv)
 #print(f"Qubits: {sys.argv[1]}, Steps: {sys.argv[2]}, coin_type: {sys.argv[3]}, theta: {sys.argv[1]}, boundary: {sys.argv[1]}, simulator: {sys.argv[1]}, shots: {sys.argv[1]}, theta: {sys.argv[1]}")
@@ -45,11 +49,13 @@ file = file_name(num_qubits,num_steps,coin_type,theta,boundary,dist_boundary,sho
 
 steps = steps_list(num_steps,multiple_circuit)
 
+
 for i in steps:
+    print(f"Creating Circuit: {time.time()-start_time}")
     all_results.append(quantum_walk(i,num_qubits,boundary,dist_boundary,coin_type,theta))
 
 if(batching==0):
-
+    print(f"Run Circuit: {time.time()-start_time}")
     exec_answers = execute_circuits(all_results,
                                     shots,
                                     simulator,
@@ -67,6 +73,7 @@ else:
                                 hardware,
                                 precision,
                                 job_size)
-
-proc_answer = convert_dicts_to_array(exec_answers,shots,multiple_circuit)
-save_results_to_file(proc_answer, pathe, file + ".txt")
+    
+print(f"Finnish: {time.time()-start_time}")
+#proc_answer = convert_dicts_to_array(exec_answers,shots,multiple_circuit)
+#save_results_to_file(proc_answer, pathe, file + ".txt")
