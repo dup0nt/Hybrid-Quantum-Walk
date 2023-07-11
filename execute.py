@@ -2,7 +2,7 @@ import subprocess
 import time
 import math
 
-threads = [80]
+threads = [64]
 qubits = [6]
 steps = [40]#list(range(5,300,5))
 partitions = ['cpu1','cpu2', 'hmem1','hmem2','gpu']
@@ -15,7 +15,7 @@ precision = precisions[0]
 simulator = simulators[0]
 parallel_exps = [40]
 batchings = [0]
-multiple_circuits = 1 #0 if no (i.e. for individual circuits), 1 if yes
+multiple_circuits = 0 #0 if no (i.e. for individual circuits), 1 if yes
 
 """
 For job_size:
