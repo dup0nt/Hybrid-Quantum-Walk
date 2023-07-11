@@ -22,8 +22,11 @@
 # set max wallclock time (in this case 2800 minutes)
 #SBATCH --time=2800:00
 
+# out
+#SBATCH --output=/veracruz/projects/c/cquant/Dirac-Quantum-Walk/FilesOut/%j.out
+
 # err and out job files
-#SBATCH --error=%j.err
+#SBATCH --error=/veracruz/projects/c/cquant/Dirac-Quantum-Walk/FilesErr/%j.err
 
 # Get the Slurm Job ID
 JOB_ID=$SLURM_JOB_ID
@@ -42,5 +45,5 @@ echo "number of tasks = $SLURM_NTASKS"
 echo "number of cpus_per_task = $SLURM_CPUS_PER_TASK"
 
 # Run the command
-srun mprof python3 /veracruz/projects/c/cquant/Dirac-Quantum-Walk/QuantumWalk/main.py 6 40 1 2 1 2 10000 aer_simulator_statevector ${SLURM_JOB_ID} 64 CPU double 40 0 0 None
+srun mprof run python3 /veracruz/projects/c/cquant/Dirac-Quantum-Walk/QuantumWalk/main.py 6 40 1 2 1 2 10000 aer_simulator_statevector 0 64 CPU double 40 0 0 None
 
