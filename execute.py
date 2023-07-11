@@ -153,8 +153,11 @@ for parallel_exp in parallel_exps:
 # set max wallclock time (in this case 2800 minutes)
 #SBATCH --time=2800:00
 
+# out
+#SBATCH --output=/veracruz/projects/c/cquant/Dirac-Quantum-Walk/Files Out/%j.out
+
 # err and out job files
-#SBATCH --error=%j.err
+#SBATCH --error=/veracruz/projects/c/cquant/Dirac-Quantum-Walk/Files Err/%j.err
 
 # Get the Slurm Job ID
 JOB_ID=$SLURM_JOB_ID
@@ -173,7 +176,7 @@ echo "number of tasks = $SLURM_NTASKS"
 echo "number of cpus_per_task = $SLURM_CPUS_PER_TASK"
 
 # Run the command
-srun python3 /veracruz/projects/c/cquant/Dirac-Quantum-Walk/QuantumWalk/main.py {} {} {} {} {} {} {} {} ${{SLURM_JOB_ID}} {} {} {} {} {} {} {}
+srun mprof python3 /veracruz/projects/c/cquant/Dirac-Quantum-Walk/QuantumWalk/main.py {} {} {} {} {} {} {} {} ${{SLURM_JOB_ID}} {} {} {} {} {} {} {}
 
 """.format(partition,job_name, partitions_details[partition]['memory'],thread,qubit,step,coin_type,theta,boundary,dist_boundary,shots,simulator,thread,hardware,precision,parallel_exp,batching,multiple_circuits, job_size)
 

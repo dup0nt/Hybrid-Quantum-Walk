@@ -1,0 +1,27 @@
+Traceback (most recent call last):
+  File "/veracruz/projects/c/cquant/Dirac-Quantum-Walk/QuantumWalk/main.py", line 56, in <module>
+    exec_answers = execute_circuits(all_results,
+  File "/veracruz/projects/c/cquant/Dirac-Quantum-Walk/QuantumWalk/execute_circuits.py", line 76, in execute_circuits
+    answer = job_statevector.result().get_counts()
+  File "/veracruz/home/d/dgoncalves/.local/lib/python3.8/site-packages/qiskit_aer/jobs/utils.py", line 42, in _wrapper
+    return func(self, *args, **kwargs)
+  File "/veracruz/home/d/dgoncalves/.local/lib/python3.8/site-packages/qiskit_aer/jobs/aerjob.py", line 114, in result
+    return self._future.result(timeout=timeout)
+  File "/apps/software/Anaconda/2020.11/lib/python3.8/concurrent/futures/_base.py", line 439, in result
+    return self.__get_result()
+  File "/apps/software/Anaconda/2020.11/lib/python3.8/concurrent/futures/_base.py", line 388, in __get_result
+    raise self._exception
+  File "/apps/software/Anaconda/2020.11/lib/python3.8/concurrent/futures/thread.py", line 57, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/veracruz/home/d/dgoncalves/.local/lib/python3.8/site-packages/qiskit_aer/backends/aerbackend.py", line 438, in _execute_circuits_job
+    aer_circuits = assemble_circuits(circuits)
+  File "/veracruz/home/d/dgoncalves/.local/lib/python3.8/site-packages/qiskit_aer/backends/aer_compiler.py", line 665, in assemble_circuits
+    return [assemble_circuit(circuit) for circuit in circuits]
+  File "/veracruz/home/d/dgoncalves/.local/lib/python3.8/site-packages/qiskit_aer/backends/aer_compiler.py", line 665, in <listcomp>
+    return [assemble_circuit(circuit) for circuit in circuits]
+  File "/veracruz/home/d/dgoncalves/.local/lib/python3.8/site-packages/qiskit_aer/backends/aer_compiler.py", line 527, in assemble_circuit
+    _assemble_op(aer_circ, inst, qubit_indices, clbit_indices, is_conditional, conditional_reg)
+  File "/veracruz/home/d/dgoncalves/.local/lib/python3.8/site-packages/qiskit_aer/backends/aer_compiler.py", line 556, in _assemble_op
+    aer_circ.gate(name, qubits, params, [], conditional_reg, label if label else name)
+MemoryError: std::bad_alloc
+srun: error: nau004: task 0: Exited with exit code 1

@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/veracruz/projects/c/cquant/Dirac-Quantum-Walk/QuantumWalk/main.py", line 53, in <module>
+    exec_answers = execute_circuits(all_results,
+  File "/veracruz/projects/c/cquant/Dirac-Quantum-Walk/QuantumWalk/execute_circuits.py", line 75, in execute_circuits
+    job_statevector = sim_statevector.run(circuits_list, shots=shots)
+AttributeError: 'NoneType' object has no attribute 'run'
+srun: error: nau006: task 0: Exited with exit code 1

@@ -1,0 +1,12 @@
+number of tasks = 1
+number of cpus_per_task = 20
+output ['/veracruz/projects/c/cquant/Dirac-Quantum-Walk/QuantumWalk/main.py', '6', '50', '1', '2', '1', '2', '10000', 'aer_simulator_statevector', '419146', '20', 'CPU', 'double', '50', '0', '1', 'None']
+== Simulation Data ==
+Len Circuit_list: 50
+Simulator: aer_simulator_statevector
+Shots: 10000
+Num Threads: 20
+Parallel Exp: 50
+Hardware: CPU
+Precision: double
+Job Size: None

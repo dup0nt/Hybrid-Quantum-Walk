@@ -1,0 +1,324 @@
+number of tasks = 1
+number of cpus_per_task = 80
+output ['/veracruz/projects/c/cquant/Dirac-Quantum-Walk/QuantumWalk/main.py', '6', '128', '1', '2', '1', '2', '10000', 'aer_simulator_statevector', '416511', '80', 'CPU', 'double', '1', '1', '1', '4']
+[[<qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8e00303a0>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8be064100>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8be025370>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8be05abe0>], [<qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8bdf62d30>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8bdf1bdf0>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8bde0e280>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8bdcacca0>], [<qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8bdb7b1f0>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8bda44c10>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8bd8875e0>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8bd6676d0>], [<qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8bd498070>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8bd24aee0>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8bcfcdd60>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8bcd13a00>], [<qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8bc9e0c70>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8bc708550>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8bc70f040>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8bc041ee0>], [<qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8bbc80700>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8bb86b0d0>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8bb464f10>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8bb8b4c70>], [<qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8bb09be20>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8ba752d60>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8ba24d4f0>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8b9ceb190>], [<qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8b97b3ac0>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8b9293fd0>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8b8cc96a0>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8b86b6190>], [<qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8b80cc1f0>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8b7a7af40>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8b73fdb20>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8b7434ca0>], [<qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8b6701370>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8b5f81310>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8b5856d90>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8b50d7130>], [<qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8b49050a0>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8b48fd670>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8b395a520>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8b30a3070>], [<qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8b281ea90>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8b1fc9d90>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8b16abb50>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8b0e1a550>], [<qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8b0da4040>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8afadeac0>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8af18c7c0>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8af1857f0>], [<qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8add75730>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8ad31f730>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8ac90c430>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8abe3c730>], [<qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8ab38dd30>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8aa90d940>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8a9cdfb80>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8a91b14f0>], [<qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8a91a9400>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8a7a3a5e0>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8a6e47730>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8a61fb2b0>], [<qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8a5577670>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8a489e7c0>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8a49167f0>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8a2f5d850>], [<qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8a2f563a0>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8a148a190>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8a06b2550>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd89f9079a0>], [<qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd89eb0c2b0>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd89dccd6a0>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd89ce8b850>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd89ce843a0>], [<qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd89bfb6460>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd89b15e8b0>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8992c01c0>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd898332820>], [<qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd89832c310>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8973dc130>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd89545cd00>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8943a58e0>], [<qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd89339d820>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd893396310>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd89120d340>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd89010f670>], [<qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd88efc4a90>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd88de30d90>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd88ccc7550>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd88ccbbc40>], [<qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd88baaa430>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd889718f70>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8884896a0>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd887218be0>], [<qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd885eeafa0>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd884bedaf0>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8838a6d60>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd882595730>], [<qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8811aa3a0>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd87fdf6790>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd87e9f5b20>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd87d6a8b50>], [<qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd87c1b5f70>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd87ad481c0>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd879899820>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd87839b700>], [<qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd876e4e760>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8758b21c0>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd87434b670>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd872d91460>], [<qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd87178edc0>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd870142a00>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd86eaa3790>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd86d538400>], [<qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd86be1da90>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd86a71aa90>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd868fc8a00>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8678a0610>], [<qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8660c1e20>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd866133700>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8630fbbe0>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd8618b11f0>], [<qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd860094730>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd85e7a8130>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd85e7a1c40>, <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd85b5e31f0>]]
+== Simulation Data ==
+Len Circuit_list: 4
+Simulator: aer_simulator_statevector
+Shots: 10000
+Num Threads: 80
+Parallel Exp: 1
+Hardware: CPU
+Precision: double
+Job Size: None
+Type(answer): <class 'list'>
+== Simulation Data ==
+Len Circuit_list: 4
+Simulator: aer_simulator_statevector
+Shots: 10000
+Num Threads: 80
+Parallel Exp: 1
+Hardware: CPU
+Precision: double
+Job Size: None
+Type(answer): <class 'list'>
+== Simulation Data ==
+Len Circuit_list: 4
+Simulator: aer_simulator_statevector
+Shots: 10000
+Num Threads: 80
+Parallel Exp: 1
+Hardware: CPU
+Precision: double
+Job Size: None
+Type(answer): <class 'list'>
+== Simulation Data ==
+Len Circuit_list: 4
+Simulator: aer_simulator_statevector
+Shots: 10000
+Num Threads: 80
+Parallel Exp: 1
+Hardware: CPU
+Precision: double
+Job Size: None
+Type(answer): <class 'list'>
+== Simulation Data ==
+Len Circuit_list: 4
+Simulator: aer_simulator_statevector
+Shots: 10000
+Num Threads: 80
+Parallel Exp: 1
+Hardware: CPU
+Precision: double
+Job Size: None
+Type(answer): <class 'list'>
+== Simulation Data ==
+Len Circuit_list: 4
+Simulator: aer_simulator_statevector
+Shots: 10000
+Num Threads: 80
+Parallel Exp: 1
+Hardware: CPU
+Precision: double
+Job Size: None
+Type(answer): <class 'list'>
+== Simulation Data ==
+Len Circuit_list: 4
+Simulator: aer_simulator_statevector
+Shots: 10000
+Num Threads: 80
+Parallel Exp: 1
+Hardware: CPU
+Precision: double
+Job Size: None
+Type(answer): <class 'list'>
+== Simulation Data ==
+Len Circuit_list: 4
+Simulator: aer_simulator_statevector
+Shots: 10000
+Num Threads: 80
+Parallel Exp: 1
+Hardware: CPU
+Precision: double
+Job Size: None
+Type(answer): <class 'list'>
+== Simulation Data ==
+Len Circuit_list: 4
+Simulator: aer_simulator_statevector
+Shots: 10000
+Num Threads: 80
+Parallel Exp: 1
+Hardware: CPU
+Precision: double
+Job Size: None
+Type(answer): <class 'list'>
+== Simulation Data ==
+Len Circuit_list: 4
+Simulator: aer_simulator_statevector
+Shots: 10000
+Num Threads: 80
+Parallel Exp: 1
+Hardware: CPU
+Precision: double
+Job Size: None
+Type(answer): <class 'list'>
+== Simulation Data ==
+Len Circuit_list: 4
+Simulator: aer_simulator_statevector
+Shots: 10000
+Num Threads: 80
+Parallel Exp: 1
+Hardware: CPU
+Precision: double
+Job Size: None
+Type(answer): <class 'list'>
+== Simulation Data ==
+Len Circuit_list: 4
+Simulator: aer_simulator_statevector
+Shots: 10000
+Num Threads: 80
+Parallel Exp: 1
+Hardware: CPU
+Precision: double
+Job Size: None
+Type(answer): <class 'list'>
+== Simulation Data ==
+Len Circuit_list: 4
+Simulator: aer_simulator_statevector
+Shots: 10000
+Num Threads: 80
+Parallel Exp: 1
+Hardware: CPU
+Precision: double
+Job Size: None
+Type(answer): <class 'list'>
+== Simulation Data ==
+Len Circuit_list: 4
+Simulator: aer_simulator_statevector
+Shots: 10000
+Num Threads: 80
+Parallel Exp: 1
+Hardware: CPU
+Precision: double
+Job Size: None
+Type(answer): <class 'list'>
+== Simulation Data ==
+Len Circuit_list: 4
+Simulator: aer_simulator_statevector
+Shots: 10000
+Num Threads: 80
+Parallel Exp: 1
+Hardware: CPU
+Precision: double
+Job Size: None
+Type(answer): <class 'list'>
+== Simulation Data ==
+Len Circuit_list: 4
+Simulator: aer_simulator_statevector
+Shots: 10000
+Num Threads: 80
+Parallel Exp: 1
+Hardware: CPU
+Precision: double
+Job Size: None
+Type(answer): <class 'list'>
+== Simulation Data ==
+Len Circuit_list: 4
+Simulator: aer_simulator_statevector
+Shots: 10000
+Num Threads: 80
+Parallel Exp: 1
+Hardware: CPU
+Precision: double
+Job Size: None
+Type(answer): <class 'list'>
+== Simulation Data ==
+Len Circuit_list: 4
+Simulator: aer_simulator_statevector
+Shots: 10000
+Num Threads: 80
+Parallel Exp: 1
+Hardware: CPU
+Precision: double
+Job Size: None
+Type(answer): <class 'list'>
+== Simulation Data ==
+Len Circuit_list: 4
+Simulator: aer_simulator_statevector
+Shots: 10000
+Num Threads: 80
+Parallel Exp: 1
+Hardware: CPU
+Precision: double
+Job Size: None
+Type(answer): <class 'list'>
+== Simulation Data ==
+Len Circuit_list: 4
+Simulator: aer_simulator_statevector
+Shots: 10000
+Num Threads: 80
+Parallel Exp: 1
+Hardware: CPU
+Precision: double
+Job Size: None
+Type(answer): <class 'list'>
+== Simulation Data ==
+Len Circuit_list: 4
+Simulator: aer_simulator_statevector
+Shots: 10000
+Num Threads: 80
+Parallel Exp: 1
+Hardware: CPU
+Precision: double
+Job Size: None
+Type(answer): <class 'list'>
+== Simulation Data ==
+Len Circuit_list: 4
+Simulator: aer_simulator_statevector
+Shots: 10000
+Num Threads: 80
+Parallel Exp: 1
+Hardware: CPU
+Precision: double
+Job Size: None
+Type(answer): <class 'list'>
+== Simulation Data ==
+Len Circuit_list: 4
+Simulator: aer_simulator_statevector
+Shots: 10000
+Num Threads: 80
+Parallel Exp: 1
+Hardware: CPU
+Precision: double
+Job Size: None
+Type(answer): <class 'list'>
+== Simulation Data ==
+Len Circuit_list: 4
+Simulator: aer_simulator_statevector
+Shots: 10000
+Num Threads: 80
+Parallel Exp: 1
+Hardware: CPU
+Precision: double
+Job Size: None
+Type(answer): <class 'list'>
+== Simulation Data ==
+Len Circuit_list: 4
+Simulator: aer_simulator_statevector
+Shots: 10000
+Num Threads: 80
+Parallel Exp: 1
+Hardware: CPU
+Precision: double
+Job Size: None
+Type(answer): <class 'list'>
+== Simulation Data ==
+Len Circuit_list: 4
+Simulator: aer_simulator_statevector
+Shots: 10000
+Num Threads: 80
+Parallel Exp: 1
+Hardware: CPU
+Precision: double
+Job Size: None
+Type(answer): <class 'list'>
+== Simulation Data ==
+Len Circuit_list: 4
+Simulator: aer_simulator_statevector
+Shots: 10000
+Num Threads: 80
+Parallel Exp: 1
+Hardware: CPU
+Precision: double
+Job Size: None
+Type(answer): <class 'list'>
+== Simulation Data ==
+Len Circuit_list: 4
+Simulator: aer_simulator_statevector
+Shots: 10000
+Num Threads: 80
+Parallel Exp: 1
+Hardware: CPU
+Precision: double
+Job Size: None
+Type(answer): <class 'list'>
+== Simulation Data ==
+Len Circuit_list: 4
+Simulator: aer_simulator_statevector
+Shots: 10000
+Num Threads: 80
+Parallel Exp: 1
+Hardware: CPU
+Precision: double
+Job Size: None
+Type(answer): <class 'list'>
+== Simulation Data ==
+Len Circuit_list: 4
+Simulator: aer_simulator_statevector
+Shots: 10000
+Num Threads: 80
+Parallel Exp: 1
+Hardware: CPU
+Precision: double
+Job Size: None
+Type(answer): <class 'list'>
+== Simulation Data ==
+Len Circuit_list: 4
+Simulator: aer_simulator_statevector
+Shots: 10000
+Num Threads: 80
+Parallel Exp: 1
+Hardware: CPU
+Precision: double
+Job Size: None
+Type(answer): <class 'list'>
+== Simulation Data ==
+Len Circuit_list: 4
+Simulator: aer_simulator_statevector
+Shots: 10000
+Num Threads: 80
+Parallel Exp: 1
+Hardware: CPU
+Precision: double
+Job Size: None
+Type(answer): <class 'list'>

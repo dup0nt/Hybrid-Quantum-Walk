@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/veracruz/projects/c/cquant/Dirac-Quantum-Walk/QuantumWalk/main.py", line 65, in <module>
+    exec_answers = batch_execute(all_results,
+  File "/veracruz/projects/c/cquant/Dirac-Quantum-Walk/QuantumWalk/execute_circuits.py", line 39, in batch_execute
+    batch_list = batching(circuits_list,job_size)
+  File "/veracruz/projects/c/cquant/Dirac-Quantum-Walk/QuantumWalk/execute_circuits.py", line 16, in batching
+    batch_list = subdivide_list(circuits_list,job_size)
+  File "/veracruz/projects/c/cquant/Dirac-Quantum-Walk/QuantumWalk/execute_circuits.py", line 5, in subdivide_list
+    return [original_list[i:i+N] for i in range(0, len(original_list), N)]
+ValueError: range() arg 3 must not be zero
+srun: error: nau000: task 0: Exited with exit code 1

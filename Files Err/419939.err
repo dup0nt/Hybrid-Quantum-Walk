@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/veracruz/projects/c/cquant/Dirac-Quantum-Walk/QuantumWalk/main.py", line 53, in <module>
+    exec_answers = execute_circuits(all_results,
+  File "/veracruz/projects/c/cquant/Dirac-Quantum-Walk/QuantumWalk/execute_circuits.py", line 61, in execute_circuits
+    simulator.set_options(precision='double')
+AttributeError: 'str' object has no attribute 'set_options'
+srun: error: caravela001: task 0: Exited with exit code 1

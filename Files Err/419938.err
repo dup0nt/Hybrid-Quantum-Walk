@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "/veracruz/projects/c/cquant/Dirac-Quantum-Walk/QuantumWalk/main.py", line 53, in <module>
+    exec_answers = execute_circuits(all_results,
+  File "/veracruz/projects/c/cquant/Dirac-Quantum-Walk/QuantumWalk/execute_circuits.py", line 60, in execute_circuits
+    backend = choose_backend(simulator,num_threads,parallel_exp,hardware,precision,job_size)
+  File "/veracruz/projects/c/cquant/Dirac-Quantum-Walk/QuantumWalk/simulator.py", line 6, in choose_backend
+    simulator = Aer.get_backend(simulator_variable)
+  File "/veracruz/home/d/dgoncalves/.local/lib/python3.8/site-packages/qiskit_aer/aerprovider.py", line 75, in get_backend
+    return super().get_backend(name=name, **kwargs)
+  File "/veracruz/home/d/dgoncalves/.local/lib/python3.8/site-packages/qiskit/providers/provider.py", line 55, in get_backend
+    raise QiskitBackendNotFoundError("No backend matches the criteria")
+qiskit.providers.exceptions.QiskitBackendNotFoundError: 'No backend matches the criteria'
+srun: error: caravela001: task 0: Exited with exit code 1
