@@ -59,7 +59,7 @@ def batch_execute(circuits_list,shots,simulator,num_threads,parallel_exp,hardwar
 def execute_circuits(circuits_list,shots,simulator,num_threads,parallel_exp,hardware,precision,job_size=None):
     backend = choose_backend(simulator,num_threads,parallel_exp,hardware,precision,job_size)
 
-    
+    """
     print("== Simulation Data ==")
     print("Len Circuit_list: {}".format(len(circuits_list)))
     print("Simulator: {}".format(simulator))
@@ -69,11 +69,13 @@ def execute_circuits(circuits_list,shots,simulator,num_threads,parallel_exp,hard
     print("Hardware: {}".format(hardware))
     print("Precision: {}".format(precision))
     print("Job Size: {}".format(job_size))
-
+    """
     #print(f"Run Circuit: {time.time()}")
     #if (simulator=='aer_simulator_statevector'):
+    
     circuits_list = transpile(circuits_list, backend)
-    job_statevector = backend.run(circuits_list, shots=shots)
+    job_statevector = backend.run(circuits_list)
+    print(f"Backend options: {backend.options}")
     answer = job_statevector.result().get_counts()
     
     #else:
