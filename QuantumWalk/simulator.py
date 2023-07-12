@@ -13,6 +13,7 @@ def choose_backend (simulator_variable,num_threads,max_parallel_experiments,hard
                         max_parallel_experiments=max_parallel_experiments,
                         #max_parallel_shots=1,
                         device=hardware,
+                        shots=10000
     )
                                    
     

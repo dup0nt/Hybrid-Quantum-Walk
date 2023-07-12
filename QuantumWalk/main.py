@@ -3,6 +3,8 @@ from quantum_walk import quantum_walk
 from execute_circuits import execute_circuits, batch_execute
 from data_w import *
 from common import sys, time
+
+global start_time
 start_time = time.time()
 
 
