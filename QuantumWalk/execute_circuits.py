@@ -75,9 +75,11 @@ def execute_circuits(circuits_list,shots,simulator,num_threads,parallel_exp,hard
     print(f"Transpile: {time.time()-start_time}")
     circuits_list = transpile(circuits_list, backend)
 
-    job_statevector = backend.run(circuits_list, shots=shots)
     print(f"Run: {time.time()-start_time}")
+    job_statevector = backend.run(circuits_list, shots=shots)
+    
     print(f"Backend options: {backend.options}")
+    print(f".result(): {time.time()-start_time}")
     answer = job_statevector.result().get_counts()
     
     #else:
