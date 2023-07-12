@@ -46,3 +46,52 @@ Backend options: Options(shots=1024, method='statevector', device='CPU', precisi
 Finnish: 298.27132415771484
 mprof: Sampling memory every 0.1s
 running new process
+
+
+
+vs my portatil:
+
+output ['./QuantumWalk/main.py', '6', '40', '1', '2', '1', '2', '10000', 'statevector', '0', '80', 'CPU', 'double', '1', '0', '1', 'None']
+Creating Circuit: 3.0994415283203125e-05
+Creating Circuit: 0.05410599708557129
+Creating Circuit: 0.07793998718261719
+Creating Circuit: 0.10865402221679688
+Creating Circuit: 0.1844651699066162
+Creating Circuit: 0.229996919631958
+Creating Circuit: 0.28190088272094727
+Creating Circuit: 0.34025096893310547
+Creating Circuit: 0.4057939052581787
+Creating Circuit: 0.5212359428405762
+Creating Circuit: 0.601917028427124
+Creating Circuit: 0.6883900165557861
+Creating Circuit: 0.7816050052642822
+Creating Circuit: 0.9326908588409424
+Creating Circuit: 1.0501408576965332
+Creating Circuit: 1.1700999736785889
+Creating Circuit: 1.3587360382080078
+Creating Circuit: 1.4888801574707031
+Creating Circuit: 1.6254470348358154
+Creating Circuit: 1.8428771495819092
+Creating Circuit: 1.9947121143341064
+Creating Circuit: 2.153256893157959
+Creating Circuit: 2.320034980773926
+Creating Circuit: 2.576399087905884
+Creating Circuit: 2.7556889057159424
+Creating Circuit: 2.941648006439209
+Creating Circuit: 3.232591152191162
+Creating Circuit: 3.4329030513763428
+Creating Circuit: 3.640444040298462
+Creating Circuit: 3.8538830280303955
+Creating Circuit: 4.19292688369751
+Creating Circuit: 4.4195170402526855
+Creating Circuit: 4.652221918106079
+Creating Circuit: 4.891815900802612
+Creating Circuit: 5.1388819217681885
+Creating Circuit: 5.532303094863892
+Creating Circuit: 5.793021202087402
+Creating Circuit: 6.059144973754883
+Creating Circuit: 6.3353259563446045
+Creating Circuit: 6.7864439487457275
+Run Circuit: 7.074764966964722
+Backend options: Options(shots=1024, method='statevector', device='CPU', precision='double', executor=None, max_job_size=None, max_shot_size=None, enable_truncation=True, zero_threshold=1e-10, validation_threshold=None, max_parallel_threads=80, max_parallel_experiments=1, max_parallel_shots=None, max_memory_mb=None, fusion_enable=True, fusion_verbose=False, fusion_max_qubit=None, fusion_threshold=None, accept_distributed_results=None, memory=None, noise_model=None, seed_simulator=None, cuStateVec_enable=False, blocking_qubits=None, blocking_enable=False, chunk_swap_buffer_qubits=None, batched_shots_gpu=False, batched_shots_gpu_max_qubits=16, num_threads_per_device=1, statevector_parallel_threshold=14, statevector_sample_measure_opt=10, stabilizer_max_snapshot_probabilities=32, extended_stabilizer_sampling_method='resampled_metropolis', extended_stabilizer_metropolis_mixing_time=5000, extended_stabilizer_approximation_error=0.05, extended_stabilizer_norm_estimation_samples=100, extended_stabilizer_norm_estimation_repetitions=3, extended_stabilizer_parallel_threshold=100, extended_stabilizer_probabilities_snapshot_samples=3000, matrix_product_state_truncation_threshold=1e-16, matrix_product_state_max_bond_dimension=None, mps_sample_measure_algorithm='mps_heuristic', mps_log_data=False, mps_swap_direction='mps_swap_left', chop_threshold=1e-08, mps_parallel_threshold=14, mps_omp_threads=1, tensor_network_num_sampling_qubits=10, use_cuTensorNet_autotuning=False)
+Finnish: 407.9413650035858

@@ -45,5 +45,5 @@ echo "number of tasks = $SLURM_NTASKS"
 echo "number of cpus_per_task = $SLURM_CPUS_PER_TASK"
 
 # Run the command
-srun mprof run python3 /veracruz/projects/c/cquant/Dirac-Quantum-Walk/QuantumWalk/main.py 6 40 1 2 1 2 10000 statevector ${SLURM_JOB_ID} 80 CPU double 1 0 1 None
+srun mprof run python3 ./QuantumWalk/main.py 6 40 1 2 1 2 10000 statevector 0 80 CPU double 1 0 1 None
 
