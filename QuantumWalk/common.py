@@ -19,3 +19,5 @@ from qiskit.circuit import QuantumCircuit
 from qiskit.visualization import plot_histogram
 from qiskit.circuit.library import QFT
 from qiskit_ibm_provider import IBMProvider
+
+start_time = time.time()

@@ -2,10 +2,10 @@
 from quantum_walk import quantum_walk
 from execute_circuits import execute_circuits, batch_execute
 from data_w import *
-from common import sys, time
+from common import sys, time, start_time
 
-global start_time
-start_time = time.time()
+#global start_time
+
 
 
 print("output", sys.argv)
@@ -55,7 +55,6 @@ for i in steps:
     all_results.append(quantum_walk(i,num_qubits,boundary,dist_boundary,coin_type,theta))
 
 if(batching==0):
-    print(f"Run Circuit: {time.time()-start_time}")
     exec_answers = execute_circuits(all_results,
                                     shots,
                                     simulator,
