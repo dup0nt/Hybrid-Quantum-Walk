@@ -5,8 +5,6 @@ from data_w import *
 from common import sys, time
 start_time = time.time()
 
-#NEW PROFILER:
-from memory_profiler import profile
 
 print("output", sys.argv)
 #print(f"Qubits: {sys.argv[1]}, Steps: {sys.argv[2]}, coin_type: {sys.argv[3]}, theta: {sys.argv[1]}, boundary: {sys.argv[1]}, simulator: {sys.argv[1]}, shots: {sys.argv[1]}, theta: {sys.argv[1]}")
@@ -75,5 +73,5 @@ else:
                                 job_size)
     
 print(f"Finnish: {time.time()-start_time}")
-#proc_answer = convert_dicts_to_array(exec_answers,shots,multiple_circuit)
-#save_results_to_file(proc_answer, pathe, file + ".txt")
+proc_answer = convert_dicts_to_array(exec_answers,shots,multiple_circuit)
+save_results_to_file(proc_answer, pathe, file + ".txt")

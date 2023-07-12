@@ -1,0 +1,44 @@
+number of tasks = 1
+number of cpus_per_task = 80
+output ['/veracruz/projects/c/cquant/Dirac-Quantum-Walk/QuantumWalk/main.py', '6', '40', '1', '2', '1', '2', '10000', 'aer_simulator_statevector', '423288', '80', 'CPU', 'double', '1', '0', '1', 'None']
+Creating Circuit: 2.3126602172851562e-05
+Creating Circuit: 0.29184865951538086
+Creating Circuit: 0.3381233215332031
+Creating Circuit: 0.3988037109375
+Creating Circuit: 0.47252488136291504
+Creating Circuit: 0.5595276355743408
+Creating Circuit: 0.6619560718536377
+Creating Circuit: 0.8856310844421387
+Creating Circuit: 1.0186614990234375
+Creating Circuit: 1.1620674133300781
+Creating Circuit: 1.3192012310028076
+Creating Circuit: 1.5743927955627441
+Creating Circuit: 1.7603013515472412
+Creating Circuit: 1.9636249542236328
+Creating Circuit: 2.176682710647583
+Creating Circuit: 2.5083582401275635
+Creating Circuit: 2.755728006362915
+Creating Circuit: 3.0111312866210938
+Creating Circuit: 3.4189422130584717
+Creating Circuit: 3.710080623626709
+Creating Circuit: 4.015350103378296
+Creating Circuit: 4.504314184188843
+Creating Circuit: 4.838068723678589
+Creating Circuit: 5.177500486373901
+Creating Circuit: 5.704592704772949
+Creating Circuit: 6.072894334793091
+Creating Circuit: 6.454659938812256
+Creating Circuit: 6.854154586791992
+Creating Circuit: 7.515541076660156
+Creating Circuit: 7.940258979797363
+Creating Circuit: 8.389613389968872
+Creating Circuit: 8.854527473449707
+Creating Circuit: 9.57345986366272
+Creating Circuit: 10.054077625274658
+Creating Circuit: 10.560937881469727
+Creating Circuit: 11.082237958908081
+Creating Circuit: 11.954298257827759
+Creating Circuit: 12.50583791732788
+Creating Circuit: 13.070802688598633
+Creating Circuit: 13.635748624801636
+Run Circuit: 14.229735136032104

@@ -74,7 +74,7 @@ def execute_circuits(circuits_list,shots,simulator,num_threads,parallel_exp,hard
     #if (simulator=='aer_simulator_statevector'):
     
     circuits_list = transpile(circuits_list, backend)
-    job_statevector = backend.run(circuits_list)
+    job_statevector = backend.run(circuits_list, shots=shots)
     print(f"Backend options: {backend.options}")
     answer = job_statevector.result().get_counts()
     
