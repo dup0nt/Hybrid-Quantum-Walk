@@ -9,7 +9,7 @@
 #SBATCH --ntasks=1
 
 # set name of job
-#SBATCH --job-name=Q06S49P01DsCU00SJS01SCCN_49
+#SBATCH --job-name=Q06S01P01DsCU00SJS01SCCN_01
 
 # set the mem for the whole job
 #SBATCH --mem-per-cpu=1100M
@@ -45,5 +45,5 @@ echo "number of tasks = $SLURM_NTASKS"
 echo "number of cpus_per_task = $SLURM_CPUS_PER_TASK"
 
 # Run the command
-srun mprof run python3 /veracruz/projects/c/cquant/Dirac-Quantum-Walk/QuantumWalk/main.py 6 39 1 2 1 2 10000 statevector ${SLURM_JOB_ID} 80 CPU double 1 0 1 None
+srun mprof run --output /veracruz/projects/c/cquant/Dirac-Quantum-Walk/Output/Profiler/%j.prof python3 /veracruz/projects/c/cquant/Dirac-Quantum-Walk/QuantumWalk/main.py 6 1 1 2 1 2 10000 statevector ${SLURM_JOB_ID} 80 CPU double 1 0 0 None 1
 

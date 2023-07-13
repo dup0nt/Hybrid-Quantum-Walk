@@ -4,7 +4,7 @@ import math
 
 threads = [80]
 qubits = [6]
-steps = [50]#list(range(1,80,2))#[range(1,80,2)]#(range(5,300,5))
+steps = [2]#list(range(1,80,2))
 partitions = ['cpu1','cpu2', 'hmem1','hmem2','gpu']
 precisions = ['double', 'single']  
 simulators = ['statevector']#['aer_simulator_statevector','aer_simulator']
@@ -99,8 +99,6 @@ if split_circuits_per_cluster_node==1:
     multiple_circuits = 0 #force execution of single circuits
     parallel_exps = [1]
     steps = list(range(steps[0]))
-    print(steps)
-
 
 
 
@@ -110,7 +108,15 @@ for parallel_exp in parallel_exps:
             for step in steps:
                 for qubit in qubits:
                     for thread in threads:
-                        job_name = Teste +  digit_string(qubit,"Q") + digit_string(step,"S") + digit_string(parallel_exp,"P") + str(precision[0]).upper()
+                        job_name = Teste +  digit_string(qubit,"Q")
+                        
+                        if split_circuits_per_cluster_node==1:
+                            job_name+=digit_string(steps[-1],"S")
+                        else:
+                            job_name+=digit_string(step,"S")
+                        
+                        job_name+=digit_string(parallel_exp,"P") + str(precision[0]).upper()
+
                         if simulator == 'aer_simulator_statevector':
                             job_name += simulator[4]
 
@@ -142,6 +148,8 @@ for parallel_exp in parallel_exps:
                             job_name+=digit_string(int(steps[0]),'JS') 
                         else:
                             job_name+=digit_string(job_size,'JS')   
+                        
+                        job_name_non_divised = job_name   
 
                         if split_circuits_per_cluster_node==0:
                             job_name+=digit_string(-1,"SCCN_")
@@ -149,7 +157,7 @@ for parallel_exp in parallel_exps:
                             job_name+=digit_string(step,"SCCN_")
 
                         
-                        print(job_name)
+                        
 
 #SBATCH --exclusive
                         bash_execute = """#!/bin/bash
@@ -211,6 +219,17 @@ srun mprof run --output /veracruz/projects/c/cquant/Dirac-Quantum-Walk/Output/Pr
 
                         # Execute the echo command
                         result = subprocess.run(["sbatch", script_filename], capture_output=True, text=True)
+
+
+
+                        if(split_circuits_per_cluster_node==1):
+                            job_id = str(result.stdout)[-7:]
+                            parallel_cache = "/veracruz/projects/c/cquant/Dirac-Quantum-Walk/Output/Parallel_cache/{}.txt".format(job_name_non_divised)
+                            with open(parallel_cache, "a") as file:
+                                #file.write("Forced parallization of circuits per cluster nodes")
+                                file.write(job_id)
+
+                       
 
                         if result.returncode == 0:
 
