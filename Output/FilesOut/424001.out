@@ -1,0 +1,44 @@
+number of tasks = 1
+number of cpus_per_task = 80
+output ['/veracruz/projects/c/cquant/Dirac-Quantum-Walk/QuantumWalk/main.py', '6', '33', '1', '2', '1', '2', '10000', 'statevector', '424001', '80', 'CPU', 'double', '1', '0', '1', 'None']
+Creating Circuit: 0.15169262886047363
+Creating Circuit: 0.35263919830322266
+Creating Circuit: 0.39932703971862793
+Creating Circuit: 0.459531307220459
+Creating Circuit: 0.5337786674499512
+Creating Circuit: 0.6228466033935547
+Creating Circuit: 0.7319591045379639
+Creating Circuit: 0.8518242835998535
+Creating Circuit: 1.091456413269043
+Creating Circuit: 1.2378034591674805
+Creating Circuit: 1.3949699401855469
+Creating Circuit: 1.569530963897705
+Creating Circuit: 1.838773488998413
+Creating Circuit: 2.0438578128814697
+Creating Circuit: 2.2634806632995605
+Creating Circuit: 2.6251959800720215
+Creating Circuit: 2.8778913021087646
+Creating Circuit: 3.14329195022583
+Creating Circuit: 3.5666635036468506
+Creating Circuit: 3.865109443664551
+Creating Circuit: 4.173941135406494
+Creating Circuit: 4.685444593429565
+Creating Circuit: 5.01516056060791
+Creating Circuit: 5.3673083782196045
+Creating Circuit: 5.922285795211792
+Creating Circuit: 6.294257640838623
+Creating Circuit: 6.693785190582275
+Creating Circuit: 7.097310304641724
+Creating Circuit: 7.794248104095459
+Creating Circuit: 8.219649314880371
+Creating Circuit: 8.669448614120483
+Creating Circuit: 9.150633096694946
+Creating Circuit: 9.87353801727295
+Transpile: 10.392135620117188
+Run: 110.93993020057678
+.result() start: 162.43232202529907
+.result() end: 224.5663182735443
+Backend options: Options(shots=10000, method='statevector', device='CPU', precision='double', executor=None, max_job_size=None, max_shot_size=None, enable_truncation=True, zero_threshold=1e-10, validation_threshold=None, max_parallel_threads=80, max_parallel_experiments=1, max_parallel_shots=None, max_memory_mb=None, fusion_enable=True, fusion_verbose=False, fusion_max_qubit=None, fusion_threshold=None, accept_distributed_results=None, memory=None, noise_model=None, seed_simulator=None, cuStateVec_enable=False, blocking_qubits=None, blocking_enable=False, chunk_swap_buffer_qubits=None, batched_shots_gpu=False, batched_shots_gpu_max_qubits=16, num_threads_per_device=1, statevector_parallel_threshold=14, statevector_sample_measure_opt=10, stabilizer_max_snapshot_probabilities=32, extended_stabilizer_sampling_method='resampled_metropolis', extended_stabilizer_metropolis_mixing_time=5000, extended_stabilizer_approximation_error=0.05, extended_stabilizer_norm_estimation_samples=100, extended_stabilizer_norm_estimation_repetitions=3, extended_stabilizer_parallel_threshold=100, extended_stabilizer_probabilities_snapshot_samples=3000, matrix_product_state_truncation_threshold=1e-16, matrix_product_state_max_bond_dimension=None, mps_sample_measure_algorithm='mps_heuristic', mps_log_data=False, mps_swap_direction='mps_swap_left', chop_threshold=1e-08, mps_parallel_threshold=14, mps_omp_threads=1, tensor_network_num_sampling_qubits=10, use_cuTensorNet_autotuning=False)
+Finnish: 228.59542155265808
+mprof: Sampling memory every 0.1s
+running new process

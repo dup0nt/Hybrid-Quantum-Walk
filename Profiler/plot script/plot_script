@@ -1,0 +1,26 @@
+#!/bin/bash
+# The script will run in the current directory
+CURRENT_DIR=$(pwd)
+
+# Check if mprof is installed
+if ! command -v mprof &> /dev/null
+then
+    echo "mprof could not be found, please install mprof."
+    exit
+fi
+
+# Loop over mprof run files in the current directory
+for run_file in "$CURRENT_DIR"/*.dat; do
+    # Get the base name of the file (without the path)
+    base_name=$(basename "$run_file" .dat)
+    
+    # Set the plot file name
+    plot_file="$CURRENT_DIR/$base_name.png"
+    
+    # Generate the plot
+    mprof plot -o "$plot_file" "$run_file"
+    
+    echo "Plot saved to $plot_file"
+done
+
+echo "All plots created successfully."
