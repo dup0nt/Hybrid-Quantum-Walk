@@ -73,15 +73,15 @@ def execute_circuits(circuits_list,shots,simulator,num_threads,parallel_exp,hard
     #print(f"Run Circuit: {time.time()}")
     #if (simulator=='aer_simulator_statevector'):
     print(f"Transpile: {time.time()-start_time}")
-    circuits_list = transpile(circuits_list, backend, optimization_level=0)
+    circuits_list = transpile(circuits_list, backend, optimization_level=1)
 
     print(f"Run: {time.time()-start_time}")
     job_statevector = backend.run(circuits_list, shots=shots)
     
-    #print(f"Backend options: {backend.options}")
     print(f".result(): {time.time()-start_time}")
     answer = job_statevector.result().get_counts()
     
+    print(f"Backend options: {backend.options}")
     #else:
     #    job = execute(circuits_list, backend=backend, shots=shots)
     #    answer = job.result().get_counts()
