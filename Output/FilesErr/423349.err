@@ -1,0 +1,64 @@
+concurrent.futures.process._RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "/apps/software/Anaconda/2020.11/lib/python3.8/concurrent/futures/process.py", line 239, in _process_worker
+    r = call_item.fn(*call_item.args, **call_item.kwargs)
+  File "/apps/software/Anaconda/2020.11/lib/python3.8/concurrent/futures/process.py", line 198, in _process_chunk
+    return [fn(*args) for args in chunk]
+  File "/apps/software/Anaconda/2020.11/lib/python3.8/concurrent/futures/process.py", line 198, in <listcomp>
+    return [fn(*args) for args in chunk]
+  File "/veracruz/home/d/dgoncalves/.local/lib/python3.8/site-packages/qiskit/tools/parallel.py", line 105, in _task_wrapper
+    return task(value, *task_args, **task_kwargs)
+  File "/veracruz/home/d/dgoncalves/.local/lib/python3.8/site-packages/qiskit/compiler/transpiler.py", line 489, in _transpile_circuit
+    result = pass_manager.run(
+  File "/veracruz/home/d/dgoncalves/.local/lib/python3.8/site-packages/qiskit/transpiler/passmanager.py", line 537, in run
+    return super().run(circuits, output_name, callback)
+  File "/veracruz/home/d/dgoncalves/.local/lib/python3.8/site-packages/qiskit/transpiler/passmanager.py", line 231, in run
+    return self._run_single_circuit(circuits, output_name, callback)
+  File "/veracruz/home/d/dgoncalves/.local/lib/python3.8/site-packages/qiskit/transpiler/passmanager.py", line 292, in _run_single_circuit
+    result = running_passmanager.run(circuit, output_name=output_name, callback=callback)
+  File "/veracruz/home/d/dgoncalves/.local/lib/python3.8/site-packages/qiskit/transpiler/runningpassmanager.py", line 125, in run
+    dag = self._do_pass(pass_, dag, passset.options)
+  File "/veracruz/home/d/dgoncalves/.local/lib/python3.8/site-packages/qiskit/transpiler/runningpassmanager.py", line 169, in _do_pass
+    dag = self._do_pass(required_pass, dag, options)
+  File "/veracruz/home/d/dgoncalves/.local/lib/python3.8/site-packages/qiskit/transpiler/runningpassmanager.py", line 173, in _do_pass
+    dag = self._run_this_pass(pass_, dag)
+  File "/veracruz/home/d/dgoncalves/.local/lib/python3.8/site-packages/qiskit/transpiler/runningpassmanager.py", line 227, in _run_this_pass
+    pass_.run(FencedDAGCircuit(dag))
+  File "/veracruz/home/d/dgoncalves/.local/lib/python3.8/site-packages/qiskit/transpiler/passes/optimization/commutation_analysis.py", line 75, in run
+    does_commute = self.comm_checker.commute(
+  File "/veracruz/home/d/dgoncalves/.local/lib/python3.8/site-packages/qiskit/circuit/commutation_checker.py", line 136, in commute
+    operator_2 = Operator(op2, input_dims=(2,) * len(qarg2), output_dims=(2,) * len(qarg2))
+  File "/veracruz/home/d/dgoncalves/.local/lib/python3.8/site-packages/qiskit/quantum_info/operators/operator.py", line 85, in __init__
+    self._data = self._init_instruction(data).data
+  File "/veracruz/home/d/dgoncalves/.local/lib/python3.8/site-packages/qiskit/quantum_info/operators/operator.py", line 614, in _init_instruction
+    op._append_instruction(instruction)
+  File "/veracruz/home/d/dgoncalves/.local/lib/python3.8/site-packages/qiskit/quantum_info/operators/operator.py", line 691, in _append_instruction
+    self._append_instruction(instruction.operation, qargs=new_qargs)
+  File "/veracruz/home/d/dgoncalves/.local/lib/python3.8/site-packages/qiskit/quantum_info/operators/operator.py", line 658, in _append_instruction
+    raise QiskitError(f"Cannot apply Operation: {obj.name}")
+qiskit.exceptions.QiskitError: 'Cannot apply Operation: reset'
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/veracruz/projects/c/cquant/Dirac-Quantum-Walk/QuantumWalk/main.py", line 58, in <module>
+    exec_answers = execute_circuits(all_results,
+  File "/veracruz/projects/c/cquant/Dirac-Quantum-Walk/QuantumWalk/execute_circuits.py", line 76, in execute_circuits
+    circuits_list = transpile(circuits_list, backend, optimization_level=3)
+  File "/veracruz/home/d/dgoncalves/.local/lib/python3.8/site-packages/qiskit/compiler/transpiler.py", line 371, in transpile
+    circuits = parallel.parallel_map(
+  File "/veracruz/home/d/dgoncalves/.local/lib/python3.8/site-packages/qiskit/tools/parallel.py", line 187, in parallel_map
+    raise error
+  File "/veracruz/home/d/dgoncalves/.local/lib/python3.8/site-packages/qiskit/tools/parallel.py", line 177, in parallel_map
+    results = list(future)
+  File "/apps/software/Anaconda/2020.11/lib/python3.8/concurrent/futures/process.py", line 484, in _chain_from_iterable_of_lists
+    for element in iterable:
+  File "/apps/software/Anaconda/2020.11/lib/python3.8/concurrent/futures/_base.py", line 611, in result_iterator
+    yield fs.pop().result()
+  File "/apps/software/Anaconda/2020.11/lib/python3.8/concurrent/futures/_base.py", line 432, in result
+    return self.__get_result()
+  File "/apps/software/Anaconda/2020.11/lib/python3.8/concurrent/futures/_base.py", line 388, in __get_result
+    raise self._exception
+qiskit.exceptions.QiskitError: 'Cannot apply Operation: reset'

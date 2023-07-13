@@ -4,7 +4,7 @@ import math
 
 threads = [80]
 qubits = [6]
-steps = [40]#list(range(1,80,2))#[range(1,80,2)]#(range(5,300,5))
+steps = [100]#list(range(1,80,2))#[range(1,80,2)]#(range(5,300,5))
 partitions = ['cpu1','cpu2', 'hmem1','hmem2','gpu']
 precisions = ['double', 'single']  
 simulators = ['statevector']#['aer_simulator_statevector','aer_simulator']
@@ -13,7 +13,7 @@ simulators = ['statevector']#['aer_simulator_statevector','aer_simulator']
 partition = partitions[1]
 precision = precisions[0]
 simulator = simulators[0]
-parallel_exps = [1]
+parallel_exps = [1,80]
 batchings = [0]
 multiple_circuits = 1 #0 if no (i.e. for individual circuits), 1 if yes
 
@@ -154,10 +154,10 @@ for parallel_exp in parallel_exps:
 #SBATCH --time=2800:00
 
 # out
-#SBATCH --output=/veracruz/projects/c/cquant/Dirac-Quantum-Walk/FilesOut/%j.out
+#SBATCH --output=/veracruz/projects/c/cquant/Dirac-Quantum-Walk/Output/FilesOut/%j.out
 
 # err and out job files
-#SBATCH --error=/veracruz/projects/c/cquant/Dirac-Quantum-Walk/FilesErr/%j.err
+#SBATCH --error=/veracruz/projects/c/cquant/Dirac-Quantum-Walk/Output/FilesErr/%j.err
 
 # Get the Slurm Job ID
 JOB_ID=$SLURM_JOB_ID
