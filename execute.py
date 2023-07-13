@@ -3,8 +3,8 @@ import time
 import math
 
 threads = [80]
-qubits = [6]
-steps = [2]#list(range(1,80,2))
+qubits = [7]
+steps = [2**8]#list(range(1,80,2))
 partitions = ['cpu1','cpu2', 'hmem1','hmem2','gpu']
 precisions = ['double', 'single']  
 simulators = ['statevector']#['aer_simulator_statevector','aer_simulator']
@@ -156,8 +156,7 @@ for parallel_exp in parallel_exps:
                         else:
                             job_name+=digit_string(step,"SCCN_")
 
-                        
-                        
+                                                
 
 #SBATCH --exclusive
                         bash_execute = """#!/bin/bash
@@ -207,7 +206,7 @@ echo "number of tasks = $SLURM_NTASKS"
 echo "number of cpus_per_task = $SLURM_CPUS_PER_TASK"
 
 # Run the command
-srun mprof run --output /veracruz/projects/c/cquant/Dirac-Quantum-Walk/Output/Profiler/%j.prof python3 /veracruz/projects/c/cquant/Dirac-Quantum-Walk/QuantumWalk/main.py {} {} {} {} {} {} {} {} ${{SLURM_JOB_ID}} {} {} {} {} {} {} {} {}
+srun mprof run --output /veracruz/projects/c/cquant/Dirac-Quantum-Walk/Output/Profiler/Data/${{SLURM_JOB_ID}}.prof python3 /veracruz/projects/c/cquant/Dirac-Quantum-Walk/QuantumWalk/main.py {} {} {} {} {} {} {} {} ${{SLURM_JOB_ID}} {} {} {} {} {} {} {} {}
 
 """.format(partition,job_name, partitions_details[partition]['memory'],thread,qubit,step,coin_type,theta,boundary,dist_boundary,shots,simulator,thread,hardware,precision,parallel_exp,batching,multiple_circuits, job_size,split_circuits_per_cluster_node)
 
@@ -258,5 +257,5 @@ srun mprof run --output /veracruz/projects/c/cquant/Dirac-Quantum-Walk/Output/Pr
                             print("Job upload failed " + str(result.stderr))
 
                         
-                        time.sleep(0.1)
+                        time.sleep(0.01)
              

@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "/veracruz/home/d/dgoncalves/.conda/envs/cquant_env/bin/mprof", line 8, in <module>
+    sys.exit(main())
+  File "/veracruz/home/d/dgoncalves/.conda/envs/cquant_env/lib/python3.7/site-packages/mprof.py", line 933, in main
+    actions[get_action()]()
+  File "/veracruz/home/d/dgoncalves/.conda/envs/cquant_env/lib/python3.7/site-packages/mprof.py", line 281, in run_action
+    with open(mprofile_output, "a") as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/veracruz/projects/c/cquant/Dirac-Quantum-Walk/Output/Profiler/424066.prof'
+srun: error: caravela007: task 0: Exited with exit code 1
