@@ -49,6 +49,11 @@ df['hardware'] = df['JobName'].str.extract(r'P\d+[a-zA-Z][a-zA-Z]([a-zA-Z])')
 df['batching'] = df['JobName'].str.extract(r'P\d+[a-zA-Z][a-zA-Z][a-zA-Z]([a-zA-Z])')
 df['multiple_circuits'] = df['JobName'].str.extract(r'P\d+[a-zA-Z][a-zA-Z][a-zA-Z][a-zA-Z]([a-zA-Z])')
 
+#the following lines need to be checked if are working correcly
+df['job_size'] = df['JobName'].str.extract(r'JS(\d+)')
+df['split_circuits_per_cluster_node'] = df['JobName'].str.extract(r'SCCN_(\d+)')
+
+
 df["multiple_circuits"].fillna("M", inplace=True)
 df["precision"].fillna("D", inplace=True)
 df["batching"].fillna("U", inplace=True)

@@ -9,7 +9,7 @@
 #SBATCH --ntasks=1
 
 # set name of job
-#SBATCH --job-name=Q06S39P01DsCU00MJS01
+#SBATCH --job-name=Q06S49P01DsCU00SJS01SCCN_49
 
 # set the mem for the whole job
 #SBATCH --mem-per-cpu=1100M

@@ -4,7 +4,7 @@ import math
 
 threads = [80]
 qubits = [6]
-steps = list(range(1,41,2))#[range(1,80,2)]#(range(5,300,5))
+steps = [50]#list(range(1,80,2))#[range(1,80,2)]#(range(5,300,5))
 partitions = ['cpu1','cpu2', 'hmem1','hmem2','gpu']
 precisions = ['double', 'single']  
 simulators = ['statevector']#['aer_simulator_statevector','aer_simulator']
@@ -16,6 +16,9 @@ simulator = simulators[0]
 parallel_exps = [1]
 batchings = [0]
 multiple_circuits = 1 #0 if no (i.e. for individual circuits), 1 if yes
+split_circuits_per_cluster_node = 1 #0 -> no (default), 1-> yes,        -SCCN-
+
+
 
 """
 For job_size:
@@ -83,12 +86,23 @@ partitions_details = {
 
 #Begin job:
 def digit_string(variable, codification):
-    if (variable<10):
+    if variable <0:
+        my_string = codification+str(variable)
+    elif (variable<10):
         my_string = codification+  "0" + str(variable)
     else:
         my_string = codification+ str(variable)
 
     return my_string
+
+if split_circuits_per_cluster_node==1:
+    multiple_circuits = 0 #force execution of single circuits
+    parallel_exps = [1]
+    steps = list(range(steps[0]))
+    print(steps)
+
+
+
 
 for parallel_exp in parallel_exps:
     for batching in batchings:
@@ -128,6 +142,15 @@ for parallel_exp in parallel_exps:
                             job_name+=digit_string(int(steps[0]),'JS') 
                         else:
                             job_name+=digit_string(job_size,'JS')   
+
+                        if split_circuits_per_cluster_node==0:
+                            job_name+=digit_string(-1,"SCCN_")
+                        else:
+                            job_name+=digit_string(step,"SCCN_")
+
+                        
+                        print(job_name)
+
 #SBATCH --exclusive
                         bash_execute = """#!/bin/bash
 # set the partition where the job will run (default = normal)
@@ -176,9 +199,10 @@ echo "number of tasks = $SLURM_NTASKS"
 echo "number of cpus_per_task = $SLURM_CPUS_PER_TASK"
 
 # Run the command
-srun mprof run python3 /veracruz/projects/c/cquant/Dirac-Quantum-Walk/QuantumWalk/main.py {} {} {} {} {} {} {} {} ${{SLURM_JOB_ID}} {} {} {} {} {} {} {}
+srun mprof run --output /veracruz/projects/c/cquant/Dirac-Quantum-Walk/Output/Profiler/%j.prof python3 /veracruz/projects/c/cquant/Dirac-Quantum-Walk/QuantumWalk/main.py {} {} {} {} {} {} {} {} ${{SLURM_JOB_ID}} {} {} {} {} {} {} {} {}
 
-""".format(partition,job_name, partitions_details[partition]['memory'],thread,qubit,step,coin_type,theta,boundary,dist_boundary,shots,simulator,thread,hardware,precision,parallel_exp,batching,multiple_circuits, job_size)
+""".format(partition,job_name, partitions_details[partition]['memory'],thread,qubit,step,coin_type,theta,boundary,dist_boundary,shots,simulator,thread,hardware,precision,parallel_exp,batching,multiple_circuits, job_size,split_circuits_per_cluster_node)
+
 
                         # "/veracruz/projects/c/cquant/Dirac-Quantum-Walk/submit__cache.sh"
                         script_filename = "/veracruz/projects/c/cquant/Dirac-Quantum-Walk/submit__cache.sh"
@@ -216,4 +240,4 @@ srun mprof run python3 /veracruz/projects/c/cquant/Dirac-Quantum-Walk/QuantumWal
 
                         
                         time.sleep(0.1)
-                
+             
