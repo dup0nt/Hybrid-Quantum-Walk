@@ -10,10 +10,10 @@ precisions = ['double', 'single']
 simulators = ['statevector']#['aer_simulator_statevector','aer_simulator']
 
 
-partition = partitions[1]
+partition = partitions[2]
 precision = precisions[0]
 simulator = simulators[0]
-parallel_exps = [1,80]
+parallel_exps = [1]
 batchings = [0]
 multiple_circuits = 1 #0 if no (i.e. for individual circuits), 1 if yes
 split_circuits_per_cluster_node = 1 #0 -> no (default), 1-> yes,        -SCCN-

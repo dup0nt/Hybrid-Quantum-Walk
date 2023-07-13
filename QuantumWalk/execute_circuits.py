@@ -78,10 +78,10 @@ def execute_circuits(circuits_list,shots,simulator,num_threads,parallel_exp,hard
     print(f"Run: {time.time()-start_time}")
     job_statevector = backend.run(circuits_list, shots=shots)
     
-    #print(f"Backend options: {backend.options}")
     print(f".result(): {time.time()-start_time}")
     answer = job_statevector.result().get_counts()
     
+    print(f"Backend options: {backend.options}")
     #else:
     #    job = execute(circuits_list, backend=backend, shots=shots)
     #    answer = job.result().get_counts()
