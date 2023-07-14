@@ -3,20 +3,20 @@ import time
 import math
 
 threads = [80]
-qubits = [7]
-steps = [2**8]#list(range(1,80,2))
+qubits = [10]
+steps = [2**11]#list(range(1,80,2))
 partitions = ['cpu1','cpu2', 'hmem1','hmem2','gpu']
 precisions = ['double', 'single']  
 simulators = ['statevector']#['aer_simulator_statevector','aer_simulator']
 
 
-partition = partitions[1]
+partition = partitions[2]
 precision = precisions[0]
 simulator = simulators[0]
 parallel_exps = [1]
 batchings = [0]
-multiple_circuits = 1 #0 if no (i.e. for individual circuits), 1 if yes
-split_circuits_per_cluster_node = 1 #0 -> no (default), 1-> yes,        -SCCN-
+multiple_circuits = 0 #0 if no (i.e. for individual circuits), 1 if yes
+split_circuits_per_cluster_node = 0 #0 -> no (default), 1-> yes,        -SCCN-
 
 
 
@@ -257,5 +257,5 @@ srun mprof run --output /veracruz/projects/c/cquant/Dirac-Quantum-Walk/Output/Pr
                             print("Job upload failed " + str(result.stderr))
 
                         
-                        time.sleep(0.01)
+                        time.sleep(0.001)
              
