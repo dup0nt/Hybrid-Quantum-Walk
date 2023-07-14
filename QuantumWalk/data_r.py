@@ -3,7 +3,8 @@ import seaborn as sns
 from common import os, datetime, np, plt
 
 
-pathe = './Output/Data/'
+#pathe = './Output/Data/'
+pathe = "./Output/Data/Data_compiled"
 #file_name = "2023-05-09 @ 11_46_43__Q6_Ry(1)_S128_B15_5000.txt"
 #file_path = pathe
 

@@ -74,5 +74,5 @@ else:
                                 job_size)
     
 print(f"Finnish: {time.time()-start_time}")
-#proc_answer = convert_dicts_to_array(exec_answers,shots,multiple_circuit)
-#save_results_to_file(proc_answer, pathe, file + ".txt")
+proc_answer = convert_dicts_to_array(exec_answers,shots,multiple_circuit)
+save_results_to_file(proc_answer, pathe, file + ".txt")

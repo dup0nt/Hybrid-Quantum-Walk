@@ -1,0 +1,21 @@
+number of tasks = 1
+number of cpus_per_task = 80
+output ['/veracruz/projects/c/cquant/Dirac-Quantum-Walk/QuantumWalk/main.py', '6', '11', '1', '2', '1', '2', '10000', 'statevector', '423990', '80', 'CPU', 'double', '1', '0', '1', 'None']
+Creating Circuit: 0.15838265419006348
+Creating Circuit: 0.2897472381591797
+Creating Circuit: 0.336820125579834
+Creating Circuit: 0.39679503440856934
+Creating Circuit: 0.47003602981567383
+Creating Circuit: 0.5577020645141602
+Creating Circuit: 0.6678736209869385
+Creating Circuit: 0.7873680591583252
+Creating Circuit: 1.0409002304077148
+Creating Circuit: 1.1843647956848145
+Creating Circuit: 1.3449962139129639
+Transpile: 1.5490937232971191
+Run: 13.98396897315979
+.result(): 18.775795221328735
+Backend options: Options(shots=10000, method='statevector', device='CPU', precision='double', executor=None, max_job_size=None, max_shot_size=None, enable_truncation=True, zero_threshold=1e-10, validation_threshold=None, max_parallel_threads=80, max_parallel_experiments=1, max_parallel_shots=None, max_memory_mb=None, fusion_enable=True, fusion_verbose=False, fusion_max_qubit=None, fusion_threshold=None, accept_distributed_results=None, memory=None, noise_model=None, seed_simulator=None, cuStateVec_enable=False, blocking_qubits=None, blocking_enable=False, chunk_swap_buffer_qubits=None, batched_shots_gpu=False, batched_shots_gpu_max_qubits=16, num_threads_per_device=1, statevector_parallel_threshold=14, statevector_sample_measure_opt=10, stabilizer_max_snapshot_probabilities=32, extended_stabilizer_sampling_method='resampled_metropolis', extended_stabilizer_metropolis_mixing_time=5000, extended_stabilizer_approximation_error=0.05, extended_stabilizer_norm_estimation_samples=100, extended_stabilizer_norm_estimation_repetitions=3, extended_stabilizer_parallel_threshold=100, extended_stabilizer_probabilities_snapshot_samples=3000, matrix_product_state_truncation_threshold=1e-16, matrix_product_state_max_bond_dimension=None, mps_sample_measure_algorithm='mps_heuristic', mps_log_data=False, mps_swap_direction='mps_swap_left', chop_threshold=1e-08, mps_parallel_threshold=14, mps_omp_threads=1, tensor_network_num_sampling_qubits=10, use_cuTensorNet_autotuning=False)
+Finnish: 25.657226085662842
+mprof: Sampling memory every 0.1s
+running new process
