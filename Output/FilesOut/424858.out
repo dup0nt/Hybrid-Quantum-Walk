@@ -1,0 +1,9 @@
+number of tasks = 1
+number of cpus_per_task = 80
+output ['/veracruz/projects/c/cquant/Dirac-Quantum-Walk/QuantumWalk/main.py', '9', '346', '1', '2', '1', '2', '10000', 'statevector', '424858', '80', 'CPU', 'double', '1', '0', '0', 'None', '1']
+Creating Circuit: 0.1876239776611328
+Transpile: 17.997519969940186
+Run: 5142.64257645607
+.result() start: 5457.397176265717
+mprof: Sampling memory every 0.1s
+running new process

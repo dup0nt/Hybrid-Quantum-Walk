@@ -3,7 +3,7 @@ import time
 import math
 
 threads = [80]
-qubits = [10]
+qubits = [9]
 steps = [2**10]#list(range(1,80,2))
 partitions = ['cpu1','cpu2', 'hmem1','hmem2','gpu']
 precisions = ['double', 'single']  
@@ -16,7 +16,7 @@ simulator = simulators[0]
 parallel_exps = [1]
 batchings = [0]
 multiple_circuits = 0 #0 if no (i.e. for individual circuits), 1 if yes
-split_circuits_per_cluster_node = 0 #0 -> no (default), 1-> yes,        -SCCN-
+split_circuits_per_cluster_node = 1 #0 -> no (default), 1-> yes,        -SCCN-
 
 
 
