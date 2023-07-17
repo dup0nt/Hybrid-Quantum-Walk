@@ -12,7 +12,7 @@ fi
 # Loop over mprof run files in the current directory
 for run_file in "$CURRENT_DIR"/*.dat; do
     # Get the base name of the file (without the path)
-    base_name=$(basename "$run_file" .dat)
+    base_name=$(basename "$run_file" .prof)
     
     # Set the plot file name
     plot_file="$CURRENT_DIR/$base_name.png"

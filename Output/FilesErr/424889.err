@@ -1,0 +1,3 @@
+srun: Job step aborted: Waiting up to 122 seconds for job step to finish.
+slurmstepd: error: *** STEP 424889.0 ON caravela010 CANCELLED AT 2023-07-17T15:25:47 ***
+slurmstepd: error: *** JOB 424889 ON caravela010 CANCELLED AT 2023-07-17T15:25:47 ***

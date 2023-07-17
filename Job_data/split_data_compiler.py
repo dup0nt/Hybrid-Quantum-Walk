@@ -6,7 +6,7 @@ now = datetime.now()
 formatted_now = now.strftime('%Y-%m-%d @ %H_%M_%S')
 
 data_path = "./Dirac-Quantum-Walk/Output/Data"
-job_name = "Q07S255P01DsCU00SJS01"
+job_name = "Q09S1023P01DsCU00SJS01"
 parallel_cache_path = "./Dirac-Quantum-Walk/Output/Parallel_cache/"+job_name+".txt"
 data_compiled_path = "/veracruz/projects/c/cquant/Dirac-Quantum-Walk/Output/Data/Data_compiled/"+job_name+" "+ str(formatted_now) + ".txt"
 
