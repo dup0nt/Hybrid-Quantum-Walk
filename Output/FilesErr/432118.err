@@ -1,0 +1,3 @@
+srun: Job step aborted: Waiting up to 122 seconds for job step to finish.
+slurmstepd: error: *** STEP 432118.0 ON nau005 CANCELLED AT 2023-07-22T11:07:26 ***
+slurmstepd: error: *** JOB 432118 ON nau005 CANCELLED AT 2023-07-22T11:07:26 ***
