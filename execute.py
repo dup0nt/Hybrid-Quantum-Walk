@@ -2,21 +2,21 @@ import subprocess
 import time
 import math
 
-threads = [80]
-qubits = [9]
-steps = [2**10]#list(range(248,2**10,1))#[2**5]#list(range(1,80,2))
+threads = [64]
+qubits = [5]
+steps = [2**5]#list(range(248,2**10,1))#[2**5]#list(range(1,80,2))
 partitions = ['cpu1','cpu2', 'hmem1','hmem2','gpu']
 precisions = ['double', 'single']  
 simulators = ['statevector']#['aer_simulator_statevector','aer_simulator']
 
 
-partition = partitions[2]
+partition = partitions[5]
 precision = precisions[0]
 simulator = simulators[0]
 parallel_exps = [1]
 batchings = [0]
-multiple_circuits = 0 #0 if no (i.e. for individual circuits), 1 if yes (default)
-split_circuits_per_cluster_node = 1 #0 -> no (default), 1-> yes,        -SCCN-
+multiple_circuits = 1 #0 if no (i.e. for individual circuits), 1 if yes (default)
+split_circuits_per_cluster_node = 0 #0 -> no (default), 1-> yes,        -SCCN-
 
 
 
@@ -198,7 +198,7 @@ export OMPI_MCA_mtl="ofi"
 
 module load CUDA/11.7.0
 module load Anaconda
-source activate cquant_env
+source activate cquant_env_gpu
 
 # Print the number of tasks per node
 echo "number of tasks = $SLURM_NTASKS"

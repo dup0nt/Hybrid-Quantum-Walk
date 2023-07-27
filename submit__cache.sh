@@ -1,6 +1,6 @@
 #!/bin/bash
 # set the partition where the job will run (default = normal)
-#SBATCH --partition=hmem1
+#SBATCH --partition=vis
 #SBATCH -A cquant
 
 # set the number of nodes and processes per node
@@ -9,13 +9,13 @@
 #SBATCH --ntasks=1
 
 # set name of job
-#SBATCH --job-name=Q09S1023P01DsCU00SJS01SCCN_1023
+#SBATCH --job-name=Q05S32P01DsCU00MJS32SCCN_-1
 
 # set the mem for the whole job
-#SBATCH --mem-per-cpu=4700M
+#SBATCH --mem-per-cpu=15976M
 
 # set the number of tasks (processes) per node.
-#SBATCH --cpus-per-task=80
+#SBATCH --cpus-per-task=64
 
 
 
@@ -45,5 +45,5 @@ echo "number of tasks = $SLURM_NTASKS"
 echo "number of cpus_per_task = $SLURM_CPUS_PER_TASK"
 
 # Run the command
-srun mprof run --output /veracruz/projects/c/cquant/Dirac-Quantum-Walk/Output/Profiler/Data/${SLURM_JOB_ID}.prof python3 /veracruz/projects/c/cquant/Dirac-Quantum-Walk/QuantumWalk/main.py 9 1023 1 2 1 2 10000 statevector ${SLURM_JOB_ID} 80 CPU double 1 0 0 None 1
+srun mprof run --output /veracruz/projects/c/cquant/Dirac-Quantum-Walk/Output/Profiler/Data/${SLURM_JOB_ID}.prof python3 /veracruz/projects/c/cquant/Dirac-Quantum-Walk/QuantumWalk/main.py 5 32 1 2 1 2 10000 statevector ${SLURM_JOB_ID} 64 CPU double 1 0 1 None 0
 
