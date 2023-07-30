@@ -2,15 +2,15 @@ import subprocess
 import time
 import math
 
-threads = [64]
-qubits = [5]
-steps = [2**5]#list(range(248,2**10,1))#[2**5]#list(range(1,80,2))
+threads = [80]
+qubits = [6]
+steps = [2**7]#list(range(248,2**10,1))#[2**5]#list(range(1,80,2))
 partitions = ['cpu1','cpu2', 'hmem1','hmem2','gpu']
 precisions = ['double', 'single']  
 simulators = ['statevector']#['aer_simulator_statevector','aer_simulator']
 
 
-partition = partitions[5]
+partition = partitions[1]
 precision = precisions[0]
 simulator = simulators[0]
 parallel_exps = [1]
@@ -156,6 +156,7 @@ for parallel_exp in parallel_exps:
                         else:
                             job_name+=digit_string(step,"SCCN_")
 
+            
                                                 
 
 #SBATCH --exclusive
