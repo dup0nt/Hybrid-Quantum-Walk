@@ -1,5 +1,5 @@
 from simulator import choose_backend
-from common import np, transpile,execute,QuantumCircuit, plot_histogram,plt,time, start_time
+from common import np, transpile,execute,QuantumCircuit, plot_histogram,plt,time, start_time, Aer
 
 def subdivide_list(original_list, N):
     return [original_list[i:i+N] for i in range(0, len(original_list), N)]
@@ -71,17 +71,17 @@ def execute_circuits(circuits_list,shots,simulator,num_threads,parallel_exp,hard
     print("Job Size: {}".format(job_size))
     """
     #print(f"Run Circuit: {time.time()}")
+    print(f"Backend options: {backend.options}")
 
     print(f"Transpile: {time.time()-start_time}")
-    circuits_list = transpile(circuits_list, backend, optimization_level=1)
+    circuits_list = transpile(circuits_list, backend, optimization_level=0)
 
     print(f"Run: {time.time()-start_time}")
-    job_statevector = backend.run(circuits_list, shots=shots)
+    job_statevector = backend.run(circuits_list,backend=backend)
     
     print(f".result() start: {time.time()-start_time}")
     answer = job_statevector.result().get_counts()
     print(f".result() end: {time.time()-start_time}")
-    print(f"Backend options: {backend.options}")
     #else:
     #    job = execute(circuits_list, backend=backend, shots=shots)
     #    answer = job.result().get_counts()

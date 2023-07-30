@@ -2,20 +2,20 @@ import subprocess
 import time
 import math
 
-threads = [80]
-qubits = [9]
-steps = [2**10]#list(range(1,80,2))
+threads = [64]
+qubits = [5]
+steps = [2**5]#list(range(248,2**10,1))#[2**5]#list(range(1,80,2))
 partitions = ['cpu1','cpu2', 'hmem1','hmem2','gpu']
 precisions = ['double', 'single']  
 simulators = ['statevector']#['aer_simulator_statevector','aer_simulator']
 
 
-partition = partitions[2]
+partition = partitions[5]
 precision = precisions[0]
 simulator = simulators[0]
 parallel_exps = [1]
 batchings = [0]
-multiple_circuits = 0 #0 if no (i.e. for individual circuits), 1 if yes (default)
+multiple_circuits = 1 #0 if no (i.e. for individual circuits), 1 if yes (default)
 split_circuits_per_cluster_node = 0 #0 -> no (default), 1-> yes,        -SCCN-
 
 
@@ -98,7 +98,7 @@ def digit_string(variable, codification):
 if split_circuits_per_cluster_node==1:
     multiple_circuits = 0 #force execution of single circuits
     parallel_exps = [1]
-    steps = list(range(steps[0]))
+    steps = list(range(248,steps[0]))
 
 
 
@@ -159,7 +159,59 @@ for parallel_exp in parallel_exps:
                                                 
 
 #SBATCH --exclusive
-                        bash_execute = """#!/bin/bash
+                        if partition=='gpu':
+                            
+                            bash_execute = """#!/bin/bash
+# set the partition where the job will run (default = normal)
+#SBATCH --partition={}
+#SBATCH -A cquant
+
+#SBATCH --nodes 1          # One node
+#SBATCH --ntasks=1
+
+# set the number of nodes and processes per node
+
+#SBATCH --gres=gpu:v100:1 
+
+
+
+# set name of job
+#SBATCH --job-name={}
+
+
+# set max wallclock time (in this case 2800 minutes)
+#SBATCH --time=2800:00
+
+# out
+#SBATCH --output=/veracruz/projects/c/cquant/Dirac-Quantum-Walk/Output/FilesOut/%j.out
+
+# err and out job files
+#SBATCH --error=/veracruz/projects/c/cquant/Dirac-Quantum-Walk/Output/FilesErr/%j.err
+
+# Get the Slurm Job ID
+JOB_ID=$SLURM_JOB_ID
+
+# Use OpenMP and set environment variables
+export SLURM_JOB_ID=$SLURM_JOB_ID
+export OMPI_MCA_btl="^openib"
+export OMPI_MCA_mtl="ofi"
+
+module load CUDA/11.7.0
+module load Anaconda
+source activate cquant_env_gpu
+
+# Print the number of tasks per node
+echo "number of tasks = $SLURM_NTASKS"
+echo "number of cpus_per_task = $SLURM_CPUS_PER_TASK"
+
+# Run the command
+srun mprof run --output /veracruz/projects/c/cquant/Dirac-Quantum-Walk/Output/Profiler/Data/${{SLURM_JOB_ID}}.prof python3 /veracruz/projects/c/cquant/Dirac-Quantum-Walk/QuantumWalk/main.py {} {} {} {} {} {} {} {} ${{SLURM_JOB_ID}} {} {} {} {} {} {} {} {}
+
+""".format(partition,job_name,qubit,step,coin_type,theta,boundary,dist_boundary,shots,simulator,thread,hardware,precision,parallel_exp,batching,multiple_circuits, job_size,split_circuits_per_cluster_node)
+
+                        else:
+
+                            bash_execute = """#!/bin/bash
 # set the partition where the job will run (default = normal)
 #SBATCH --partition={}
 #SBATCH -A cquant

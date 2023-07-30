@@ -13,6 +13,7 @@ import sys
 import time
 
 from qiskit import *
+from qiskit import Aer
 from qiskit.quantum_info import Operator
 from qiskit.circuit.library.standard_gates import HGate
 from qiskit.circuit import QuantumCircuit
