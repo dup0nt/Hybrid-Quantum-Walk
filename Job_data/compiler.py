@@ -4,7 +4,7 @@ import seaborn as sns
 import numpy as np
 
 
-file_name = "./Job_data/sacctoutput_singlecircuit_analysis.csv"
+file_name = "./Job_data/sacctoutput_analysis.csv"
 #file_results = "./Dirac Quantum Walk/Output/Data"
 
 #Passa a file para Pandas Dataframe format
@@ -35,24 +35,29 @@ df = df[(~df['JobID'].str.contains('.batch'))]
 df = df.loc[~df['JobName'].str.contains('python3')]
 df = df.loc[df['JobName'].str.startswith('Q')]
 
+#Drop all non important 
+df['JobID'] = df['JobID'].astype(int)
+#df = df[(df['JobID'] >= 417154) & (df['JobID'] <= 417176) | (df['JobID'] == 418812)]
+df = df[(df['JobID'] >= 434990) & (df['JobID'] <= 434994)]
+
 print(df.to_string())
 
 df['qubits'] = df['JobName'].str.extract(r'Q(\d+)S')
 df['steps'] = df['JobName'].str.extract(r'S(\d+)[a-zA-Z]')
 df['MaxRSS'] = df['MaxRSS'].str.extract(r'(\d+\.\d{2})M').astype(float)
+df['MaxRSS'] = df['MaxRSS'].fillna(0).astype(int)
 df['qubits'] = df['qubits'].astype(int)
 df['steps'] = df['steps'].astype(int)
-df['max_parallel_experiments'] = df['JobName'].str.extract(r'P(\d+)[a-zA-Z]')
+df['max_parallel_experiments'] = df['JobName'].str.extract(r'P(\d+)[a-zA-Z]').astype(int)
 df['precision'] = df['JobName'].str.extract(r'P\d+([a-zA-Z])')
 df['simulator'] = df['JobName'].str.extract(r'P\d+[a-zA-Z]([a-zA-Z])')
 df['hardware'] = df['JobName'].str.extract(r'P\d+[a-zA-Z][a-zA-Z]([a-zA-Z])')
 df['batching'] = df['JobName'].str.extract(r'P\d+[a-zA-Z][a-zA-Z][a-zA-Z]([a-zA-Z])')
 df['multiple_circuits'] = df['JobName'].str.extract(r'P\d+[a-zA-Z][a-zA-Z][a-zA-Z][a-zA-Z]([a-zA-Z])')
-
 #the following lines need to be checked if are working correcly
-df['job_size'] = df['JobName'].str.extract(r'JS(\d+)')
+df['job_size'] = df['JobName'].str.extract(r'JS(\d+)').astype(int)
+df = df[df['job_size'] != 128]
 df['split_circuits_per_cluster_node'] = df['JobName'].str.extract(r'SCCN_(\d+)')
-
 
 df["multiple_circuits"].fillna("M", inplace=True)
 df["precision"].fillna("D", inplace=True)
@@ -103,6 +108,24 @@ def variable_in(variable, possible_values):
 
 #PLOTTER
 
+keyword_dict = {
+    'MaxRSS': 'Max Memory Usage [MB]',
+    'steps': 'Number of Steps, $n$',
+    'TotalCPU_seconds': 'Computation Time [seconds]',
+    'qubits': 'Number of Qubits',
+    'job_size': 'Job Size',
+    'max_parallel_experiments' : 'max_parallel_experiments label'
+}
+
+def calc_average_and_std(column, df=df):
+    """Calculate the average and standard deviation of a DataFrame column."""
+
+    avg = df[column].mean()
+    std = df[column].std()
+    return avg, std
+
+
+
 def ploter(xaxis, yaxis,hue, dataframe=df, ifqubits=[6], ifsteps=[2**7]):
 
     variable_in(xaxis, ['qubits', 'steps', 'AllocCPUS'])
@@ -152,24 +175,53 @@ def ploter(xaxis, yaxis,hue, dataframe=df, ifqubits=[6], ifsteps=[2**7]):
 
 #ploter('steps', 'MaxRSS', 'batching')
 
-def single_plotter(xaxis, yaxis,dataframe=df):
-
+def single_plotter(xaxis, yaxis,dataframe=df, show_avg=True):
+    extra_flag =""
+    if(yaxis == 'TotalCPU'):
+        yaxis = 'TotalCPU_seconds'
     dataframe = dataframe[dataframe['qubits'] == (6)]
-    dataframe = dataframe[dataframe['multiple_circuits'] == ('S')]
+    #dataframe = dataframe[dataframe['multiple_circuits'] == ('S')]
+   
     #dataframe = dataframe[dataframe['simulator'] == ('a')]
     
+    plt.figure(figsize=(12, 8))
+    #sns.set_palette('pastel')
     
-    sns.set_palette('pastel')
+    #print("Here:"+ df.to_string())
 
     sns.set_style("whitegrid", {"grid.color": "0.9", "grid.linewidth": 0.5, "grid.alpha": 0.5})
-    ax = sns.barplot(x=xaxis, y=yaxis, width=0.3, data=dataframe, errorbar=None)
+    ax = sns.barplot(x=xaxis, y=yaxis,hue='max_parallel_experiments', width=0.3, data=dataframe, errorbar=None, color='#0096D6')
     #ax.set_ylim([4.25, 4.5])
 
     ax.set_xticklabels(ax.get_xticklabels(), rotation=-60)
     
     ax.minorticks_on()
     ax.grid(which='both', axis='y', linestyle=':', linewidth='0.5', color='gray', alpha=0.2)
-    print(dataframe.to_string())
+
+    if show_avg:
+        extra_flag = "+average "
+        avg, std = calc_average_and_std(yaxis)
+        extra_flag+=str(avg) + " " + str(std)
+        ax.axhline(avg, color='red', alpha=0.4)  # plot average
+        ax.axhline(avg + std, color='lightsalmon', linestyle='-', alpha=0.3)  # plot +std
+        ax.axhline(avg - std, color='lightsalmon', linestyle='-', alpha=0.3)  #
+
+    plt.xlabel(keyword_dict[xaxis])  # Replace 'Your X Label' with actual x-axis label
+    plt.ylabel(keyword_dict[yaxis])  # Replace 'Your Y Label' with actual y-axis label
+    plt.savefig("/Users/diogogoncalves/Library/CloudStorage/Dropbox/Apps/Overleaf/Thesis - Template/images/7-simulation/"+"{}+{}{}.pdf".format(xaxis,yaxis,extra_flag))
+
     plt.show()
 
-single_plotter('steps','TotalCPU_seconds')
+single_plotter('job_size','TotalCPU')
+"""
+fig, ax =plt.subplots(1,1)
+ax.axis('tight')
+ax.axis('off')
+table = ax.table(cellText=df.values, colLabels=df.columns, rowLabels=df.index, cellLoc='center', loc='center')
+
+# Increase the font size
+table.auto_set_font_size(False)
+table.set_fontsize(10)
+table.scale(1, 1.5)
+plt.show()
+"""
