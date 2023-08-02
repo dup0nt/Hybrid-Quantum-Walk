@@ -70,7 +70,7 @@ Backend options: Options(shots=10000, method='statevector', device='CPU', precis
 Transpile: 34.91820025444031
 Run: 397.49204754829407
 .result() start: 528.5409162044525
-.result() end: 753.0827403068542
+.result() end: 753.0827403068542-397.49204754829407=355,5906927586
 Finnish: 767.0080358982086
 mprof: Sampling memory every 0.1s
 running new process

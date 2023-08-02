@@ -16,9 +16,11 @@ df = df[(~df['State'].str.contains('CANCELLED|FAILED|OUT_OF_MEMORY|TIMEOUT|RUNNI
 
 # Pass the value from python_lines to the rows above it
 python_rows = df[df['JobName'] == 'python3']
+mprof_rows = df[df['JobName'] == 'mprof']
 
 # Shift the value of 'MaxRSS' in python_rows to two lines above
 df.loc[python_rows.index - 3, 'MaxRSS'] = python_rows['MaxRSS'].values
+df.loc[mprof_rows.index - 3, 'MaxRSS'] = mprof_rows['MaxRSS'].values
 
 
 """
@@ -38,9 +40,8 @@ df = df.loc[df['JobName'].str.startswith('Q')]
 #Drop all non important 
 df['JobID'] = df['JobID'].astype(int)
 #df = df[(df['JobID'] >= 417154) & (df['JobID'] <= 417176) | (df['JobID'] == 418812)]
-df = df[(df['JobID'] >= 434990) & (df['JobID'] <= 434994)]
-
-print(df.to_string())
+#df = df[(df['JobID'] >= 434990) & (df['JobID'] <= 434994)]
+df = df[(df['JobID'] >= 436696) & (df['JobID'] <= 436700) | (df['JobID'] == 437028)]
 
 df['qubits'] = df['JobName'].str.extract(r'Q(\d+)S')
 df['steps'] = df['JobName'].str.extract(r'S(\d+)[a-zA-Z]')
@@ -56,8 +57,10 @@ df['batching'] = df['JobName'].str.extract(r'P\d+[a-zA-Z][a-zA-Z][a-zA-Z]([a-zA-
 df['multiple_circuits'] = df['JobName'].str.extract(r'P\d+[a-zA-Z][a-zA-Z][a-zA-Z][a-zA-Z]([a-zA-Z])')
 #the following lines need to be checked if are working correcly
 df['job_size'] = df['JobName'].str.extract(r'JS(\d+)').astype(int)
-df = df[df['job_size'] != 128]
+#df = df[df['job_size'] != 128]
 df['split_circuits_per_cluster_node'] = df['JobName'].str.extract(r'SCCN_(\d+)')
+
+
 
 df["multiple_circuits"].fillna("M", inplace=True)
 df["precision"].fillna("D", inplace=True)
@@ -114,7 +117,8 @@ keyword_dict = {
     'TotalCPU_seconds': 'Computation Time [seconds]',
     'qubits': 'Number of Qubits',
     'job_size': 'Job Size',
-    'max_parallel_experiments' : 'max_parallel_experiments label'
+    'max_parallel_experiments' : 'max_parallel_experiments label',
+    'JobID' : 'JobID'
 }
 
 def calc_average_and_std(column, df=df):
@@ -174,23 +178,23 @@ def ploter(xaxis, yaxis,hue, dataframe=df, ifqubits=[6], ifsteps=[2**7]):
     plt.show()
 
 #ploter('steps', 'MaxRSS', 'batching')
-
-def single_plotter(xaxis, yaxis,dataframe=df, show_avg=True):
+def single_plotter(xaxis, yaxis,dataframe=df, show_avg=False):
     extra_flag =""
     if(yaxis == 'TotalCPU'):
         yaxis = 'TotalCPU_seconds'
-    dataframe = dataframe[dataframe['qubits'] == (6)]
+    #dataframe = dataframe[dataframe['qubits'] == (6)]
     #dataframe = dataframe[dataframe['multiple_circuits'] == ('S')]
+    #dataframe = dataframe[dataframe['steps'] == (64)]
    
     #dataframe = dataframe[dataframe['simulator'] == ('a')]
     
     plt.figure(figsize=(12, 8))
     #sns.set_palette('pastel')
     
-    #print("Here:"+ df.to_string())
+    print("Here:\n"+ df.to_string())
 
     sns.set_style("whitegrid", {"grid.color": "0.9", "grid.linewidth": 0.5, "grid.alpha": 0.5})
-    ax = sns.barplot(x=xaxis, y=yaxis,hue='max_parallel_experiments', width=0.3, data=dataframe, errorbar=None, color='#0096D6')
+    ax = sns.barplot(x=xaxis, y=yaxis, width=0.3, data=dataframe, errorbar=None, color='#0096D6')
     #ax.set_ylim([4.25, 4.5])
 
     ax.set_xticklabels(ax.get_xticklabels(), rotation=-60)
@@ -212,7 +216,7 @@ def single_plotter(xaxis, yaxis,dataframe=df, show_avg=True):
 
     plt.show()
 
-single_plotter('job_size','TotalCPU')
+single_plotter('JobID','MaxRSS')
 """
 fig, ax =plt.subplots(1,1)
 ax.axis('tight')
