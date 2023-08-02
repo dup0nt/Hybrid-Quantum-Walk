@@ -74,7 +74,7 @@ def execute_circuits(circuits_list,shots,simulator,num_threads,parallel_exp,hard
     print(f"Backend options: {backend.options}")
 
     print(f"Transpile: {time.time()-start_time}")
-    circuits_list = transpile(circuits_list, backend, optimization_level=0)
+    circuits_list = transpile(circuits_list, backend, optimization_level=1)
 
     print(f"Run: {time.time()-start_time}")
     job_statevector = backend.run(circuits_list,backend=backend)
