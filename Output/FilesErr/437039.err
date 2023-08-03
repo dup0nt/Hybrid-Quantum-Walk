@@ -1,0 +1,26 @@
+Traceback (most recent call last):
+  File "/veracruz/projects/c/cquant/Dirac-Quantum-Walk/QuantumWalk/main.py", line 58, in <module>
+    exec_answers = execute_circuits(all_results,
+  File "/veracruz/projects/c/cquant/Dirac-Quantum-Walk/QuantumWalk/execute_circuits.py", line 77, in execute_circuits
+    circuits_list = transpile(circuits_list, backend, optimization_level=0)
+  File "/veracruz/home/d/dgoncalves/.local/lib/python3.8/site-packages/qiskit/compiler/transpiler.py", line 418, in transpile
+    out_circuits = pm.run(circuits, callback=callback)
+  File "/veracruz/home/d/dgoncalves/.local/lib/python3.8/site-packages/qiskit/transpiler/passmanager.py", line 537, in run
+    return super().run(circuits, output_name, callback)
+  File "/veracruz/home/d/dgoncalves/.local/lib/python3.8/site-packages/qiskit/transpiler/passmanager.py", line 234, in run
+    return self._run_several_circuits(circuits, output_name, callback)
+  File "/veracruz/home/d/dgoncalves/.local/lib/python3.8/site-packages/qiskit/transpiler/passmanager.py", line 270, in _run_several_circuits
+    return parallel_map(
+  File "/veracruz/home/d/dgoncalves/.local/lib/python3.8/site-packages/qiskit/tools/parallel.py", line 184, in parallel_map
+    raise error
+  File "/veracruz/home/d/dgoncalves/.local/lib/python3.8/site-packages/qiskit/tools/parallel.py", line 174, in parallel_map
+    results = list(future)
+  File "/apps/software/Anaconda/2020.11/lib/python3.8/concurrent/futures/process.py", line 484, in _chain_from_iterable_of_lists
+    for element in iterable:
+  File "/apps/software/Anaconda/2020.11/lib/python3.8/concurrent/futures/_base.py", line 611, in result_iterator
+    yield fs.pop().result()
+  File "/apps/software/Anaconda/2020.11/lib/python3.8/concurrent/futures/_base.py", line 432, in result
+    return self.__get_result()
+  File "/apps/software/Anaconda/2020.11/lib/python3.8/concurrent/futures/_base.py", line 388, in __get_result
+    raise self._exception
+concurrent.futures.process.BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
